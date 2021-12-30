@@ -4,6 +4,7 @@ import Estados.*;
 import Exceptions.*;
 import GUI.*;
 //import Login.*;
+import GUI.Login;
 import MetodosLogicos.*;
 import Repositorio.*;
 
@@ -13,8 +14,7 @@ public class Main {
     public static void main(String[] args) {
         //RegistoAnonimo newReg= new RegistoAnonimo();
         //newReg.setVisible(true);
-        System.out.println("Hello World");
-        //teste
+        new RegistoAnonimo();
     }
 }
 

@@ -1,22 +1,26 @@
 package GUI;
 
-import Entidades.User;
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import Entidades.*;
+import Estados.*;
+import Exceptions.*;
+import GUI.*;
+import MetodosLogicos.*;
+import Repositorio.*;
 
 public class Login extends JFrame{
     private JTextField userTexto;
     private JPanel LoginUsers;
     private JPasswordField passwordTexto;
-    private JButton Login;
-    private JButton Limpar;
+    private JButton Login; //Button
+    private JButton Limpar; //Button
     private JButton Registo;
     private JFrame frame;
+    private LoginMetodos l;
     //private User Usermetodos;
     //HashMap<String, String> logininfo = new HashMap<String, String>();
 
@@ -24,6 +28,7 @@ public class Login extends JFrame{
 
 
     public Login(){
+        l=new LoginMetodos();
         frame = new JFrame("Login Utilizador");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(300, 300));
@@ -32,7 +37,8 @@ public class Login extends JFrame{
         frame.add(LoginUsers);
         frame.pack();
         frame.setVisible(true);
-       LimpaDados();
+        LimpaDados();
+        leDados();
     }
 
     public void ColocaCamposVazios(){
@@ -48,7 +54,21 @@ public class Login extends JFrame{
             }
         });
     }
+    public void leDados(){
+        Login.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                leituraDados();
+            }
+        });
+    }
 
+    public void leituraDados(){
+        String user,pwd;
+        user=userTexto.getText();
+        pwd=passwordTexto.getText();
+        l.Login(pwd,user);
+    }
 /*
     public void actionPerformed(ActionEvent e){
         if (e.getSource()==Limpar){

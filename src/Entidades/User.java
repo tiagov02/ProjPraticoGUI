@@ -11,6 +11,7 @@ public class User {
     private String Localidade;
 
 
+    public User(){}
     public User(String username, String passwd, String nome, int numCC, int NIF, int telefone, String morada, String localidade) {
         this.username = username;
         this.passwd = passwd;
