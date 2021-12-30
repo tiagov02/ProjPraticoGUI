@@ -31,13 +31,6 @@ public class Login extends JFrame{
 
     public Login(JFrame frame, List<User> users){
         l=new LoginMetodos();
-        /*frame = new JFrame("Login Utilizador");
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(300, 300));
-        frame.setResizable(false);
-
-         */
-
         frame.add(LoginUsers);
         frame.pack();
         frame.setVisible(true);
@@ -48,8 +41,8 @@ public class Login extends JFrame{
     }
 
     public void ColocaCamposVazios(){
-        userTexto.setText("");
-        passwordTexto.setText("");
+        userTexto.setText(null);
+        passwordTexto.setText(null);
     }
 
     public void LimpaDados(){
@@ -85,12 +78,13 @@ public class Login extends JFrame{
         pwd=passwordTexto.getText();
         try{
             User login = l.Login(user, pwd, users);
+            /*if(login instanceof UserDonoEmpresa){
+                redireciona
+            }*/
         }
         catch(NaoExisteUserException ex){
             JOptionPane.showMessageDialog(null,ex.getMessage());
         }
-        //Redirecionar para a nova panel
-        //if(login instanceof UserCliente)
     }
 
     public void clickRegistar(JFrame frame){
