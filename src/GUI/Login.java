@@ -18,7 +18,7 @@ public class Login extends JFrame{
     private JPasswordField passwordTexto;
     private JButton Login; //Button
     private JButton Limpar; //Button
-    private JButton Registo;
+    private JButton RegistoButton;
     private JFrame frame;
     private LoginMetodos l;
     //private User Usermetodos;
@@ -39,6 +39,8 @@ public class Login extends JFrame{
         frame.setVisible(true);
         LimpaDados();
         BotaoLogin();
+        clickRegistar();
+
     }
 
     public void ColocaCamposVazios(){
@@ -90,16 +92,22 @@ public class Login extends JFrame{
         if (userTexto.getText().equals("admin") && passwordTexto.getText().equals("admin")){
             JOptionPane.showMessageDialog(null, "BEM VINDO ADMIN");
             leituraDados();
-            //A PARTIR DAQUI FOI UM TESTE
-            RegistoAnonimo registo1 = new RegistoAnonimo();
-            LoginUsers.setVisible(false);
-            registo1.setVisible(true);
-            this.dispose();
-
         }
         else{
             JOptionPane.showMessageDialog(null, "ERRO! TENTE NOVAMENTE");
         }
+    }
+
+    public void clickRegistar(){
+        RegistoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RegistoAnonimo registo1 = new RegistoAnonimo();
+                LoginUsers.setVisible(false);
+                registo1.setVisible(true);
+                //this.dispose();
+            }
+        });
     }
 
 
