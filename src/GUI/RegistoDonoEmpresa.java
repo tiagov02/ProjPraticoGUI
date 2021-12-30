@@ -25,9 +25,9 @@ public class RegistoDonoEmpresa extends Frame {
     private JLabel lb_username;
     private JButton okButton;
     private JButton limparButton;
-    private JFrame frame;
+    //private JFrame frame;
 
-    public RegistoDonoEmpresa(){
+    public RegistoDonoEmpresa(JFrame frame){
         frame = new JFrame("Registo de Clientes");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(300, 300));

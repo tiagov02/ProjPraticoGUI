@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RegistoCliente extends JFrame{
-    private JFrame frame;
+    //private JFrame frame;
     private JPanel regClientePanel;
     private JTextField tb_morada;
     private JTextField tb_localidade;
@@ -27,7 +27,7 @@ public class RegistoCliente extends JFrame{
     private JButton okButton;
     private JButton limparButton;
 
-    public RegistoCliente(){
+    public RegistoCliente(JFrame frame){
         frame = new JFrame("Registo de Clientes");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(300, 300));

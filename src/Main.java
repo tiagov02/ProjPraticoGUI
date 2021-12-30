@@ -9,6 +9,9 @@ import MetodosLogicos.*;
 import Repositorio.*;
 
 import javax.swing.*;
+import java.awt.*;
+
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,7 +20,14 @@ public class Main {
         //new RegistoAnonimo();
         //new RegistoCliente();
         //new RegistoDonoEmpresa();
-        new Login();
+        Repositorio r=new Repositorio();
+        JFrame frame= new JFrame();
+
+        frame = new JFrame("PetBeauty- Registo de animais de estimação");
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setPreferredSize(new Dimension(300, 300));
+        frame.setResizable(false);
+        new Login(frame,r.getUsers());
     }
 }
 

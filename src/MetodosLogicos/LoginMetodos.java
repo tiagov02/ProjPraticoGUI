@@ -10,14 +10,19 @@ public class LoginMetodos {
 
     public LoginMetodos(){}
 
-    public void Login(String pass, String nomeUser) { //throws NaoExisteUserException
-        User u = new User();
+    public User Login(String pass, String nomeUser,List<User> users) throws NaoExisteUserException{
+        User newUser = new User();
         boolean found = false;
 
-        u.setUsername(nomeUser);
-        u.setPasswd(pass);
+        newUser.setUsername(nomeUser);
+        newUser.setPasswd(pass);
 
-        //Redirecionamento
-
+        for(User u: users){
+            if(newUser.getUsername().equals(u.getUsername()) && newUser.getPasswd().equals(u.getPasswd())){
+                found=true;
+                return u;
+            }
+        }
+        throw new NaoExisteUserException("A sua pass ou user estão errados! pf tente novamente");
     }
 }

@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.List;
+
 import Entidades.*;
 import Estados.*;
 import Exceptions.*;
@@ -19,7 +21,7 @@ public class Login extends JFrame{
     private JButton Login; //Button
     private JButton Limpar; //Button
     private JButton RegistoButton;
-    private JFrame frame;
+    //private JFrame frame;
     private LoginMetodos l;
     //private User Usermetodos;
     //HashMap<String, String> logininfo = new HashMap<String, String>();
@@ -27,19 +29,21 @@ public class Login extends JFrame{
 
 
 
-    public Login(){
+    public Login(JFrame frame, List<User> users){
         l=new LoginMetodos();
-        frame = new JFrame("Login Utilizador");
+        /*frame = new JFrame("Login Utilizador");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(300, 300));
         frame.setResizable(false);
+
+         */
 
         frame.add(LoginUsers);
         frame.pack();
         frame.setVisible(true);
         LimpaDados();
-        BotaoLogin();
-        clickRegistar();
+        BotaoLogin(frame,users);
+        clickRegistar(frame);
 
     }
 
@@ -66,44 +70,35 @@ public class Login extends JFrame{
         });
     }
      */
-    public void BotaoLogin(){
+    public void BotaoLogin(JFrame frame,List<User> users){
         Login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                clicarBotaoLogin();
+                clicarBotaoLogin(frame,users);
             }
         });
     }
 
-    public void leituraDados(){
+    public void clicarBotaoLogin(JFrame frame,List<User> users){
         String user,pwd;
         user=userTexto.getText();
         pwd=passwordTexto.getText();
-        l.Login(pwd,user);
-    }
-
-    public void trocarPainel(JPanel painel){
-        this.setContentPane(LoginUsers);
-        this.pack();
-        this.setVisible(true);
-    }
-
-    public void clicarBotaoLogin(){
-        if (userTexto.getText().equals("admin") && passwordTexto.getText().equals("admin")){
-            JOptionPane.showMessageDialog(null, "BEM VINDO ADMIN");
-            leituraDados();
+        try{
+            User login = l.Login(user, pwd, users);
         }
-        else{
-            JOptionPane.showMessageDialog(null, "ERRO! TENTE NOVAMENTE");
+        catch(NaoExisteUserException ex){
+            JOptionPane.showMessageDialog(null,ex.getMessage());
         }
+        //Redirecionar para a nova panel
+        //if(login instanceof UserCliente)
     }
 
-    public void clickRegistar(){
+    public void clickRegistar(JFrame frame){
         RegistoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RegistoAnonimo registo1 = new RegistoAnonimo();
                 LoginUsers.setVisible(false);
+                RegistoAnonimo registo1 = new RegistoAnonimo(frame);
                 registo1.setVisible(true);
                 //this.dispose();
             }

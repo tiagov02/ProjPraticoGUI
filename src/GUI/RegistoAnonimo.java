@@ -9,37 +9,37 @@ public class RegistoAnonimo extends JFrame{
     private JButton clienteButton;
     private JButton DonoButton;
     private JPanel RegAnonimoPanel;
-    private JFrame RegAnonimo;
+    //private JFrame RegAnonimo;
 
-    public RegistoAnonimo() {
-        RegAnonimo = new JFrame("Login Utilizador");
-        RegAnonimo.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        RegAnonimo.setPreferredSize(new Dimension(300, 300));
+    public RegistoAnonimo(JFrame frame) {
+        frame = new JFrame("Login Utilizador");
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setPreferredSize(new Dimension(300, 300));
         //RegAnonimo.setResizable(false);
 
-        RegAnonimo.add(RegAnonimoPanel);
-        RegAnonimo.pack();
-        RegAnonimo.setVisible(true);
-        clickCliente();
-        clickDonoEmpresa();
+        frame.add(RegAnonimoPanel);
+        frame.pack();
+        frame.setVisible(true);
+        clickCliente(frame);
+        clickDonoEmpresa(frame);
     }
 
-    public void clickCliente(){
+    public void clickCliente(JFrame frame){
         clienteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RegAnonimo.setVisible(false);
-                new RegistoCliente();
+                RegAnonimoPanel.setVisible(false);
+                new RegistoCliente(frame);
             }
         });
     }
 
-    public void clickDonoEmpresa(){
+    public void clickDonoEmpresa(JFrame frame){
         DonoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RegAnonimo.setVisible(false);
-                new RegistoDonoEmpresa();
+                RegAnonimoPanel.setVisible(false);
+                new RegistoDonoEmpresa(frame);
             }
         });
     }
