@@ -55,7 +55,7 @@ public class RegistoDonoEmpresa extends Frame {
         int telefone= Integer.parseInt(tb_telefone.getText());
         String morada=tb_morada.getText();
         String localidade=tb_localidade.getText();
-        System.out.println(username+"\n"+passwd+"\n"+nome+"\n"+numCC+"\n"+telefone+"\n"+morada+"\n"+localidade);
+        //System.out.println(username+"\n"+passwd+"\n"+nome+"\n"+numCC+"\n"+telefone+"\n"+morada+"\n"+localidade);
     }
 
     public void limparDados(){
