@@ -5,42 +5,41 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RegistoCliente extends JFrame{
-    private JFrame frame;
-    private JPanel regClientePanel;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+
+public class RegistoDonoEmpresa extends Frame {
+    private JPanel regDonoEmpresa;
     private JTextField tb_morada;
     private JTextField tb_localidade;
-    private JTextField tb_codPostal;
-    private JTextField tb_telefone;
-    private JTextField tb_numCC;
-    private JTextField tb_nome;
-    private JPasswordField tb_passwd;
-    private JTextField tb_username;
     private JLabel lb_morada;
     private JLabel lb_localidade;
-    private JLabel lb_codPostal;
+    private JTextField tb_telefone;
     private JLabel lb_telefone;
+    private JTextField tb_numCC;
     private JLabel lb_numCC;
+    private JTextField tb_nome;
     private JLabel lb_nome;
+    private JPasswordField tb_passwd;
     private JLabel lb_passwd;
+    private JTextField tb_username;
     private JLabel lb_username;
     private JButton okButton;
     private JButton limparButton;
+    private JFrame frame;
 
-    public RegistoCliente(){
+    public RegistoDonoEmpresa(){
         frame = new JFrame("Registo de Clientes");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(300, 300));
         //RegAnonimo.setResizable(false);
 
-        frame.add(regClientePanel);
+        frame.add(regDonoEmpresa);
         frame.pack();
         frame.setVisible(true);
-        registarCliente();
+        registarDonoEmpresa();
         limparDados();
     }
-
-    public void registarCliente(){
+    public void registarDonoEmpresa(){
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -56,15 +55,13 @@ public class RegistoCliente extends JFrame{
         int telefone= Integer.parseInt(tb_telefone.getText());
         String morada=tb_morada.getText();
         String localidade=tb_localidade.getText();
-        int cPostal= Integer.parseInt(tb_codPostal.getText());
-        //System.out.println(username+"\n"+passwd+"\n"+nome+"\n"+numCC+"\n"+telefone+"\n"+morada+"\n"+localidade+"\n"+cPostal);
+        System.out.println(username+"\n"+passwd+"\n"+nome+"\n"+numCC+"\n"+telefone+"\n"+morada+"\n"+localidade);
     }
 
     public void limparDados(){
         limparButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tb_codPostal.setText(null);
                 tb_localidade.setText(null);
                 tb_username.setText(null);
                 tb_morada.setText(null);
@@ -75,5 +72,4 @@ public class RegistoCliente extends JFrame{
             }
         });
     }
-
 }
