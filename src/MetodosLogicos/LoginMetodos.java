@@ -23,6 +23,6 @@ public class LoginMetodos {
                 return u;
             }
         }
-        throw new NaoExisteUserException("A sua pass ou user estão errados! pf tente novamente");
+        throw new NaoExisteUserException("Dados inválidos! Pf tente novamente");
     }
 }
