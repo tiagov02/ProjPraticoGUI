@@ -15,8 +15,9 @@ public class Main {
         //RegistoAnonimo newReg= new RegistoAnonimo();
         //newReg.setVisible(true);
         //new RegistoAnonimo();
-        new RegistoCliente();
+        //new RegistoCliente();
         //new RegistoDonoEmpresa();
+        new Login();
     }
 }
 

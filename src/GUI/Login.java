@@ -38,7 +38,7 @@ public class Login extends JFrame{
         frame.pack();
         frame.setVisible(true);
         LimpaDados();
-        leDados();
+        BotaoLogin();
     }
 
     public void ColocaCamposVazios(){
@@ -54,11 +54,21 @@ public class Login extends JFrame{
             }
         });
     }
+    /*
     public void leDados(){
         Login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 leituraDados();
+            }
+        });
+    }
+     */
+    public void BotaoLogin(){
+        Login.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clicarBotaoLogin();
             }
         });
     }
@@ -69,6 +79,30 @@ public class Login extends JFrame{
         pwd=passwordTexto.getText();
         l.Login(pwd,user);
     }
+
+    public void trocarPainel(JPanel painel){
+        this.setContentPane(LoginUsers);
+        this.pack();
+        this.setVisible(true);
+    }
+
+    public void clicarBotaoLogin(){
+        if (userTexto.getText().equals("admin") && passwordTexto.getText().equals("admin")){
+            JOptionPane.showMessageDialog(null, "BEM VINDO ADMIN");
+            leituraDados();
+            //A PARTIR DAQUI FOI UM TESTE
+            RegistoAnonimo registo1 = new RegistoAnonimo();
+            LoginUsers.setVisible(false);
+            registo1.setVisible(true);
+            this.dispose();
+
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "ERRO! TENTE NOVAMENTE");
+        }
+    }
+
+
 /*
     public void actionPerformed(ActionEvent e){
         if (e.getSource()==Limpar){
