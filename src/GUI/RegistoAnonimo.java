@@ -18,5 +18,7 @@ public class RegistoAnonimo extends JFrame{
         RegAnonimo.add(RegAnonimoPanel);
         RegAnonimo.pack();
         RegAnonimo.setVisible(true);
+
+        //CRiar listener
     }
 }

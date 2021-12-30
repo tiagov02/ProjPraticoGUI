@@ -14,7 +14,8 @@ public class Main {
     public static void main(String[] args) {
         //RegistoAnonimo newReg= new RegistoAnonimo();
         //newReg.setVisible(true);
-        new RegistoAnonimo();
+        //new RegistoAnonimo();
+        new RegistoCliente();
     }
 }
 
