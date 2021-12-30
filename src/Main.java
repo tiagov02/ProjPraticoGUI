@@ -14,6 +14,7 @@ public class Main {
         //RegistoAnonimo newReg= new RegistoAnonimo();
         //newReg.setVisible(true);
         System.out.println("Hello World");
+        //teste
     }
 }
 
