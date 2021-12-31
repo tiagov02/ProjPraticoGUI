@@ -25,9 +25,11 @@ public class Main {
 
         frame = new JFrame("PetBeauty- Registo de animais de estimação");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(350, 350));
-        frame.setResizable(false);
-        new Login(frame,r.getUsers());
+        frame.setPreferredSize(new Dimension(500, 500));
+        frame.setResizable(true);
+        //new Login(frame,r.getUsers());
+
+        new InserirAnimalCliente(frame);
     }
 }
 
