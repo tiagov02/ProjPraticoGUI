@@ -46,4 +46,19 @@ public class InserirAnimalCliente extends JFrame{
             }
         });
     }
+    public void ColocaCamposVazios(){
+        tb_nMicro.setText(null);
+        tb_nome.setText(null);
+        tb_raca.setText(null);
+        tb_especie.setText(null);
+    }
+
+    public void clickLimpar(){
+        BotaoLimpar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ColocaCamposVazios();
+            }
+        });
+    }
 }
