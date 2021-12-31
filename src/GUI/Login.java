@@ -78,9 +78,9 @@ public class Login extends JFrame{
         pwd=passwordTexto.getText();
         try{
             User login = l.Login(user, pwd, users);
-            /*if(login instanceof UserDonoEmpresa){
-                redireciona
-            }*/
+           if(login instanceof UserCliente){
+              new ClienteRegistado(frame, login);
+           }
         }
         catch(NaoExisteUserException ex){
             JOptionPane.showMessageDialog(null,ex.getMessage());

@@ -10,11 +10,6 @@ public class InserirAnimalCliente extends JFrame{
     private JTextField tb_nome;
     private JTextField tb_especie;
     private JTextField tb_raca;
-    private JLabel LabelNMicro;
-    private JLabel nomeLabel;
-    private JLabel especieLabel;
-    private JLabel racaLabel;
-    private JLabel dataDeNascimentoDdLabel;
     private JButton BotaoLimpar;
     private JButton BotaoInserir;
     private JButton BotaoVoltar;
@@ -47,6 +42,7 @@ public class InserirAnimalCliente extends JFrame{
                 String nome= tb_nome.getText();
                 String especie=tb_especie.getText();
                 String raca=tb_raca.getText();
+                //System.out.println("DN: "+(new Date((ano-1900),(mes-1) ,dia))+"\nNumero do micro: "+nMicro+"\nNome: "+nome+"\nEspecie: "+especie+"\nRaça: "+raca);
             }
         });
     }

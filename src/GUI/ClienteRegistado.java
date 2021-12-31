@@ -23,18 +23,18 @@ public class ClienteRegistado extends JFrame{
     private JButton BotaoPagaConsulta;
     private JPanel PanelClienteRegistado;
 
-    public ClienteRegistado(JFrame frame){
+    public ClienteRegistado(JFrame frame, User login){
         frame.add(PanelClienteRegistado);
         frame.pack();
         frame.setVisible(true);
     }
 
-    public void IntroduzirAnimal(JFrame frame){
+    public void IntroduzirAnimal(JFrame frame,UserCliente cliente){
         BotaoInsereAnimal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PanelClienteRegistado.setVisible(false);
-                //Animal animal1 = new Animal();
+                new InserirAnimalCliente(frame);
             }
         });
     }
