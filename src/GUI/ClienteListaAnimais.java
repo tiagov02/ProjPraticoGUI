@@ -10,7 +10,7 @@ public class ClienteListaAnimais extends javax.swing.JFrame{
     private JLabel AreaTexto;
 
     private void preencherDadosListaAnimal(JFrame frame){
-        ArrayList<Animal> animais = frame.get
+        //ArrayList<Animal> animais = frame.get
     }
 }
 
