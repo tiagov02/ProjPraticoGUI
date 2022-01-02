@@ -1,9 +1,15 @@
 package GUI;
 
+import Entidades.*;
+import Entidades.UserCliente;
+import Exceptions.JaExisteUserEcxeption;
+import MetodosLogicos.AnonimoMetodos;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class RegistoCliente extends JFrame{
     //private JFrame frame;
@@ -26,8 +32,10 @@ public class RegistoCliente extends JFrame{
     private JLabel lb_username;
     private JButton okButton;
     private JButton limparButton;
+    private JTextField tb_nif;
+    private AnonimoMetodos metodos;
 
-    public RegistoCliente(JFrame frame){
+    public RegistoCliente(JFrame frame, List<User> users){
         frame = new JFrame("Registo de Clientes");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(300, 300));
@@ -36,28 +44,34 @@ public class RegistoCliente extends JFrame{
         frame.add(regClientePanel);
         frame.pack();
         frame.setVisible(true);
-        registarCliente();
+        registarCliente(users);
         limparDados();
     }
 
-    public void registarCliente(){
+    public void registarCliente(List<User> users){
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                lerDadosTeclado();
+                String username=tb_username.getText();
+                String passwd=tb_passwd.getText();
+                String nome=tb_nome.getText();
+                int numCC=Integer.parseInt(tb_numCC.getText());
+                int telefone= Integer.parseInt(tb_telefone.getText());
+                String morada=tb_morada.getText();
+                String localidade=tb_localidade.getText();
+                int cPostal= Integer.parseInt(tb_codPostal.getText());
+                int nif=Integer.parseInt(tb_nif.getText());
+                UserCliente user= new UserCliente(username,passwd,nome,numCC,nif,telefone,morada,localidade,nif,cPostal,nif);
+                //2 erros nCliente pedido 2 vezes
+                //ver construtor
+                try {
+                    metodos.addUser(users, user);
+                }
+                catch (JaExisteUserEcxeption ex) {
+                    JOptionPane.showMessageDialog(null,ex.getMessage());
+                }
             }
         });
-    }
-    public void lerDadosTeclado(){
-        String username=tb_username.getText();
-        String passwd=tb_passwd.getText();
-        String nome=tb_nome.getText();
-        int numCC=Integer.parseInt(tb_numCC.getText());
-        int telefone= Integer.parseInt(tb_telefone.getText());
-        String morada=tb_morada.getText();
-        String localidade=tb_localidade.getText();
-        int cPostal= Integer.parseInt(tb_codPostal.getText());
-        //System.out.println(username+"\n"+passwd+"\n"+nome+"\n"+numCC+"\n"+telefone+"\n"+morada+"\n"+localidade+"\n"+cPostal);
     }
 
     public void limparDados(){

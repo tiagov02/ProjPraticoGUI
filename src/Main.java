@@ -22,6 +22,10 @@ public class Main {
         //new RegistoDonoEmpresa();
         Repositorio r=new Repositorio();
         JFrame frame= new JFrame();
+        if(r.getUsers().isEmpty()){
+            r.getUsers().add(new UserAdmin("admin","admin","Administrador PetBeauty",0,0,
+                    0,"Viana do Castelo","IPVC_ESTG"));
+        }
 
         frame = new JFrame("PetBeauty- Gestão de Marcações e Consultas de Animais de Estimação");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);

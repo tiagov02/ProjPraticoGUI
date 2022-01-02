@@ -36,7 +36,7 @@ public class Login extends JFrame{
         frame.setVisible(true);
         LimpaDados();
         BotaoLogin(frame,users);
-        clickRegistar(frame);
+        clickRegistar(frame,users);
 
     }
 
@@ -87,12 +87,12 @@ public class Login extends JFrame{
         }
     }
 
-    public void clickRegistar(JFrame frame){
+    public void clickRegistar(JFrame frame,List<User> users){
         RegistoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 LoginUsers.setVisible(false);
-                RegistoAnonimo registo1 = new RegistoAnonimo(frame);
+                RegistoAnonimo registo1 = new RegistoAnonimo(frame,users);
                 registo1.setVisible(true);
                 //this.dispose();
             }
