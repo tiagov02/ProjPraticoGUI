@@ -34,11 +34,10 @@ public class RegistoDonoEmpresa extends Frame {
     private JButton okButton;
     private JButton limparButton;
     private JButton botaoVoltar;
-
-
     private AnonimoMetodos metodos;
 
     public RegistoDonoEmpresa(JFrame frame, List<User> users){
+        metodos=new AnonimoMetodos();
         frame = new JFrame("Registo de Clientes");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(500, 500));
