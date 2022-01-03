@@ -79,8 +79,18 @@ public class Login extends JFrame{
         try{
             User login = l.Login(user, pwd, users);
            if(login instanceof UserCliente){
+               //JOptionPane.showMessageDialog(null,"Sucesso!!");
+               LoginUsers.setVisible(false);
               new ClienteRegistado(frame, login);
            }
+           else
+               if(login instanceof UserAdmin){
+                   System.out.println("login");
+               }
+               else
+                   if(login instanceof UserDonoEmpresa){
+                       System.out.println("login");
+                   }
         }
         catch(NaoExisteUserException ex){
             JOptionPane.showMessageDialog(null,ex.getMessage());

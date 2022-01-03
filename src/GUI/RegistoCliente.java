@@ -33,22 +33,24 @@ public class RegistoCliente extends JFrame{
     private JButton okButton;
     private JButton limparButton;
     private JTextField tb_nif;
+    private JButton backButton;
     private AnonimoMetodos metodos;
 
     public RegistoCliente(JFrame frame, List<User> users){
         frame = new JFrame("Registo de Clientes");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(300, 300));
+        frame.setPreferredSize(new Dimension(500, 500));
         metodos=new AnonimoMetodos();
 
         frame.add(regClientePanel);
         frame.pack();
         frame.setVisible(true);
-        registarCliente(users);
+        registarCliente(users,frame);
         limparDados();
+        voltarParaTras(frame,users);
     }
 
-    public void registarCliente(List<User> users){
+    public void registarCliente(List<User> users,JFrame frame){
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,10 +64,11 @@ public class RegistoCliente extends JFrame{
                 int cPostal= Integer.parseInt(tb_codPostal.getText());
                 int nif=Integer.parseInt(tb_nif.getText());
                 UserCliente user= new UserCliente(username,passwd,nome,numCC,nif,telefone,morada,localidade,nif,cPostal,nif);
-                //2 erros nCliente pedido 2 vezes
-                //ver construtor
                 try {
                     metodos.addUser(users, user);
+                    JOptionPane.showMessageDialog(null,"Adicionou um cliente com sucesso!!");
+                    regClientePanel.setVisible(false);
+                    new Login(frame,users);
                 }
                 catch (JaExisteUserEcxeption ex) {
                     JOptionPane.showMessageDialog(null,ex.getMessage());
@@ -86,6 +89,16 @@ public class RegistoCliente extends JFrame{
                 tb_numCC.setText(null);
                 tb_telefone.setText(null);
                 tb_passwd.setText(null);
+            }
+        });
+    }
+
+    public void voltarParaTras(JFrame frame,List<User> users){
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                regClientePanel.setVisible(false);
+                new RegistoAnonimo(frame,users);
             }
         });
     }
