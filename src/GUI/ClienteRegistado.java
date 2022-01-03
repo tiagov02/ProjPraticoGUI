@@ -22,11 +22,14 @@ public class ClienteRegistado extends JFrame{
     private JButton BotaoEditarConsulta;
     private JButton BotaoPagaConsulta;
     private JPanel PanelClienteRegistado;
+    private JButton BotaoLogout;
 
     public ClienteRegistado(JFrame frame, User login){
         frame.add(PanelClienteRegistado);
         frame.pack();
         frame.setVisible(true);
+       // IntroduzirAnimal(frame, cliente);
+        //clicaLogout(frame, users);
     }
 
     public void IntroduzirAnimal(JFrame frame,UserCliente cliente){
@@ -35,6 +38,15 @@ public class ClienteRegistado extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 PanelClienteRegistado.setVisible(false);
                 new InserirAnimalCliente(frame);
+            }
+        });
+    }
+    public void clicaLogout(JFrame frame, List<User> users){
+        BotaoLogout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PanelClienteRegistado.setVisible(false);
+                new Login(frame, users);
             }
         });
     }
