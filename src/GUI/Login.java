@@ -85,11 +85,13 @@ public class Login extends JFrame{
            }
            else
                if(login instanceof UserAdmin){
-                   System.out.println("login");
+                   LoginUsers.setVisible(false);
+                   new AdminRegistado(frame);
                }
                else
                    if(login instanceof UserDonoEmpresa){
-                       System.out.println("login");
+                       LoginUsers.setVisible(false);
+                       new DonoEmpresaRegistado(frame);
                    }
         }
         catch(NaoExisteUserException ex){
