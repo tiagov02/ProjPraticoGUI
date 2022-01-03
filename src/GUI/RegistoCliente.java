@@ -86,6 +86,7 @@ public class RegistoCliente extends JFrame{
                 tb_username.setText(null);
                 tb_morada.setText(null);
                 tb_nome.setText(null);
+                tb_nif.setText(null);
                 tb_numCC.setText(null);
                 tb_telefone.setText(null);
                 tb_passwd.setText(null);

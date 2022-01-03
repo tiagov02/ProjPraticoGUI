@@ -28,8 +28,6 @@ public class ClienteRegistado extends JFrame{
         frame.add(PanelClienteRegistado);
         frame.pack();
         frame.setVisible(true);
-       // IntroduzirAnimal(frame, cliente);
-        //clicaLogout(frame, users);
     }
 
     public void IntroduzirAnimal(JFrame frame,UserCliente cliente){

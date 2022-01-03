@@ -1,74 +1,103 @@
 package GUI;
 
+import Entidades.User;
+import Entidades.UserDonoEmpresa;
+import Exceptions.JaExisteUserEcxeption;
+import MetodosLogicos.AnonimoMetodos;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class RegistoDonoEmpresa extends Frame {
     private JPanel regDonoEmpresa;
-    private JTextField tb_morada;
-    private JTextField tb_localidade;
+    private JTextField tb_Morada;
+    private JTextField tb_Localidade;
+    private JTextField tb_numeroCC;
+    private JTextField tb_Nome;
+    private JTextField tb_user;
+    private JTextField tb_NIF;
+    private JPasswordField tb_password;
     private JLabel lb_morada;
     private JLabel lb_localidade;
-    private JTextField tb_telefone;
+    private JTextField tb_Telefone;
     private JLabel lb_telefone;
-    private JTextField tb_numCC;
     private JLabel lb_numCC;
-    private JTextField tb_nome;
     private JLabel lb_nome;
-    private JPasswordField tb_passwd;
     private JLabel lb_passwd;
-    private JTextField tb_username;
     private JLabel lb_username;
+    private JLabel lb_NIF;
     private JButton okButton;
     private JButton limparButton;
-    //private JFrame frame;
+    private JButton botaoVoltar;
 
-    public RegistoDonoEmpresa(JFrame frame){
+
+    private AnonimoMetodos metodos;
+
+    public RegistoDonoEmpresa(JFrame frame, List<User> users){
         frame = new JFrame("Registo de Clientes");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(300, 300));
+        frame.setPreferredSize(new Dimension(500, 500));
         //RegAnonimo.setResizable(false);
 
         frame.add(regDonoEmpresa);
         frame.pack();
         frame.setVisible(true);
-        registarDonoEmpresa();
         limparDados();
+        VoltarAtras(frame, users);
+        registarDonoEmpresa(users, frame);
     }
-    public void registarDonoEmpresa(){
+
+    public void registarDonoEmpresa(List<User> users, JFrame frame){
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                lerDadosTeclado();
+                String username = tb_user.getText();
+                String passwd = tb_password.getText();
+                String nome = tb_Nome.getText();
+                int numCC = Integer.parseInt(tb_numeroCC.getText());
+                int NIF = Integer.parseInt(tb_NIF.getText());
+                int telefone = Integer.parseInt(tb_Telefone.getText());
+                String morada = tb_Morada.getText();
+                String localidade = tb_Localidade.getText();
+                UserDonoEmpresa user = new UserDonoEmpresa(username, passwd, nome, numCC, NIF, telefone, morada, localidade);
+                try {
+                    metodos.addUser(users, user);
+                    JOptionPane.showMessageDialog(null, "Dono de Empresa adicionado com sucesso");
+                    regDonoEmpresa.setVisible(false);
+                    new Login(frame, users);
+                }
+                catch (JaExisteUserEcxeption ex){JOptionPane.showMessageDialog(null, ex.getMessage());}
             }
         });
-    }
-    public void lerDadosTeclado(){
-        String username=tb_username.getText();
-        String passwd=tb_passwd.getText();
-        String nome=tb_nome.getText();
-        int numCC=Integer.parseInt(tb_numCC.getText());
-        int telefone= Integer.parseInt(tb_telefone.getText());
-        String morada=tb_morada.getText();
-        String localidade=tb_localidade.getText();
-        //System.out.println(username+"\n"+passwd+"\n"+nome+"\n"+numCC+"\n"+telefone+"\n"+morada+"\n"+localidade);
     }
 
     public void limparDados(){
         limparButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tb_localidade.setText(null);
-                tb_username.setText(null);
-                tb_morada.setText(null);
-                tb_nome.setText(null);
-                tb_numCC.setText(null);
-                tb_telefone.setText(null);
-                tb_passwd.setText(null);
+                tb_Localidade.setText(null);
+                tb_user.setText(null);
+                tb_Morada.setText(null);
+                tb_Nome.setText(null);
+                tb_NIF.setText(null);
+                tb_numeroCC.setText(null);
+                tb_Telefone.setText(null);
+                tb_password.setText(null);
+            }
+        });
+    }
+
+    public void VoltarAtras(JFrame frame, List<User> users){
+        botaoVoltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                regDonoEmpresa.setVisible(false);
+                new RegistoAnonimo(frame, users);
             }
         });
     }
