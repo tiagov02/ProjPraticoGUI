@@ -29,14 +29,14 @@ public class Login extends JFrame{
 
 
 
-    public Login(JFrame frame, List<User> users){
+    public Login(JFrame frame){
         l=new LoginMetodos();
         frame.add(LoginUsers);
         frame.pack();
         frame.setVisible(true);
         LimpaDados();
-        BotaoLogin(frame,users);
-        clickRegistar(frame,users);
+        BotaoLogin(frame);
+        clickRegistar(frame);
 
     }
 
@@ -63,21 +63,22 @@ public class Login extends JFrame{
         });
     }
      */
-    public void BotaoLogin(JFrame frame,List<User> users){
+    public void BotaoLogin(JFrame frame){
         Login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                clicarBotaoLogin(frame,users);
+                clicarBotaoLogin(frame);
             }
         });
     }
 
-    public void clicarBotaoLogin(JFrame frame,List<User> users){
+    public void clicarBotaoLogin(JFrame frame){
         String user,pwd;
         user=userTexto.getText();
         pwd=passwordTexto.getText();
         try{
-            User login = l.Login(user, pwd, users);
+            User login = l.Login(user, pwd);
+            Repositorio.getInstance().setCurrentUser(login);
            if(login instanceof UserCliente){
                //JOptionPane.showMessageDialog(null,"Sucesso!!");
                LoginUsers.setVisible(false);
@@ -99,12 +100,12 @@ public class Login extends JFrame{
         }
     }
 
-    public void clickRegistar(JFrame frame,List<User> users){
+    public void clickRegistar(JFrame frame){
         RegistoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 LoginUsers.setVisible(false);
-                RegistoAnonimo registo1 = new RegistoAnonimo(frame,users);
+                RegistoAnonimo registo1 = new RegistoAnonimo(frame);
                 registo1.setVisible(true);
                 //this.dispose();
             }

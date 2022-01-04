@@ -10,16 +10,16 @@ public class LoginMetodos {
 
     public LoginMetodos(){}
 
-    public User Login(String pass, String nomeUser,List<User> users) throws NaoExisteUserException{
+    public User Login(String pass, String nomeUser) throws NaoExisteUserException{
         User newUser = new User();
-        boolean found = false;
+        //boolean found = false;
 
         newUser.setUsername(nomeUser);
         newUser.setPasswd(pass);
 
-        for(User u: users){
+        for(User u: Repositorio.getInstance().getUsers()){
             if(newUser.getUsername().equals(u.getUsername()) && newUser.getPasswd().equals(u.getPasswd())){
-                found=true;
+                //found=true;
                 return u;
             }
         }

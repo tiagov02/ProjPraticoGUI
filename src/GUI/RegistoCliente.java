@@ -36,7 +36,7 @@ public class RegistoCliente extends JFrame{
     private JButton backButton;
     private AnonimoMetodos metodos;
 
-    public RegistoCliente(JFrame frame, List<User> users){
+    public RegistoCliente(JFrame frame){
         frame = new JFrame("Registo de Clientes");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(500, 500));
@@ -45,12 +45,12 @@ public class RegistoCliente extends JFrame{
         frame.add(regClientePanel);
         frame.pack();
         frame.setVisible(true);
-        registarCliente(users,frame);
+        registarCliente(frame);
         limparDados();
-        voltarParaTras(frame,users);
+        voltarParaTras(frame);
     }
 
-    public void registarCliente(List<User> users,JFrame frame){
+    public void registarCliente(JFrame frame){
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,12 +63,12 @@ public class RegistoCliente extends JFrame{
                 String localidade=tb_localidade.getText();
                 int cPostal= Integer.parseInt(tb_codPostal.getText());
                 int nif=Integer.parseInt(tb_nif.getText());
-                UserCliente user= new UserCliente(username,passwd,nome,numCC,nif,telefone,morada,localidade,nif,cPostal,nif);
+                UserCliente user= new UserCliente(username,passwd,nome,numCC,nif,telefone,morada,localidade);
                 try {
-                    metodos.addUser(users, user);
+                    metodos.addUser(user);
                     JOptionPane.showMessageDialog(null,"Adicionou um cliente com sucesso!!");
                     regClientePanel.setVisible(false);
-                    new Login(frame,users);
+                    new Login(frame);
                 }
                 catch (JaExisteUserEcxeption ex) {
                     JOptionPane.showMessageDialog(null,ex.getMessage());
@@ -94,12 +94,12 @@ public class RegistoCliente extends JFrame{
         });
     }
 
-    public void voltarParaTras(JFrame frame,List<User> users){
+    public void voltarParaTras(JFrame frame){
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 regClientePanel.setVisible(false);
-                new RegistoAnonimo(frame,users);
+                new RegistoAnonimo(frame);
             }
         });
     }

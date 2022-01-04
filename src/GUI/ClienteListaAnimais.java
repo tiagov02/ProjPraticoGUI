@@ -1,16 +1,33 @@
 package GUI;
 
 import Entidades.Animal;
+import Repositorio.Repositorio;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
 public class ClienteListaAnimais extends javax.swing.JFrame{
-    private JTable tabelaAnimais;
 
-    private void preencherDadosListaAnimal(JFrame frame){
-        //ArrayList<Animal> animais = frame.get
+    private JPanel panel1;
+    private JTable table1;
+    private JScrollPane ScrollPanel;
+
+    public ClienteListaAnimais(JFrame frame){
+        frame.add(panel1);
+        frame.pack();
+        frame.setVisible(true);
+        DefaultTableModel model= (DefaultTableModel)table1.getModel();
+        table1.setModel(model);
+        model.addColumn("Nome Cliente"); //FAZER
+        model.addColumn("Data Nascimento");
+        for (Animal animal1 : Repositorio.getInstance().getAnimais()){
+            if (animal1.getUserDono().equals(Repositorio.getInstance().getCurrentUser().getUsername())){
+                model.addRow(new Object[] {animal1.getNome(),animal1.getDataNasc()});
+            }
+        }
     }
+
 }
 
 

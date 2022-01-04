@@ -13,6 +13,8 @@ public class Repositorio implements Serializable{
     //private List<UserCliente> clientes;
     private Map<String,Empresa> empresasLocalidade;
     private Map<TipoConsulta,Empresa> empresasTipo;
+    private static Repositorio singleinstance;
+    private User currentUser;
 
 
     //Função para ler de ficheiro de texto e iniciar as listas com os devidos valores-- writeObject e readObject
@@ -29,9 +31,24 @@ public class Repositorio implements Serializable{
         empresasTipo= new HashMap<>();
     }
 
+    public static Repositorio getInstance(){
+        if (singleinstance == null){
+            singleinstance = new Repositorio();
+        }
+        return singleinstance;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
+
     public List<User> getUsers() {
         return users;
-    }
+    } //fazer igual para todo o resto
 
     public void setUsers(List<User> users) {
         this.users = users;
@@ -76,13 +93,4 @@ public class Repositorio implements Serializable{
     public void setEmpresasTipo(Map<TipoConsulta, Empresa> empresasTipo) {
         this.empresasTipo = empresasTipo;
     }
-
-    //para testes
-
-    /*public void printUsers(){
-        for(User u: this.users){
-            System.out.println("nome: " + u.getUsername());
-            System.out.println("password: "+u.getPasswd());
-        }
-    }*/
 }

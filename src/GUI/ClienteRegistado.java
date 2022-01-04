@@ -39,12 +39,12 @@ public class ClienteRegistado extends JFrame{
             }
         });
     }
-    public void clicaLogout(JFrame frame, List<User> users){
+    public void clicaLogout(JFrame frame){
         BotaoLogout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PanelClienteRegistado.setVisible(false);
-                new Login(frame, users);
+                new Login(frame);
             }
         });
     }

@@ -36,7 +36,7 @@ public class RegistoDonoEmpresa extends Frame {
     private JButton botaoVoltar;
     private AnonimoMetodos metodos;
 
-    public RegistoDonoEmpresa(JFrame frame, List<User> users){
+    public RegistoDonoEmpresa(JFrame frame){
         metodos=new AnonimoMetodos();
         frame = new JFrame("Registo de Clientes");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -47,11 +47,11 @@ public class RegistoDonoEmpresa extends Frame {
         frame.pack();
         frame.setVisible(true);
         limparDados();
-        VoltarAtras(frame, users);
-        registarDonoEmpresa(users, frame);
+        VoltarAtras(frame);
+        registarDonoEmpresa(frame);
     }
 
-    public void registarDonoEmpresa(List<User> users, JFrame frame){
+    public void registarDonoEmpresa(JFrame frame){
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,10 +65,10 @@ public class RegistoDonoEmpresa extends Frame {
                 String localidade = tb_Localidade.getText();
                 UserDonoEmpresa user = new UserDonoEmpresa(username, passwd, nome, numCC, NIF, telefone, morada, localidade);
                 try {
-                    metodos.addUser(users, user);
+                    metodos.addUser(user);
                     JOptionPane.showMessageDialog(null, "Dono de Empresa adicionado com sucesso");
                     regDonoEmpresa.setVisible(false);
-                    new Login(frame, users);
+                    new Login(frame);
                 }
                 catch (JaExisteUserEcxeption ex){JOptionPane.showMessageDialog(null, ex.getMessage());}
             }
@@ -91,12 +91,12 @@ public class RegistoDonoEmpresa extends Frame {
         });
     }
 
-    public void VoltarAtras(JFrame frame, List<User> users){
+    public void VoltarAtras(JFrame frame){
         botaoVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 regDonoEmpresa.setVisible(false);
-                new RegistoAnonimo(frame, users);
+                new RegistoAnonimo(frame);
             }
         });
     }
