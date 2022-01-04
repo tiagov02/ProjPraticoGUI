@@ -25,10 +25,16 @@ public class Main {
 
         Repositorio r = Repositorio.getInstance();
         JFrame frame= new JFrame();
+        RepositorioSerializable.readBin();
         if(r.getUsers().isEmpty()){
             r.getUsers().add(new UserAdmin("admin","admin","Administrador PetBeauty",0,0,
                     0,"Viana do Castelo","IPVC_ESTG"));
+            RepositorioSerializable.writeUsers();
 
+        }
+        for(User u: r.getUsers()){
+            System.out.println("username"+u.getUsername());
+            System.out.println("Pwd: "+u.getPasswd());
         }
        // r.getUsers().add(new UserCliente("cliente", "cliente", "cliente", 123, 123, 123, "1223", "1223"));
         //r.getAnimais().add(new Animal(123, "animal", "cao", "cao", new Date(), "cliente"));
@@ -37,8 +43,8 @@ public class Main {
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(500, 500));
         frame.setResizable(true);
+        RepositorioSerializable.readBin();
         new Login(frame);
-
     }
 }
 

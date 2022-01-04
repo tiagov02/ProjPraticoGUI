@@ -1,6 +1,7 @@
 package Entidades;
+import java.io.Serializable;
 import java.util.*;
-public class DadosDiag {
+public class DadosDiag implements Serializable {
     private String descricaoDiag;
     private Date dataHoraDiag;
 

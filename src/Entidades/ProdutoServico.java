@@ -1,5 +1,8 @@
 package Entidades;
-public class ProdutoServico {
+
+import java.io.Serializable;
+
+public class ProdutoServico implements Serializable {
     private int id;
     private String descricao;
     private float preco;

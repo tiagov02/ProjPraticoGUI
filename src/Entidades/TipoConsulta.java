@@ -1,5 +1,8 @@
 package Entidades;
-public class TipoConsulta {
+
+import java.io.Serializable;
+
+public class TipoConsulta implements Serializable {
     private String descricao;
     private float precoEsp;
 

@@ -1,7 +1,8 @@
 package Entidades;
+import java.io.Serializable;
 import java.util.*;
 
-public class Animal {
+public class Animal implements Serializable {
     private int nMicro;
     private String nome;
     private String especie;

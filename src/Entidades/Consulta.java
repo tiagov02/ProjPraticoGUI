@@ -1,9 +1,10 @@
 package Entidades;
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.*;
 import Estados.*;
 
-public class Consulta {
+public class Consulta implements Serializable {
     private Date dataHoraConsulta;
     private float precoTotal;
     private Date dataHoraPagamento;

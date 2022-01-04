@@ -17,8 +17,7 @@ public class Repositorio implements Serializable{
     private User currentUser;
 
 
-    //Função para ler de ficheiro de texto e iniciar as listas com os devidos valores-- writeObject e readObject
-    //Função para escrever em ficheiro de texto, a cada mudança--> Declarada na classe main ou serializar repositório??
+    //ver gets e sets --> precisa retornar??
 
 
     public Repositorio(){
@@ -26,7 +25,6 @@ public class Repositorio implements Serializable{
         empresas=new ArrayList<>();
         produtos= new HashMap<>();
         animais= new ArrayList<>();
-        //clientes = new ArrayList<>();
         empresasLocalidade=new HashMap<>();
         empresasTipo= new HashMap<>();
     }

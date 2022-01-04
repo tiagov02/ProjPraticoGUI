@@ -1,8 +1,9 @@
 package Entidades;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Pagamento {
+public class Pagamento implements Serializable {
     private int idPagamento;
     private Date HoraPagamento;
     private int numCliente;
