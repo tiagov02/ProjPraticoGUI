@@ -28,14 +28,16 @@ public class ClienteRegistado extends JFrame{
         frame.add(PanelClienteRegistado);
         frame.pack();
         frame.setVisible(true);
+        IntroduzirAnimal(frame, login);
+        clicaLogout(frame);
     }
 
-    public void IntroduzirAnimal(JFrame frame,UserCliente cliente){
+    public void IntroduzirAnimal(JFrame frame,User cliente){
         BotaoInsereAnimal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PanelClienteRegistado.setVisible(false);
-                new InserirAnimalCliente(frame);
+                new InserirAnimalCliente(frame, cliente);
             }
         });
     }

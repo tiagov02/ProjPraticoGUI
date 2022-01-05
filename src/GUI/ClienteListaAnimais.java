@@ -24,10 +24,9 @@ public class ClienteListaAnimais extends javax.swing.JFrame{
         model.addColumn("Data Nascimento");
         model.addColumn("Espécie");
         model.addColumn("Raça");
-        model.addColumn("Username do dono");
         for (Animal animal1 : Repositorio.getInstance().getAnimais()){
             if (animal1.getUserDono().equals(Repositorio.getInstance().getCurrentUser().getUsername())){
-                model.addRow(new Object[] {animal1.getNome(),animal1.getDataNasc()});
+                model.addRow(new Object[] {animal1.getnMicro(),animal1.getNome(), animal1.getDataNasc(), animal1.getEspecie(), animal1.getRaca()});
             }
         }
     }
