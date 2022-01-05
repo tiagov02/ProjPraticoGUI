@@ -3,7 +3,7 @@ import java.io.Serializable;
 import java.util.*;
 import Entidades.*;
 
-//Classe serializavel para persistencia de dados?? DUVIDA
+
 
 public class Repositorio implements Serializable{
     private List<User> users;
@@ -16,8 +16,6 @@ public class Repositorio implements Serializable{
     private static Repositorio singleinstance;
     private User currentUser;
 
-
-    //ver gets e sets --> precisa retornar??
 
 
     public Repositorio(){

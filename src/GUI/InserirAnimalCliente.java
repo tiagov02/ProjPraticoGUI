@@ -28,6 +28,7 @@ public class InserirAnimalCliente extends JFrame{
 
 
     public InserirAnimalCliente(JFrame frame, User login){
+        metodos=new ClienteMetodos();
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
@@ -39,6 +40,7 @@ public class InserirAnimalCliente extends JFrame{
         clickInserir(frame, Repositorio.getInstance().getAnimais());
         voltarAtras(frame, login);
         LimparDados();
+        clickLimpar();
     }
 
     public void LimparDados(){
@@ -60,7 +62,7 @@ public class InserirAnimalCliente extends JFrame{
                 int dia= (int) spinner_dia.getValue();
                 int mes= (int) spinner_mes.getValue();
                 int ano= (int) spinner_ano.getValue();
-                Date dataNas=new Date(ano,mes, dia);
+                Date dataNas=new Date(ano-1900,mes, dia);
                 System.out.println("Data Nascimento: "+dataNas);
                 int nMicro=Integer.parseInt(tb_nMicro.getText());
                 String nome= tb_nome.getText();
@@ -68,7 +70,7 @@ public class InserirAnimalCliente extends JFrame{
                 String raca=tb_raca.getText();
                 Animal animal = new Animal(nMicro, nome, especie, raca, dataNas, Repositorio.getInstance().getCurrentUser().getUsername());
                 try {
-                    metodos.addAnimal(animal, animais);
+                   metodos.addAnimal(animal, animais);
                     RepositorioSerializable.writeAnimais();
                     JOptionPane.showMessageDialog(null, "Animal inserido com sucesso!");
                     panel.setVisible(false);
