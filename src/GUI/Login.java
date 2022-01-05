@@ -79,7 +79,6 @@ public class Login extends JFrame{
         try{
             User login = l.Login(user, pwd);
            if(login instanceof UserCliente){
-               //JOptionPane.showMessageDialog(null,"Sucesso!!");
                LoginUsers.setVisible(false);
               new ClienteRegistado(frame);
            }

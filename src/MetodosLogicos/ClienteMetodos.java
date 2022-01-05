@@ -78,21 +78,4 @@ public class ClienteMetodos {
             System.out.println("Não existem consultas!");
         }
     }
-
-    public void listaPagamentos(List<Pagamento> pagamentos, String Cliente){
-        int contador = 0;
-        if (pagamentos.size() > 0){
-            for (contador=0; contador < pagamentos.size(); contador++);
-            System.out.println("Pagamnetos: " + contador + 1 + ":");
-            pagamentos.get(contador).getIdPagamento();
-            pagamentos.get(contador).getNumCliente();
-            pagamentos.get(contador).getHoraPagamento();
-        }
-        else{
-            System.out.println("Como não existem consultas também não existem pagamentos!");
-        }
-    }
-
-
-
 }

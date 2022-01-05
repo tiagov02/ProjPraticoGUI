@@ -4,32 +4,14 @@ import java.util.Date;
 import java.util.List;
 
 public class Pagamento implements Serializable {
-    private int idPagamento;
     private Date HoraPagamento;
-    private int numCliente;
-    List<UserCliente> clientes;
+    private UserCliente cliente;
+    private Empresa empresa;
 
-    public Pagamento(int idPagamento, Date horaPagamento, int numCliente, List<UserCliente> clientes) {
-        this.idPagamento = idPagamento;
+    public Pagamento(Date horaPagamento, UserCliente cliente, Empresa empresa) {
         HoraPagamento = horaPagamento;
-        this.numCliente = numCliente;
-        this.clientes = clientes;
-    }
-
-    public int getNumCliente() {
-        return numCliente;
-    }
-
-    public void setNumCliente(int numCliente) {
-        this.numCliente = numCliente;
-    }
-
-    public int getIdPagamento() {
-        return idPagamento;
-    }
-
-    public void setIdPagamento(int idPagamento) {
-        this.idPagamento = idPagamento;
+        this.cliente = cliente;
+        this.empresa = empresa;
     }
 
     public Date getHoraPagamento() {
@@ -40,11 +22,19 @@ public class Pagamento implements Serializable {
         HoraPagamento = horaPagamento;
     }
 
-    public List<UserCliente> getClientes() {
-        return clientes;
+    public UserCliente getCliente() {
+        return cliente;
     }
 
-    public void setClientes(List<UserCliente> clientes) {
-        this.clientes = clientes;
+    public void setCliente(UserCliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 }
