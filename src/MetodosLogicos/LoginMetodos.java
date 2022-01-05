@@ -19,7 +19,7 @@ public class LoginMetodos {
 
         for(User u: Repositorio.getInstance().getUsers()){
             if(newUser.getUsername().equals(u.getUsername()) && newUser.getPasswd().equals(u.getPasswd())){
-                //found=true;
+                Repositorio.getInstance().setCurrentUser(u);
                 return u;
             }
         }

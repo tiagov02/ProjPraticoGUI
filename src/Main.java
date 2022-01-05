@@ -32,10 +32,10 @@ public class Main {
             RepositorioSerializable.writeUsers();
 
         }
-        for(User u: r.getUsers()){
+        /*for(User u: r.getUsers()){
             System.out.println("username: "+u.getUsername());
             System.out.println("Pwd: "+u.getPasswd());
-        }
+        }*/
        // r.getUsers().add(new UserCliente("cliente", "cliente", "cliente", 123, 123, 123, "1223", "1223"));
         //r.getAnimais().add(new Animal(123, "animal", "cao", "cao", new Date(), "cliente"));
 
