@@ -36,7 +36,7 @@ public class InserirAnimalCliente extends JFrame{
         spinner_ano.setModel(new SpinnerNumberModel(2000,1900,ano,1));
         spinner_dia.setModel(new SpinnerNumberModel(1,1,31,1));
         spinner_mes.setModel(new SpinnerNumberModel(1,1,12,1));
-        clickInserir(frame, login, Repositorio.getInstance().getAnimais());
+        clickInserir(frame, Repositorio.getInstance().getAnimais());
         voltarAtras(frame, login);
         LimparDados();
     }
@@ -72,7 +72,7 @@ public class InserirAnimalCliente extends JFrame{
                     RepositorioSerializable.writeAnimais();
                     JOptionPane.showMessageDialog(null, "Animal inserido com sucesso!");
                     panel.setVisible(false);
-                    new ClienteRegistado(frame, );
+                    new ClienteRegistado(frame);
                 }
                 catch (JaExisteAnimalException ex){
                     JOptionPane.showMessageDialog(null, "Dados inválidos!");
@@ -101,7 +101,7 @@ public class InserirAnimalCliente extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                new ClienteRegistado(frame,login);
+                new ClienteRegistado(frame);
             }
         });
     }

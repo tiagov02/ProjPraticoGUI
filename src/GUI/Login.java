@@ -78,11 +78,10 @@ public class Login extends JFrame{
         pwd=passwordTexto.getText();
         try{
             User login = l.Login(user, pwd);
-            Repositorio.getInstance().setCurrentUser(login);
            if(login instanceof UserCliente){
                //JOptionPane.showMessageDialog(null,"Sucesso!!");
                LoginUsers.setVisible(false);
-              new ClienteRegistado(frame, login);
+              new ClienteRegistado(frame);
            }
            else
                if(login instanceof UserAdmin){
