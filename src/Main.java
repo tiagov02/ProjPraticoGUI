@@ -24,7 +24,6 @@ public class Main {
 
 
         Repositorio r = Repositorio.getInstance();
-        JFrame frame= new JFrame();
         RepositorioSerializable.readBin();
         if(r.getUsers().isEmpty()){
             r.getUsers().add(new UserAdmin("admin","admin","Administrador PetBeauty",0,0,
@@ -39,7 +38,7 @@ public class Main {
         //r.getUsers().add(new UserCliente("cliente", "cliente", "cliente", 123, 123, 123, "1223", "1223"));
         //r.getAnimais().add(new Animal(123, "animal", "cao", "cao", new Date(), "cliente"));
 
-        frame = new JFrame("PetBeauty- Gestão de Marcações e Consultas de Animais de Estimação");
+        JFrame frame = new JFrame("PetBeauty- Gestão de Marcações e Consultas de Animais de Estimação");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(500, 500));
         frame.setResizable(true);

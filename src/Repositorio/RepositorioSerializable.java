@@ -126,10 +126,14 @@ public class RepositorioSerializable {
                 users = (List<User>)objInput.readObject();
                 objInput.close();
             }
-        } catch(IOException erro1) {
-            JOptionPane.showMessageDialog(null,"Erro: "+ erro1.getMessage());
-        } catch(ClassNotFoundException erro2) {
+        }
+        catch(ClassNotFoundException erro2) {
             JOptionPane.showMessageDialog(null,"Erro: "+erro2.getMessage());
+            return;
+        }
+        catch(IOException erro) {
+            JOptionPane.showMessageDialog(null,"Erro: "+ erro.getMessage());
+            return;
         }
         Repositorio.getInstance().setUsers(users);
     }

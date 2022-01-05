@@ -6,16 +6,28 @@ import Estados.*;
 
 public class Consulta implements Serializable {
     private Date dataHoraConsulta;
-    private float precoTotal;
     private Date dataHoraPagamento;
     private Date dataMarcacao;
     private EstadoConsulta estado;
     private TipoConsulta tipoConsulta;
+    private String userCliente;
+    private int nifEmpresa;
+    private List <LinhaConsulta> linhas;
 
     //neste recoloquei sem paramentros, pq ao marcar a consulta não fica logo associado o restante
     //dos valores,como a data de pagamento
     //para mercar consulta vamos pelo setDataMarcacao
+
+
     public Consulta(){}
+    public Consulta(Date dataMarcacao, EstadoConsulta estado, TipoConsulta tipoConsulta, String userCliente, int nifEmpresa) {
+        this.dataMarcacao = dataMarcacao;
+        this.estado = estado;
+        this.tipoConsulta = tipoConsulta;
+        this.userCliente = userCliente;
+        this.nifEmpresa = nifEmpresa;
+        linhas= new ArrayList<>();
+    }
 
     public Date getDataHoraConsulta() {
         return dataHoraConsulta;
@@ -26,11 +38,12 @@ public class Consulta implements Serializable {
     }
 
     public float getPrecoTotal() {
-        return precoTotal;
-    }
-
-    public void setPrecoTotal(float precoTotal) {
-        this.precoTotal = precoTotal;
+        int total=0;
+        for(LinhaConsulta l: this.linhas){
+            total+=getPrecoTotal();
+        }
+        total+=tipoConsulta.getPrecoEsp();
+        return total;
     }
 
     public Date getDataHoraPagamento() {
@@ -65,4 +78,19 @@ public class Consulta implements Serializable {
         this.tipoConsulta = tipoConsulta;
     }
 
+    public String getUserCliente() {
+        return userCliente;
+    }
+
+    public void setUserCliente(String userCliente) {
+        this.userCliente = userCliente;
+    }
+
+    public int getNifEmpresa() {
+        return nifEmpresa;
+    }
+
+    public void setNifEmpresa(int nifEmpresa) {
+        this.nifEmpresa = nifEmpresa;
+    }
 }
