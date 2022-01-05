@@ -33,7 +33,7 @@ public class Main {
 
         }
         for(User u: r.getUsers()){
-            System.out.println("username"+u.getUsername());
+            System.out.println("username: "+u.getUsername());
             System.out.println("Pwd: "+u.getPasswd());
         }
        // r.getUsers().add(new UserCliente("cliente", "cliente", "cliente", 123, 123, 123, "1223", "1223"));
@@ -43,7 +43,6 @@ public class Main {
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(500, 500));
         frame.setResizable(true);
-        RepositorioSerializable.readBin();
         new Login(frame);
     }
 }

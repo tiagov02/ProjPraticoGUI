@@ -4,6 +4,7 @@ import Entidades.*;
 import Entidades.UserCliente;
 import Exceptions.JaExisteUserEcxeption;
 import MetodosLogicos.AnonimoMetodos;
+import Repositorio.RepositorioSerializable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -66,6 +67,7 @@ public class RegistoCliente extends JFrame{
                 UserCliente user= new UserCliente(username,passwd,nome,numCC,nif,telefone,morada,localidade);
                 try {
                     metodos.addUser(user);
+                    RepositorioSerializable.writeUsers();
                     JOptionPane.showMessageDialog(null,"Adicionou um cliente com sucesso!!");
                     regClientePanel.setVisible(false);
                     new Login(frame);
