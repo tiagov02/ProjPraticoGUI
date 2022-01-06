@@ -11,7 +11,6 @@ public class Empresa implements Serializable {
     private int nPorta;
     private String localidade;
     private int cPostal;
-    private List<Consulta> consultas;
     private String userDono;
 
     public Empresa(int telefone, String nomeEmpresa, int nif, int nPorta, String localidade, int cPostal, String userDono) {
@@ -21,7 +20,6 @@ public class Empresa implements Serializable {
         this.nPorta = nPorta;
         this.localidade = localidade;
         this.cPostal = cPostal;
-        consultas= new ArrayList<>();
         this.userDono=userDono;
     }
 
@@ -72,14 +70,6 @@ public class Empresa implements Serializable {
 
     public void setcPostal(int cPostal) {
         this.cPostal = cPostal;
-    }
-
-    public List<Consulta> getConsultas() {
-        return consultas;
-    }
-
-    public void setConsultas(List<Consulta> consultas) {
-        this.consultas = consultas;
     }
 
     public String getUserDono() {

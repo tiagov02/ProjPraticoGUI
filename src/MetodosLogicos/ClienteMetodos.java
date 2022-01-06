@@ -2,6 +2,8 @@ package MetodosLogicos;
 import Entidades.*;
 import Exceptions.*;
 import Estados.*;
+import Repositorio.Repositorio;
+
 import java.util.*;
 
 public class ClienteMetodos {
@@ -46,7 +48,8 @@ public class ClienteMetodos {
     public void MarcarConsulta(Date dataHoraMarcacao, Empresa empresa) throws DataJaExisteException{
         boolean found=false;
         Consulta newConsulta= new Consulta();
-        for(Consulta c: empresa.getConsultas()){
+        for(Consulta c: Repositorio.getInstance().getConsultas()){
+            //VErificar se esta bem!!
             if(c.getDataMarcacao().equals(dataHoraMarcacao)){
                 found=true;
                 break;
@@ -58,7 +61,8 @@ public class ClienteMetodos {
         else{
             newConsulta.setDataMarcacao(dataHoraMarcacao);
             newConsulta.setEstado(EstadoConsulta.MARCADA);
-            empresa.getConsultas().add(newConsulta);
+            Repositorio.getInstance().getConsultas().add(newConsulta);
+            //verificar por causa do construtos
         }
     }
 }
