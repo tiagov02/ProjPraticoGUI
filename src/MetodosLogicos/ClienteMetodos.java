@@ -45,12 +45,10 @@ public class ClienteMetodos {
             animais.add(newAnimal);
     }
 
-    public void MarcarConsulta(Date dataHoraMarcacao, Empresa empresa) throws DataJaExisteException{
+    public void MarcarConsulta(Date dataHoraMarcacao, Empresa empresa, Animal animal, Consulta newConsulta) throws DataJaExisteException {
         boolean found=false;
-        Consulta newConsulta= new Consulta();
         for(Consulta c: Repositorio.getInstance().getConsultas()){
-            //VErificar se esta bem!!
-            if(c.getDataMarcacao().equals(dataHoraMarcacao)){
+            if(c.getNifEmpresa() == empresa.getNif() && c.getDataMarcacao().equals(dataHoraMarcacao)){
                 found=true;
                 break;
             }
@@ -62,7 +60,7 @@ public class ClienteMetodos {
             newConsulta.setDataMarcacao(dataHoraMarcacao);
             newConsulta.setEstado(EstadoConsulta.MARCADA);
             Repositorio.getInstance().getConsultas().add(newConsulta);
-            //verificar por causa do construtos
+            //verificar por causa do construtor
         }
     }
 }
