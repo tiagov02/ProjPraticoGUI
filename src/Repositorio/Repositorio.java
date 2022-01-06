@@ -46,7 +46,7 @@ public class Repositorio implements Serializable{
 
     public List<User> getUsers() {
         return users;
-    } //fazer igual para todo o resto
+    }
 
     public void setUsers(List<User> users) {
         this.users = users;
