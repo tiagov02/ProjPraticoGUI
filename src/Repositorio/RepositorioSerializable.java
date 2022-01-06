@@ -131,6 +131,7 @@ public class RepositorioSerializable {
             JOptionPane.showMessageDialog(null,"Erro: "+erro2.getMessage());
             return;
         }
+        //
         catch(IOException erro) {
             JOptionPane.showMessageDialog(null,"Erro: "+ erro.getMessage());
             return;
