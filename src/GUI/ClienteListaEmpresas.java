@@ -8,11 +8,14 @@ import javax.swing.*;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ClienteListaEmpresas {
     private JPanel panel;
     private JTable table1;
     private JScrollPane JScrollTable;
+    private JButton buttonback;
 
     public ClienteListaEmpresas(JFrame frame){
          frame.add(panel);
@@ -31,5 +34,16 @@ public class ClienteListaEmpresas {
              model.addRow(new Object[] {empresa.getNomeEmpresa(), empresa.getUserDono(), empresa.getcPostal(),
                                         empresa.getLocalidade(), empresa.getNif(), empresa.getnPorta(), empresa.getTelefone()});
          }
+         voltaAtras(frame);
      }
+
+    public void voltaAtras(JFrame frame){
+        buttonback.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new ClienteRegistado(frame);
+            }
+        });
+    }
 }

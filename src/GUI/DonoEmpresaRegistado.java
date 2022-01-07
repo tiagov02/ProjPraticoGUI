@@ -24,6 +24,7 @@ public class DonoEmpresaRegistado {
         frame.pack();
         frame.setVisible(true);
         clicklogout(frame);
+        InsereFuncionario(frame);
     }
 
     public void clicklogout(JFrame frame){
@@ -35,4 +36,13 @@ public class DonoEmpresaRegistado {
             }
         });
     }
+
+    public void InsereFuncionario(JFrame frame){
+        buttonRegistaFuncionario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new DonoEmpresaInsereFuncionario(frame);
+            }
+        });}
 }

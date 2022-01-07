@@ -31,6 +31,7 @@ public class ClienteRegistado extends JFrame{
         IntroduzirAnimal(frame);
         clicaLogout(frame);
         clickListaAnimais(frame);
+        clickListaEmpresa(frame);
     }
 
     public void IntroduzirAnimal(JFrame frame){
@@ -58,6 +59,16 @@ public class ClienteRegistado extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 PanelClienteRegistado.setVisible(false);
                 new ClienteListaAnimais(frame);
+            }
+        });
+    }
+
+    public void clickListaEmpresa(JFrame frame){
+        BotaoListarEmpresas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PanelClienteRegistado.setVisible(false);
+                new ClienteListaEmpresas(frame);
             }
         });
     }

@@ -1,9 +1,18 @@
 package GUI;
 
+import Entidades.User;
+import Entidades.UserFuncionario;
+import Exceptions.JaExisteUserEcxeption;
 import MetodosLogicos.AnonimoMetodos;
-
+import Repositorio.Repositorio;
+import Repositorio.RepositorioSerializable;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.*;
+import java.util.Timer;
+
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
@@ -21,9 +30,14 @@ public class RegistoFuncionario extends JFrame {
     private JSpinner spn_horFim;
     private JSpinner spn_minFim;
     private JPanel panel;
+    private JButton buttonback;
+    private JButton buttonLimpar;
+    private JButton buttonok;
+    private JTextField Nome_tb;
+    private AnonimoMetodos metodos;
 
     public RegistoFuncionario(JFrame frame){
-        frame = new JFrame("Registo de Clientes");
+        frame = new JFrame("Registo de Funcionario");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(500, 500));
 
@@ -37,5 +51,74 @@ public class RegistoFuncionario extends JFrame {
 
         spn_horFim.setModel(new SpinnerNumberModel(1,0,23,1));
         spn_minFim.setModel(new SpinnerNumberModel(1,0,59,1));
+
+        LimparDados();
+        VoltaAtras(frame);
+    }
+
+    public void LimparDados(){
+        buttonback.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tb_username.setText(null);
+                tb_password.setText(null);
+                Nome_tb.setText(null);
+                tb_numCC.setText(null);
+                tb_telefone.setText(null);
+                tb_morada.setText(null);
+                tb_localidade.setText(null);
+                tb_salario.setText(null);
+                spn_horInicio.setModel(null);
+                spn_minFim.setModel(null);
+                spn_horFim.setModel(null);
+                spn_minInicio.setModel(null);
+            }
+        });
+    }
+
+    public void VoltaAtras(JFrame frame){
+        buttonback.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new DonoEmpresaRegistado(frame);
+            }
+        });
+    }
+
+    public void InsereFuncionario(JFrame frame){
+        buttonok.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Timer inicio = new Timer();
+                Timer fim = new Timer();
+
+                String username = tb_username.getText();
+                String password = tb_password.getText();
+                String nome = Nome_tb.getText();
+                int numCC=Integer.parseInt(tb_numCC.getText());
+                int NIF=Integer.parseInt(tb_nif.getText());
+                int telefone=Integer.parseInt(tb_telefone.getText());
+                String morada = tb_morada.getText();
+                String localidade = tb_localidade.getText();
+                Float salario =Float.parseFloat(tb_salario.getText());
+                int horainicio = (int) spn_horInicio.getValue();
+                int horafim = (int) spn_horFim.getValue();
+                int minini = (int) spn_minInicio.getValue();
+                int minfim = (int) spn_minFim.getValue();
+                UserFuncionario funcionario = new UserFuncionario(username, password, nome, numCC, NIF, telefone, morada, localidade, salario, );
+                try {
+                    metodos.addUser(funcionario);
+                    RepositorioSerializable.writeUsers();
+                    JOptionPane.showMessageDialog(null, "Funcionario inserido com sucesso!");
+                    panel.setVisible(false);
+                    new DonoEmpresaRegistado(frame);
+                }
+                catch (JaExisteUserEcxeption ex){
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+            }
+        });
     }
 }
+
