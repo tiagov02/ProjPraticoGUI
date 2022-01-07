@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Time;
 import java.util.*;
 import java.util.Timer;
 
@@ -90,9 +91,6 @@ public class RegistoFuncionario extends JFrame {
         buttonok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Timer inicio = new Timer();
-                Timer fim = new Timer();
-
                 String username = tb_username.getText();
                 String password = tb_password.getText();
                 String nome = Nome_tb.getText();
@@ -106,10 +104,11 @@ public class RegistoFuncionario extends JFrame {
                 int horafim = (int) spn_horFim.getValue();
                 int minini = (int) spn_minInicio.getValue();
                 int minfim = (int) spn_minFim.getValue();
-                UserFuncionario funcionario = new UserFuncionario(username, password, nome, numCC, NIF, telefone, morada, localidade, salario, );
+                UserFuncionario funcionario = new UserFuncionario(username, password, nome, numCC, NIF, telefone, morada, localidade, salario
+                        ,new Time(horainicio,minini,0), new Time(horafim,minfim,0) );
+
                 try {
                     metodos.addUser(funcionario);
-                    RepositorioSerializable.writeUsers();
                     JOptionPane.showMessageDialog(null, "Funcionario inserido com sucesso!");
                     panel.setVisible(false);
                     new DonoEmpresaRegistado(frame);

@@ -67,7 +67,6 @@ public class RegistoCliente extends JFrame{
                 UserCliente user= new UserCliente(username,passwd,nome,numCC,nif,telefone,morada,localidade);
                 try {
                     metodos.addUser(user);
-                    RepositorioSerializable.writeUsers();
                     JOptionPane.showMessageDialog(null,"Adicionou um cliente com sucesso!!");
                     regClientePanel.setVisible(false);
                     new Login(frame);

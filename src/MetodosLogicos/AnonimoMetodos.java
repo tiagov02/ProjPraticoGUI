@@ -2,7 +2,7 @@ package MetodosLogicos;
 import java.util.*;
 import Entidades.*;
 import Exceptions.JaExisteUserEcxeption;
-import Repositorio.Repositorio;
+import Repositorio.*;
 
 public class AnonimoMetodos {
     public void addUser(User newU) throws JaExisteUserEcxeption {
@@ -13,8 +13,10 @@ public class AnonimoMetodos {
                 break;
             }
         }
-        if(!found)
+        if(!found){
             Repositorio.getInstance().getUsers().add(newU);
+            RepositorioSerializable.writeUsers();
+        }
         else
             throw new JaExisteUserEcxeption("Este user já existe não é possivel criar um com os mesmos dados!");
     }
