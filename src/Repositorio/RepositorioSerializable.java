@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class RepositorioSerializable {
 
-    /*
+    /**
                                 LEITURA DE DE FICHEIROS
      */
     public static void writeBin() {
@@ -19,6 +19,7 @@ public class RepositorioSerializable {
         writeUsers();
         writeEmpresasTipo();
         writeEmpresasLocalidade();
+        writeConsultas();
     }
     public static void writeUsers(){
         File file = new File("users.dat");
@@ -106,6 +107,21 @@ public class RepositorioSerializable {
             JOptionPane.showMessageDialog(null,"Houve um erro: "+erro.getMessage());
         }
     }
+
+    public static void writeConsultas(){
+        File file = new File("consultas.dat");
+        try {
+            file.delete();
+            file.createNewFile();
+
+            ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(file));
+            objOutput.writeObject(Repositorio.getInstance().getConsultas());
+            objOutput.close();
+
+        } catch (IOException erro) {
+            JOptionPane.showMessageDialog(null,"Houve um erro: "+erro.getMessage());
+        }
+    }
     //---------------------------------------------------------------------------------------------------------
 
     public static void readBin(){
@@ -115,6 +131,7 @@ public class RepositorioSerializable {
         readUsers();
         readEmpresasLocalidade();
         readEmpresasTipo();
+        readConsultas();
     }
 
     public static void readUsers() {
@@ -221,6 +238,23 @@ public class RepositorioSerializable {
             JOptionPane.showMessageDialog(null,"Erro: "+erro2.getMessage());
         }
         Repositorio.getInstance().setEmpresasTipo(empresasTipo);
+    }
+
+    public static void readConsultas() {
+        List<Consulta> consultas=new ArrayList<>();
+        try {
+            File file = new File("consultas.dat");
+            if (file.exists()) {
+                ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(file));
+                consultas = (List<Consulta>)objInput.readObject();
+                objInput.close();
+            }
+        } catch(IOException erro1) {
+            JOptionPane.showMessageDialog(null,"Erro: "+ erro1.getMessage());
+        } catch(ClassNotFoundException erro2) {
+            JOptionPane.showMessageDialog(null,"Erro: "+erro2.getMessage());
+        }
+        Repositorio.getInstance().setConsultas(consultas);
     }
 
 
