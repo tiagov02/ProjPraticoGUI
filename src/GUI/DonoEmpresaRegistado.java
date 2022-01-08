@@ -25,6 +25,8 @@ public class DonoEmpresaRegistado {
         frame.setVisible(true);
         clicklogout(frame);
         InsereFuncionario(frame);
+        VerInformacoesConsulta(frame);
+        CancelarConsulta(frame);
     }
 
     public void clicklogout(JFrame frame){
@@ -45,4 +47,24 @@ public class DonoEmpresaRegistado {
                 new RegistoFuncionario(frame);
             }
         });}
+
+    public void VerInformacoesConsulta(JFrame frame){
+        ButtonListarInfoConsulta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new DonoEmpresaInformacoesConsulta(frame);
+            }
+        });
+    }
+
+    public void CancelarConsulta(JFrame frame){
+        buttonCancelaConsulta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new DonoEmpresaCancelaConsulta(frame);
+            }
+        });
+    }
 }

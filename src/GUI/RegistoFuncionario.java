@@ -55,6 +55,7 @@ public class RegistoFuncionario extends JFrame {
 
         LimparDados();
         VoltaAtras(frame);
+        InsereFuncionario(frame);
     }
 
     public void LimparDados(){
