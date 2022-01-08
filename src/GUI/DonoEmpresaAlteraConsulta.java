@@ -8,16 +8,16 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DonoEmpresaCancelaConsulta {
+public class DonoEmpresaAlteraConsulta {
     private JPanel panel1;
     private JTable table1;
+    private JTextField textFieldDtConsulta;
+    private JTextField textFieldNomeCliente;
     private JButton buttonback;
-    private JTextField textFieldUserCliente;
-    private JTextField textFielDataConsulta;
-    private JButton buttonCancelar;
+    private JButton Alterar;
     private JButton buttonLimpar;
 
-    public DonoEmpresaCancelaConsulta(JFrame frame){
+    public DonoEmpresaAlteraConsulta(JFrame frame){
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
@@ -37,7 +37,6 @@ public class DonoEmpresaCancelaConsulta {
         LimpaDados();
     }
 
-
     public void voltaAtras(JFrame frame){
         buttonback.addActionListener(new ActionListener() {
             @Override
@@ -52,9 +51,15 @@ public class DonoEmpresaCancelaConsulta {
         buttonLimpar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textFielDataConsulta.setText(null);   //AQUI TEMOS QUE ADICIONAR DEPOIS AQUILO DOS DIAS
-                textFieldUserCliente.setText(null);
+                textFieldDtConsulta.setText(null);   //AQUI TEMOS QUE ADICIONAR DEPOIS AQUILO DOS DIAS
+                textFieldNomeCliente.setText(null);
             }
         });
+    }
+
+    public void AlteraConsulta(JFrame frame){
+        //AQUI SECALHAR METEMOS A RETORNAR PARA O INSERIR CONSULTA
+        //FAZEMOS UM DELETE DA CONSULTA SE AS INFORMÇÕES QUE ELES TIVEREM FOREM IGUAIS A ALGUMA INFORMACAO QUE ESTEJA NA LISTA DE CONSULTAS
+        //E DEPOIS SE FOR IGUAL METEMOS A FRAME.VISIVEL FALSE E PASSAMOS A FRAME DE INSERCAO DE CONSULTAS A TRUE
     }
 }
