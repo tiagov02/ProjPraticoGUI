@@ -31,8 +31,11 @@ public class DonoEmpresaAlteraFuncionario {
         model.addColumn("NumCC");
         model.addColumn("NIF");
         model.addColumn("Telefone");
+        model.addColumn("Salário");
         for (User funcionario : Repositorio.getInstance().getUsers()){
-            model.addRow(new Object[] {funcionario.getNome(), funcionario.getUsername(), funcionario.getNumCC(), funcionario.getNIF(), funcionario.getTelefone()});
+            if(funcionario instanceof UserFuncionario){
+                model.addRow(new Object[] {funcionario.getNome(), funcionario.getUsername(), funcionario.getNumCC(), funcionario.getNIF(), funcionario.getTelefone(),((UserFuncionario) funcionario).getSalario()});
+            }
         }
         voltaAtras(frame);
         LimpaDados();

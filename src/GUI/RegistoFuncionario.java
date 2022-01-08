@@ -38,6 +38,7 @@ public class RegistoFuncionario extends JFrame {
     private AnonimoMetodos metodos;
 
     public RegistoFuncionario(JFrame frame){
+        metodos= new AnonimoMetodos();
         frame = new JFrame("Registo de Funcionario");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(500, 500));
@@ -70,10 +71,6 @@ public class RegistoFuncionario extends JFrame {
                 tb_morada.setText(null);
                 tb_localidade.setText(null);
                 tb_salario.setText(null);
-                spn_horInicio.setModel(null);
-                spn_minFim.setModel(null);
-                spn_horFim.setModel(null);
-                spn_minInicio.setModel(null);
             }
         });
     }
@@ -100,7 +97,7 @@ public class RegistoFuncionario extends JFrame {
                 int telefone=Integer.parseInt(tb_telefone.getText());
                 String morada = tb_morada.getText();
                 String localidade = tb_localidade.getText();
-                Float salario =Float.parseFloat(tb_salario.getText());
+                float salario = Float.parseFloat(tb_salario.getText());
                 int horainicio = (int) spn_horInicio.getValue();
                 int horafim = (int) spn_horFim.getValue();
                 int minini = (int) spn_minInicio.getValue();

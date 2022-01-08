@@ -15,4 +15,28 @@ public class UserFuncionario extends User {
         this.horaIni = horaIni;
         this.horaFim = horaFim;
     }
+
+    public float getSalario() {
+        return salario;
+    }
+
+    public void setSalario(float salario) {
+        this.salario = salario;
+    }
+
+    public Time getHoraIni() {
+        return horaIni;
+    }
+
+    public void setHoraIni(Time horaIni) {
+        this.horaIni = horaIni;
+    }
+
+    public Time getHoraFim() {
+        return horaFim;
+    }
+
+    public void setHoraFim(Time horaFim) {
+        this.horaFim = horaFim;
+    }
 }
