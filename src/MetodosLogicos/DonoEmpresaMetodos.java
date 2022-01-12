@@ -50,21 +50,4 @@ public class DonoEmpresaMetodos {
     public void addEmpresaMap(Map<String,Empresa> empresasLocalidade,Empresa emp){
         empresasLocalidade.put(emp.getLocalidade(),emp);
     }
-
-    public void listaConsultas(List<Consulta> consultas, UserDonoEmpresa Dono){
-        int contador = 0;
-        if (consultas.size() > 0){
-            for (contador=0; contador < consultas.size(); contador++);
-            System.out.println("Consulta: " + contador + 1 + ":");
-            consultas.get(contador).getTipoConsulta();
-            consultas.get(contador).getDataMarcacao();
-            consultas.get(contador).getDataHoraConsulta();
-            consultas.get(contador).getPrecoTotal();
-            consultas.get(contador).getEstado();
-            consultas.get(contador).getDataHoraPagamento();
-        }
-        else{
-            System.out.println("De momento não existem consultas na empresa!");
-        }
-    }
 }

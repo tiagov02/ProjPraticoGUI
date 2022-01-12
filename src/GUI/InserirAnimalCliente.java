@@ -40,7 +40,7 @@ public class InserirAnimalCliente extends JFrame{
         clickInserir(frame, Repositorio.getInstance().getAnimais());
         voltarAtras(frame, login);
         LimparDados();
-        clickLimpar();
+        LimparDados();
     }
 
     public void LimparDados(){
@@ -82,21 +82,7 @@ public class InserirAnimalCliente extends JFrame{
             }
         });
     }
-    public void ColocaCamposVazios(){
-        tb_nMicro.setText(null);
-        tb_nome.setText(null);
-        tb_raca.setText(null);
-        tb_especie.setText(null);
-    }
 
-    public void clickLimpar(){
-        BotaoLimpar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ColocaCamposVazios();
-            }
-        });
-    }
 
     public void voltarAtras(JFrame frame, User login){
         BotaoVoltar.addActionListener(new ActionListener() {
