@@ -21,6 +21,6 @@ public class DonoEmpresaListaPagamentos {
         table1.setModel(model);
         model.addColumn("Hora Pagamento");
         model.addColumn("Cliente");
-        model.addColumn("Empresa");//
+        model.addColumn("Empresa");
     }
 }
