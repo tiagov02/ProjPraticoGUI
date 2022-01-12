@@ -3,8 +3,12 @@ import java.util.List;
 import java.util.Map;
 import Entidades.*;
 import Exceptions.*;
+import Repositorio.*;
 
 public class DonoEmpresaMetodos {
+    public DonoEmpresaMetodos(){}
+
+
     public void removerEmpresa (Empresa empresa,List<Empresa> empresas) throws RemocaoException {
         boolean found= false;
         int j=0;
@@ -24,22 +28,22 @@ public class DonoEmpresaMetodos {
     }
 
 
-    public void addEmpresa(List<Empresa> empresas,Map<String,Empresa> empresasLocalidade ,Empresa emp)
+    public void addEmpresa(List<Empresa> empresas,Map<Empresa,String> empresasLocalidade ,Empresa emp)
     throws JaExisteEmpresaException
     {
-        boolean found= false;
-        for(Empresa e : empresas){
-            if(emp.getNif()==e.getNif() && emp.getNomeEmpresa().equals(e.getNomeEmpresa())){
-                found=true;
-                break;
+
+        for(Empresa e : empresas) {
+            if (emp.getNif() == e.getNif() && emp.getNomeEmpresa().equals(e.getNomeEmpresa()) && empresasLocalidade.containsKey(emp)) {
+                    throw new JaExisteEmpresaException("Não pode criar empresas com campos iguais");
             }
-        }
-        if(!found){
-            addEmpresaList(empresas,emp);
-            addEmpresaMap(empresasLocalidade,emp);
-        }
-        else{
-            throw new JaExisteEmpresaException("Não pode criar empresas com campos iguais");
+            else{
+                addEmpresaList(empresas,emp);
+                addEmpresaMapLocalidade(empresasLocalidade,emp);
+                addEmpresasMapTipo(Repositorio.getInstance().getEmpresasTipo(), emp);
+                RepositorioSerializable.writeEmpresas();
+                RepositorioSerializable.writeEmpresasLocalidade();
+                RepositorioSerializable.writeEmpresasTipo();
+            }
         }
     }
 
@@ -47,7 +51,10 @@ public class DonoEmpresaMetodos {
         empresas.add(emp);
     }
 
-    public void addEmpresaMap(Map<String,Empresa> empresasLocalidade,Empresa emp){
-        empresasLocalidade.put(emp.getLocalidade(),emp);
+    public void addEmpresaMapLocalidade(Map<Empresa,String> empresasLocalidade,Empresa emp){
+        empresasLocalidade.put(emp, emp.getLocalidade());
+    }
+    public void addEmpresasMapTipo(Map<Empresa, TipoConsulta> empresasTipo,Empresa emp){
+        empresasTipo.put(emp,emp.getTipo());
     }
 }

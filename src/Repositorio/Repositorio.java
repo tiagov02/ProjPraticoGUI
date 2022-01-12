@@ -11,8 +11,8 @@ public class Repositorio implements Serializable{
     private Map<Integer,ProdutoServico> produtos;
     private List<Animal> animais;
     //private List<UserCliente> clientes;
-    private Map<String,Empresa> empresasLocalidade;
-    private Map<TipoConsulta,Empresa> empresasTipo;
+    private Map<Empresa,String> empresasLocalidade;
+    private Map<Empresa,TipoConsulta> empresasTipo;
     private List <Consulta> consultas;
     private static Repositorio singleinstance;
     private User currentUser;
@@ -76,19 +76,19 @@ public class Repositorio implements Serializable{
         this.animais = animais;
     }
 
-    public Map<String, Empresa> getEmpresasLocalidade() {
+    public Map<Empresa, String> getEmpresasLocalidade() {
         return empresasLocalidade;
     }
 
-    public void setEmpresasLocalidade(Map<String, Empresa> empresasLocalidade) {
+    public void setEmpresasLocalidade(Map<Empresa, String> empresasLocalidade) {
         this.empresasLocalidade = empresasLocalidade;
     }
 
-    public Map<TipoConsulta, Empresa> getEmpresasTipo() {
+    public Map<Empresa, TipoConsulta> getEmpresasTipo() {
         return empresasTipo;
     }
 
-    public void setEmpresasTipo(Map<TipoConsulta, Empresa> empresasTipo) {
+    public void setEmpresasTipo(Map<Empresa, TipoConsulta> empresasTipo) {
         this.empresasTipo = empresasTipo;
     }
 

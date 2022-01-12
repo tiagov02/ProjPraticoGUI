@@ -207,12 +207,12 @@ public class RepositorioSerializable {
         Repositorio.getInstance().setAnimais(animais);
     }
     public static void readEmpresasLocalidade() {
-        Map<String,Empresa> empresasLocalidade=new HashMap<>();
+        Map<Empresa,String> empresasLocalidade=new HashMap<>();
         try {
             File file = new File("empresaslocalidade.dat");
             if (file.exists()) {
                 ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(file));
-                empresasLocalidade = (Map<String,Empresa>)objInput.readObject();
+                empresasLocalidade = (Map<Empresa,String>)objInput.readObject();
                 objInput.close();
             }
         } catch(IOException erro1) {
@@ -224,12 +224,12 @@ public class RepositorioSerializable {
     }
 
     public static void readEmpresasTipo() {
-        Map<TipoConsulta,Empresa> empresasTipo=new HashMap<>();
+        Map<Empresa,TipoConsulta> empresasTipo=new HashMap<>();
         try {
             File file = new File("empresastipo.dat");
             if (file.exists()) {
                 ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(file));
-                empresasTipo = (Map<TipoConsulta,Empresa>)objInput.readObject();
+                empresasTipo = (Map<Empresa,TipoConsulta>)objInput.readObject();
                 objInput.close();
             }
         } catch(IOException erro1) {

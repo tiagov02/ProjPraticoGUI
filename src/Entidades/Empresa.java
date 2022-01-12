@@ -10,16 +10,16 @@ public class Empresa implements Serializable {
     private int nif;
     private int nPorta;
     private String localidade;
-    private int cPostal;
-    private String userDono;
 
-    public Empresa(int telefone, String nomeEmpresa, int nif, int nPorta, String localidade, int cPostal, String userDono) {
+    private String userDono;
+    private TipoConsulta tipo;
+
+    public Empresa(int telefone, String nomeEmpresa, int nif, int nPorta, String localidade, String userDono) {
         this.telefone = telefone;
         this.nomeEmpresa = nomeEmpresa;
         this.nif = nif;
         this.nPorta = nPorta;
         this.localidade = localidade;
-        this.cPostal = cPostal;
         this.userDono=userDono;
     }
 
@@ -64,14 +64,6 @@ public class Empresa implements Serializable {
         this.localidade = localidade;
     }
 
-    public int getcPostal() {
-        return cPostal;
-    }
-
-    public void setcPostal(int cPostal) {
-        this.cPostal = cPostal;
-    }
-
     public String getUserDono() {
         return userDono;
     }
@@ -80,50 +72,11 @@ public class Empresa implements Serializable {
         this.userDono = userDono;
     }
 
-    //testes
+    public TipoConsulta getTipo() {
+        return tipo;
+    }
 
-    /*public void printConsultas(){
-        int j=0;
-        for(Consulta c: this.consultas){
-            j++;
-            System.out.println("Consulta: "+ j);
-            System.out.println("Data e hora"+ c.getDataMarcacao());
-        }
-    }*/
-
-    /*public static class UserDonoEmpresa extends JaExisteAnimalException {
-        private int opcao=0;
-
-        //Verificar users--> mais atributos necessários
-
-        public UserDonoEmpresa(String user, String passwd, int nif, String nome, int telefone) {
-            super(user, passwd);
-        }
-
-
-
-
-    public static class UserAdmin extends JaExisteAnimalException.User {
-        private int opcao;
-        public UserAdmin(String user, String passwd){
-            super(user,passwd);
-        }
-
-
-
-        public int MenuAdmin(int opcao){
-            System.out.println();
-            System.out.println("******************************************************");
-            System.out.println("*                    MENU ADMIN                      *");
-            System.out.println("******************************************************");
-            System.out.println("*                                                    *");
-            System.out.println("* 1 - Listar empresas do sistema                     *");
-            System.out.println("* 2 - Alterar e eliminar empresas                    *");
-            System.out.println("* 3 - Listar todos pagamentos                        *");
-            System.out.println("* 0 - Sair                                           *");
-            System.out.println("*                                                    *");
-            System.out.println("******************************************************");
-            return opcao;
-        }
-    }*/
+    public void setTipo(TipoConsulta tipo) {
+        this.tipo = tipo;
+    }
 }
