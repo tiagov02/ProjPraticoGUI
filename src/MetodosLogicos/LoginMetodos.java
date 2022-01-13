@@ -10,7 +10,7 @@ public class LoginMetodos {
 
     public LoginMetodos(){}
 
-    public User Login(String pass, String nomeUser) throws NaoExisteUserException{
+    public User Login( String nomeUser, String pass) throws NaoExisteUserException{
         User newUser = new User();
         //boolean found = false;
 

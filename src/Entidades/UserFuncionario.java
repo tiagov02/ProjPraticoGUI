@@ -8,6 +8,7 @@ public class UserFuncionario extends User {
     private Time horaIni;
     private Time horaFim;
     private int nifEmpresa;
+    private static final long serialVersionsUID = 213321312321233L;
 
 
     public UserFuncionario(String username, String passwd, String nome, int numCC, int numFiscal, int telefone, String morada, String localidade, float salario, Time horaIni, Time horaFim) {

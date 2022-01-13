@@ -2,6 +2,8 @@ package GUI;
 
 import Entidades.User;
 import Entidades.UserFuncionario;
+import Exceptions.NaoExisteUserException;
+import MetodosLogicos.DonoEmpresaMetodos;
 import Repositorio.Repositorio;
 
 import javax.swing.*;
@@ -17,8 +19,10 @@ public class DonoEmpresaRemoveFuncionario {
     private JButton buttonback;
     private JButton buttonlimpar;
     private JButton buttonremover;
+    private DonoEmpresaMetodos metodos;
 
     public DonoEmpresaRemoveFuncionario(JFrame frame){
+        metodos=new DonoEmpresaMetodos();
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
@@ -37,6 +41,7 @@ public class DonoEmpresaRemoveFuncionario {
         }
         voltaAtras(frame);
         LimpaDados();
+        RemoveUser();
     }
 
 
@@ -62,9 +67,25 @@ public class DonoEmpresaRemoveFuncionario {
 
     public void RemoveUser(){
         buttonremover.addActionListener(new ActionListener() {
+            int nif=0;
+            int numCC=0;
+            boolean sucesso=false;
             @Override
             public void actionPerformed(ActionEvent e) {
-                //REMOVER AINDA TENHO QUE VER TEMOS VÁRIAS OPÇÕES
+                try{
+                    nif=Integer.parseInt(textFieldNIF.getText());
+                    numCC=Integer.parseInt(textFieldNIF.getText());
+                }
+                catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null,"Não pode introduzir letras em nenhumm dos campos");
+                }
+                try {
+                    metodos.removeFuncionario(nif,numCC);
+                    JOptionPane.showMessageDialog(null,"Removeu o user com nif: "+nif+" NumCC: "+numCC);
+                }
+                catch (NaoExisteUserException ex){
+                    JOptionPane.showMessageDialog(null,ex.getMessage());
+                }
             }
         });
     }

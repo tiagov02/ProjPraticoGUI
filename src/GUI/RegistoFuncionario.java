@@ -1,5 +1,6 @@
 package GUI;
 
+import Entidades.Empresa;
 import Entidades.User;
 import Entidades.UserFuncionario;
 import Exceptions.JaExisteUserEcxeption;
@@ -35,9 +36,11 @@ public class RegistoFuncionario extends JFrame {
     private JButton buttonLimpar;
     private JButton buttonok;
     private JTextField Nome_tb;
+    private JComboBox comboBox1;
     private AnonimoMetodos metodos;
 
     public RegistoFuncionario(JFrame frame){
+        int j=0;
         metodos= new AnonimoMetodos();
         frame = new JFrame("Registo de Funcionario");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -53,6 +56,11 @@ public class RegistoFuncionario extends JFrame {
 
         spn_horFim.setModel(new SpinnerNumberModel(1,0,23,1));
         spn_minFim.setModel(new SpinnerNumberModel(1,0,59,1));
+        for (Empresa e : Repositorio.getInstance().getEmpresas()) {
+            if(e.getUserDono().equals(Repositorio.getInstance().getCurrentUser().getUsername())){
+                comboBox1.addItem(e.getNomeEmpresa());
+            }
+        }
 
         LimparDados();
         VoltaAtras(frame);
@@ -102,6 +110,8 @@ public class RegistoFuncionario extends JFrame {
                 int horafim = (int) spn_horFim.getValue();
                 int minini = (int) spn_minInicio.getValue();
                 int minfim = (int) spn_minFim.getValue();
+                String nomeEmpresa = (String)comboBox1.getSelectedItem();
+                //fazer for!!
                 UserFuncionario funcionario = new UserFuncionario(username, password, nome, numCC, NIF, telefone, morada, localidade, salario
                         ,new Time(horainicio,minini,0), new Time(horafim,minfim,0) );
 

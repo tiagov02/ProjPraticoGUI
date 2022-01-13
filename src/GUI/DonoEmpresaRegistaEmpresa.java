@@ -22,10 +22,8 @@ public class DonoEmpresaRegistaEmpresa {
     private JButton inserirButton;
     private JButton buttonlimpar;
     private JPanel panel;
-    private DonoEmpresaMetodos metodos;
 
     public DonoEmpresaRegistaEmpresa(JFrame frame){
-        metodos = new DonoEmpresaMetodos();
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
@@ -88,7 +86,7 @@ public class DonoEmpresaRegistaEmpresa {
 
                 Empresa empresa= new Empresa(telefone,nomeEmpresa,nif,nPorta,localidade,Repositorio.getInstance().getCurrentUser().getUsername());
                 try{
-                    metodos.addEmpresa(Repositorio.getInstance().getEmpresas(), Repositorio.getInstance().getEmpresasLocalidade(), empresa);
+                    DonoEmpresaMetodos.addEmpresa(Repositorio.getInstance().getEmpresas(), Repositorio.getInstance().getEmpresasLocalidade(), empresa);
                 }
                 catch (JaExisteEmpresaException ex){
                     JOptionPane.showMessageDialog(null,ex.getMessage());
