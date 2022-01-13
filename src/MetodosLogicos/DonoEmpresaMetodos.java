@@ -64,4 +64,13 @@ public  class DonoEmpresaMetodos {
         }
         throw new NaoExisteUserException("O user que pretende remover não existe");
     }
+
+    public static Empresa selectEmpresa(String nomeEmpresa) {
+        for(Empresa e: Repositorio.getInstance().getEmpresas()){
+            if(e.getNomeEmpresa().equals(nomeEmpresa)){
+                return e;
+            }
+        }
+        return null;
+    }
 }

@@ -5,6 +5,7 @@ import Entidades.User;
 import Entidades.UserFuncionario;
 import Exceptions.JaExisteUserEcxeption;
 import MetodosLogicos.AnonimoMetodos;
+import MetodosLogicos.DonoEmpresaMetodos;
 import Repositorio.Repositorio;
 import Repositorio.RepositorioSerializable;
 import javax.swing.*;
@@ -111,9 +112,9 @@ public class RegistoFuncionario extends JFrame {
                 int minini = (int) spn_minInicio.getValue();
                 int minfim = (int) spn_minFim.getValue();
                 String nomeEmpresa = (String)comboBox1.getSelectedItem();
-                //fazer for!!
+                Empresa emp=DonoEmpresaMetodos.selectEmpresa(nomeEmpresa);
                 UserFuncionario funcionario = new UserFuncionario(username, password, nome, numCC, NIF, telefone, morada, localidade, salario
-                        ,new Time(horainicio,minini,0), new Time(horafim,minfim,0) );
+                        ,new Time(horainicio,minini,0), new Time(horafim,minfim,0),emp.getNif());
 
                 try {
                     metodos.addUser(funcionario);
