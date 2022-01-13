@@ -17,6 +17,13 @@ public class ClienteMarcaConsultaLocalidade {
     private JScrollPane scroll;
     private JTable table1;
     private JButton okButton;
+    private JComboBox cb_nifEmpresa;
+    private JComboBox cb_animal;
+    private JSpinner spn_dia;
+    private JSpinner spn_mes;
+    private JSpinner spn_ano;
+    private JSpinner spn_hora;
+    private JSpinner spn_min;
     private JTextField tb_nif;
 
     public ClienteMarcaConsultaLocalidade(JFrame frame){
