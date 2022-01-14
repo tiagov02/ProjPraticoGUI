@@ -1,6 +1,9 @@
 package GUI;
 
+import Entidades.User;
 import Entidades.UserFuncionario;
+import Repositorio.Repositorio;
+import Repositorio.RepositorioSerializable;
 
 import javax.swing.*;
 
@@ -36,5 +39,11 @@ public class DonoEmpresaAlteraFuncionario2 {
         tb_morada.setText(f.getMorada());
         tb_localidade.setText(f.getLocalidade());
         tb_salario.setText(String.valueOf(f.getSalario()));
+        for(User u: Repositorio.getInstance().getUsers()){
+            if(u.getNIF()==f.getNIF()){
+                //setters
+                //fica atualizado!
+            }
+        }
     }
 }

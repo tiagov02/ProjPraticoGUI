@@ -18,6 +18,7 @@ public class DonoEmpresaRealizaConsulta {
         frame.pack();
         frame.setVisible(true);
         clickBack(frame);
+        LimpaDados();
     }
     public void clickBack(JFrame frame){
         backButton.addActionListener(new ActionListener() {
