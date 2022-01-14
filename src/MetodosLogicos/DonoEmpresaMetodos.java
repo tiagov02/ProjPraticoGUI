@@ -91,4 +91,25 @@ public  class DonoEmpresaMetodos {
         }
         return null;
     }
+
+    public static void alterarDadosFuncionario(UserFuncionario f) throws AlteracaoDadosException{
+        for(User u: Repositorio.getInstance().getUsers()){
+            if(u instanceof UserFuncionario && u.getNIF()==f.getNIF()){
+                u.setTelefone(f.getTelefone());
+                u.setTelefone(f.getTelefone());
+                u.setNumCC(f.getNumCC());
+                ((UserFuncionario) u).setSalario(f.getSalario());
+                u.setUsername(f.getUsername());
+                u.setPasswd(f.getPasswd());
+                u.setNome(f.getNome());
+                u.setMorada(f.getMorada());
+                u.setLocalidade(f.getLocalidade());
+                ((UserFuncionario) u).setHoraIni(f.getHoraIni());
+                ((UserFuncionario) u).setHoraFim(f.getHoraFim());
+                RepositorioSerializable.writeUsers();
+                return;
+            }
+        }
+        throw new AlteracaoDadosException("Não pode alterar o nif do funcionário!! para isso tem de introduzir um funcionario novo");
+    }
 }
