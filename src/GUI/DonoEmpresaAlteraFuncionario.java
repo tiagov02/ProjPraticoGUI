@@ -1,7 +1,9 @@
 package GUI;
 
+import Entidades.Empresa;
 import Entidades.User;
 import Entidades.UserFuncionario;
+import MetodosLogicos.DonoEmpresaMetodos;
 import Repositorio.Repositorio;
 
 import javax.swing.*;
@@ -12,15 +14,16 @@ import java.awt.event.ActionListener;
 public class DonoEmpresaAlteraFuncionario {
     private JPanel panel1;
     private JTable table1;
-    private JTextField textFieldNumccFuncionario;
-    private JTextField textFieldNIFFuncionario;
     private JButton buttonback;
     private JButton buttonlimpar;
     private JButton alterarButton;
+    private JComboBox cb_nifFuncionario;
     private UserFuncionario metodos;
+    private Empresa emp;
 
 
-    public DonoEmpresaAlteraFuncionario(JFrame frame){
+    public DonoEmpresaAlteraFuncionario(JFrame frame, Empresa emp){
+        this.emp=emp;
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
@@ -35,11 +38,11 @@ public class DonoEmpresaAlteraFuncionario {
         for (User funcionario : Repositorio.getInstance().getUsers()){
             if(funcionario instanceof UserFuncionario){
                 model.addRow(new Object[] {funcionario.getNome(), funcionario.getUsername(), funcionario.getNumCC(), funcionario.getNIF(), funcionario.getTelefone(),((UserFuncionario) funcionario).getSalario()});
+                cb_nifFuncionario.addItem(funcionario.getNIF());
             }
         }
         voltaAtras(frame);
-        LimpaDados();
-        AlterarFuncionario(frame);
+        alterarFuncionario(frame);
     }
 
 
@@ -53,30 +56,12 @@ public class DonoEmpresaAlteraFuncionario {
         });
     }
 
-    public void LimpaDados(){
-        buttonlimpar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textFieldNIFFuncionario.setText(null);
-                textFieldNumccFuncionario.setText(null);
-            }
-        });
-    }
-
-    public void AlterarFuncionario(JFrame frame){
+    public void alterarFuncionario(JFrame frame){
         alterarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (textFieldNumccFuncionario.getText().equals(Repositorio.getInstance().getCurrentUser().getNumCC()) &&
-                    textFieldNIFFuncionario.getText().equals(Repositorio.getInstance().getCurrentUser().getNIF())){
-                    panel1.setVisible(false);
-                    //LINHA ABAIXO ERRADA...AQUI TEMOS QUE APAGAR O FUNCIONÁRIO
-                    Repositorio.getInstance().getUsers().remove(textFieldNIFFuncionario);
-                    new RegistoFuncionario(frame);
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "ERRO! Funcionário não existe");
-                }
+                int nifFuncionario= (int) cb_nifFuncionario.getSelectedItem();
+                UserFuncionario u=DonoEmpresaMetodos.selectFuncionarioNifEmpresa(nifFuncionario,emp);
             }
         });
     }

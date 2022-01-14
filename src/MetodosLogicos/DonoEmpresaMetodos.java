@@ -73,4 +73,22 @@ public  class DonoEmpresaMetodos {
         }
         return null;
     }
+
+    public static UserFuncionario selectFuncionarioNifEmpresa(int nif,Empresa e) {
+        for(User u:Repositorio.getInstance().getUsers()){
+            if(u instanceof UserFuncionario && ((UserFuncionario) u).getNifEmpresa()==e.getNif() && u.getNIF()==nif){
+                return (UserFuncionario) u;
+            }
+        }
+       return null;
+    }
+
+    public static Empresa selectEmpresaporNif(int nifEmpresa) {
+        for(Empresa e: Repositorio.getInstance().getEmpresas()){
+            if(e.getNif()==nifEmpresa){
+                return e;
+            }
+        }
+        return null;
+    }
 }
