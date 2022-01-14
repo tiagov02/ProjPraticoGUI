@@ -13,20 +13,20 @@ public class Consulta implements Serializable {
     private String userCliente;
     private int nifEmpresa;
     private List <LinhaConsulta> linhas;
+    private int nMicro;
 
     //neste recoloquei sem paramentros, pq ao marcar a consulta não fica logo associado o restante
     //dos valores,como a data de pagamento
     //para mercar consulta vamos pelo setDataMarcacao
 
 
-    public Consulta(){}
-    public Consulta(Date dataMarcacao, EstadoConsulta estado, TipoConsulta tipoConsulta, String userCliente, int nifEmpresa) {
+    public Consulta(Date dataMarcacao, EstadoConsulta estado, String userCliente, int nifEmpresa,int nMicro) {
         this.dataMarcacao = dataMarcacao;
         this.estado = estado;
-        this.tipoConsulta = tipoConsulta;
         this.userCliente = userCliente;
         this.nifEmpresa = nifEmpresa;
         linhas= new ArrayList<>();
+        this.nMicro=nMicro;
     }
 
     public Date getDataHoraConsulta() {
@@ -92,5 +92,13 @@ public class Consulta implements Serializable {
 
     public void setNifEmpresa(int nifEmpresa) {
         this.nifEmpresa = nifEmpresa;
+    }
+
+    public int getnMicro() {
+        return nMicro;
+    }
+
+    public void setnMicro(int nMicro) {
+        this.nMicro = nMicro;
     }
 }

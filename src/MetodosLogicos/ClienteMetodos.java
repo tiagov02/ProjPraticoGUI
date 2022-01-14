@@ -8,7 +8,7 @@ import java.util.*;
 
 public class ClienteMetodos {
     //testar
-    public void RemoveAnimalnMicro(List<Animal> animais, int numMicro) throws RemocaoException {
+    public static void RemoveAnimalnMicro(List<Animal> animais, int numMicro) throws RemocaoException {
         boolean found = false;
         Animal animalRemove;
         int j = 0;
@@ -29,7 +29,7 @@ public class ClienteMetodos {
         }
     }
     //FUNCAO PARA ADICIONAR ANIMAL
-    public void addAnimal(Animal newAnimal, List<Animal> animais) throws JaExisteAnimalException {
+    public static void addAnimal(Animal newAnimal, List<Animal> animais) throws JaExisteAnimalException {
         boolean found = false;
 
         for (Animal a : animais) {
@@ -45,22 +45,19 @@ public class ClienteMetodos {
             animais.add(newAnimal);
     }
 
-    public void MarcarConsulta(Date dataHoraMarcacao, Empresa empresa, Animal animal, Consulta newConsulta) throws DataJaExisteException {
-        boolean found=false;
+    public static void marcarConsulta(Consulta novaConsulta)throws DataJaExisteException{
+        boolean found= false;
         for(Consulta c: Repositorio.getInstance().getConsultas()){
-            if(c.getNifEmpresa() == empresa.getNif() && c.getDataMarcacao().equals(dataHoraMarcacao)){
-                found=true;
-                break;
+            if(c.getNifEmpresa()==novaConsulta.getNifEmpresa()){
+                if(c.getDataMarcacao().equals(novaConsulta.getDataMarcacao())){
+                    found=true;
+                    break;
+                }
             }
         }
-        if(found){
-            throw new DataJaExisteException("A data já existe terá de selecionar outra data");
-        }
-        else{
-            newConsulta.setDataMarcacao(dataHoraMarcacao);
-            newConsulta.setEstado(EstadoConsulta.MARCADA);
-            Repositorio.getInstance().getConsultas().add(newConsulta);
-            //verificar por causa do construtor
-        }
+        if(found)
+            throw new DataJaExisteException("Esta data já se encontra marcada pf selecione outra");
+        else
+            Repositorio.getInstance().getConsultas().add(novaConsulta);
     }
 }

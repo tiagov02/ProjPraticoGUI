@@ -10,7 +10,6 @@ public class Empresa implements Serializable {
     private int nif;
     private int nPorta;
     private String localidade;
-
     private String userDono;
     private TipoConsulta tipo;
 
