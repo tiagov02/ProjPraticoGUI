@@ -38,7 +38,7 @@ public class RegistoDonoEmpresa extends Frame {
 
     public RegistoDonoEmpresa(JFrame frame){
         metodos=new AnonimoMetodos();
-        frame = new JFrame("Registo de Clientes");
+        frame = new JFrame("Registo Dono Empresa");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(500, 500));
         //RegAnonimo.setResizable(false);
