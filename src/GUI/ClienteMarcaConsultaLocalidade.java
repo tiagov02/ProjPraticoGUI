@@ -32,7 +32,7 @@ public class ClienteMarcaConsultaLocalidade {
 
     public ClienteMarcaConsultaLocalidade(JFrame frame){
         Repositorio r=Repositorio.getInstance();
-        frame = new JFrame("Registo de Clientes");
+        frame = new JFrame("Marcacao Consultas");
 
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(500, 500));
