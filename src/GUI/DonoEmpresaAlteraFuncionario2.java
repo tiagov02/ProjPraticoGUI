@@ -46,6 +46,7 @@ public class DonoEmpresaAlteraFuncionario2 {
         spn_minInicio.setModel(new SpinnerNumberModel(f.getHoraIni().getMinutes(),0,59,1));
         spn_horFim.setModel(new SpinnerNumberModel(f.getHoraFim().getHours(),0,23,1));
         spn_minFim.setModel(new SpinnerNumberModel(f.getHoraFim().getMinutes(),0,59,1));
+        clickOk(frame,f);
     }
 
     public void clickOk(JFrame frame,UserFuncionario f){
@@ -99,6 +100,7 @@ public class DonoEmpresaAlteraFuncionario2 {
         f.setHoraFim(new Time(horaFim,minFim,0));
         try{
             DonoEmpresaMetodos.alterarDadosFuncionario(f);
+            JOptionPane.showMessageDialog(null,"SUCESSO!!");
         }
         catch(AlteracaoDadosException ex){
             JOptionPane.showMessageDialog(null,ex.getMessage());
