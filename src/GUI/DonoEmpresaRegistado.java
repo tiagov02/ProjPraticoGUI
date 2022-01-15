@@ -72,7 +72,7 @@ public class DonoEmpresaRegistado {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                new DonoEmpresaCancelaConsulta(frame);
+                new SelectEmpresaRemoveConsulta(frame);
             }
         });
     }

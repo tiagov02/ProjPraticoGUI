@@ -1,6 +1,7 @@
 package GUI;
 
 import Entidades.Consulta;
+import Entidades.Empresa;
 import Repositorio.Repositorio;
 
 import javax.swing.*;
@@ -14,10 +15,12 @@ public class DonoEmpresaCancelaConsulta {
     private JButton buttonback;
     private JTextField textFieldUserCliente;
     private JTextField textFielDataConsulta;
-    private JButton buttonCancelar;
+    private JButton btn_OK;
     private JButton buttonLimpar;
+    private JComboBox selectConsulta;
+    private int nifEmp;
 
-    public DonoEmpresaCancelaConsulta(JFrame frame){
+    public DonoEmpresaCancelaConsulta(JFrame frame,int nifEmp){
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
@@ -31,6 +34,7 @@ public class DonoEmpresaCancelaConsulta {
         for (Consulta c : Repositorio.getInstance().getConsultas()){
             if (c.getNifEmpresa() == Repositorio.getInstance().getCurrentUser().getNIF()){
                 model.addRow(new Object[] {c.getDataHoraConsulta(), c.getEstado(), c.getTipoConsulta(), c.getUserCliente(),c.getDataHoraPagamento()});
+                selectConsulta.addItem(c.getUserCliente());
             }
         }
         voltaAtras(frame);
@@ -54,6 +58,16 @@ public class DonoEmpresaCancelaConsulta {
             public void actionPerformed(ActionEvent e) {
                 textFielDataConsulta.setText(null);   //AQUI TEMOS QUE ADICIONAR DEPOIS AQUILO DOS DIAS
                 textFieldUserCliente.setText(null);
+            }
+        });
+    }
+
+    public void clickOK(JFrame frame){
+        btn_OK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String userCliente=(String) selectConsulta.getSelectedItem();
+
             }
         });
     }
