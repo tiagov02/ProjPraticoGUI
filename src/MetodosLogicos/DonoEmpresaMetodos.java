@@ -122,6 +122,8 @@ public  class DonoEmpresaMetodos {
                 emp.setnPorta(emp.getnPorta());
                 emp.setLocalidade(emp.getLocalidade());
                 RepositorioSerializable.writeEmpresas();
+                RepositorioSerializable.writeEmpresasTipo();
+                RepositorioSerializable.writeEmpresasLocalidade();
                 return;
             }
         }

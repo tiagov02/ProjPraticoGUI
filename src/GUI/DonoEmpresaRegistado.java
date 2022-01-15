@@ -130,7 +130,7 @@ public class DonoEmpresaRegistado {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                new DonoEmpresaAlteraDadosEmpresa(frame, empresa);
+                //new DonoEmpresaAlteraDadosEmpresa(frame, empresa);
             }
         });
     }

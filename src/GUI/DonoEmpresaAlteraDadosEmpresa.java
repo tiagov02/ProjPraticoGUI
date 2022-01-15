@@ -19,7 +19,7 @@ public class DonoEmpresaAlteraDadosEmpresa {
     private JButton alterarButton;
     private JComboBox comboBoxNIF;
 
-    public DonoEmpresaAlteraDadosEmpresa(JFrame frame, Empresa emp){
+    public DonoEmpresaAlteraDadosEmpresa(JFrame frame){
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
@@ -38,12 +38,12 @@ public class DonoEmpresaAlteraDadosEmpresa {
                 comboBoxNIF.addItem(empresa.getNif());
             }
         }
-        voltaAtras(frame, emp);
+        //voltaAtras(frame, emp);
         LimpaDados();
-        AlterarEmpresa(frame, emp);
+        //AlterarEmpresa(frame, emp);
     }
 
-    public void voltaAtras(JFrame frame, Empresa empresa){
+    public void voltaAtras(JFrame frame){
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
