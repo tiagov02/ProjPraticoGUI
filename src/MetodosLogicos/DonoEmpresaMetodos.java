@@ -141,12 +141,18 @@ public  class DonoEmpresaMetodos {
         }
     }
 
-    public static void removeFuncionario(int nifFuncionario){
-        int j=0;
-        for(User u: Repositorio.getInstance().getUsers()){
-            if(u instanceof UserFuncionario && u.getNIF()==nifFuncionario){
-                Repositorio.getInstance().getUsers().remove(u);
+    public static UserFuncionario selectFuncionarioNif(int nif) {
+        for(User u:Repositorio.getInstance().getUsers()){
+            if(u instanceof UserFuncionario  && u.getNIF()==nif){
+                return (UserFuncionario) u;
             }
         }
+        return null;
     }
+
+    public static void removeUser(User u){
+        Repositorio.getInstance().getUsers().remove(u);
+    }
+
+
 }

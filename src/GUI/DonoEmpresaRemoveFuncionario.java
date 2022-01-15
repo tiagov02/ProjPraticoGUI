@@ -44,7 +44,7 @@ public class DonoEmpresaRemoveFuncionario {
         }
         voltaAtras(frame);
         LimpaDados();
-        RemoveUser();
+        RemoveUser(frame);
     }
 
 
@@ -68,12 +68,16 @@ public class DonoEmpresaRemoveFuncionario {
         });
     }
 
-    public void RemoveUser(){
+    public void RemoveUser(JFrame frame){
         buttonremover.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int nifFuncionario=(int) cb_nifFuncionario.getSelectedItem();
-                DonoEmpresaMetodos.removeFuncionario(nifFuncionario);
+                UserFuncionario f=DonoEmpresaMetodos.selectFuncionarioNif(nifFuncionario);
+                DonoEmpresaMetodos.removeUser(f);
+                JOptionPane.showMessageDialog(null,"Removido com sucesso!!");
+                panel1.setVisible(false);
+                new DonoEmpresaRegistado(frame);
             }
         });
     }
