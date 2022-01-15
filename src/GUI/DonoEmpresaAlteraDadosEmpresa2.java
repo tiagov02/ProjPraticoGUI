@@ -19,8 +19,10 @@ public class DonoEmpresaAlteraDadosEmpresa2 {
     private JTextField textFieldLocalidade;
     private JButton alterarButton;
     private JButton buttonlimpar;
+    private Empresa empresa;
 
     public DonoEmpresaAlteraDadosEmpresa2(JFrame frame, Empresa empresa){
+        this.empresa=empresa;
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
@@ -75,13 +77,13 @@ public class DonoEmpresaAlteraDadosEmpresa2 {
                     nif=Integer.parseInt(textFieldNIFEmpresa.getText());
                 }
                 catch (NumberFormatException ex){
-                    JOptionPane.showMessageDialog(null, "Não pode introduzir letras num numTelefone!");
+                    JOptionPane.showMessageDialog(null, "Não pode introduzir letras num NIF!");
                 }
                 try{
                     nporta=Integer.parseInt(textFieldNPorta.getText());
                 }
                 catch (NumberFormatException ex){
-                    JOptionPane.showMessageDialog(null, "Não pode introduzir letras num numTelefone!");
+                    JOptionPane.showMessageDialog(null, "Não pode introduzir letras num numero de porta!");
                 }
                 empresa.setTelefone(telefone);
                 empresa.setNomeEmpresa(nome);

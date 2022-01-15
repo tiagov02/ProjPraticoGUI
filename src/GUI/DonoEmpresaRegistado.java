@@ -125,12 +125,12 @@ public class DonoEmpresaRegistado {
             }
         });
     }
-    public void AlterarDados(JFrame frame, Empresa empresa){
+    public void AlterarDados(JFrame frame){
         buttonAlterarDadosEmpresa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                //new DonoEmpresaAlteraDadosEmpresa(frame, empresa);
+                new DonoEmpresaAlteraDadosEmpresa(frame);
             }
         });
     }

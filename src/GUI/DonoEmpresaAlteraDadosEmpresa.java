@@ -38,9 +38,9 @@ public class DonoEmpresaAlteraDadosEmpresa {
                 comboBoxNIF.addItem(empresa.getNif());
             }
         }
-        //voltaAtras(frame, emp);
+        voltaAtras(frame);
         LimpaDados();
-        //AlterarEmpresa(frame, emp);
+        AlterarEmpresa(frame);
     }
 
     public void voltaAtras(JFrame frame){
@@ -63,14 +63,14 @@ public class DonoEmpresaAlteraDadosEmpresa {
         });
     }
 
-    public void AlterarEmpresa(JFrame frame, Empresa empresa){
+    public void AlterarEmpresa(JFrame frame){
         alterarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int nifEmpresa=(int) comboBoxNIF.getSelectedItem();
                 Empresa emp= DonoEmpresaMetodos.selectEmpresaporNif(nifEmpresa);
                 panel1.setVisible(false);
-                new DonoEmpresaAlteraDadosEmpresa2(frame, empresa);
+                new DonoEmpresaAlteraDadosEmpresa2(frame,emp);
             }
         });
     }
