@@ -39,7 +39,6 @@ public class DonoEmpresaAlteraDadosEmpresa {
             }
         }
         voltaAtras(frame);
-        LimpaDados();
         AlterarEmpresa(frame);
     }
 
@@ -49,16 +48,6 @@ public class DonoEmpresaAlteraDadosEmpresa {
             public void actionPerformed(ActionEvent e) {
                 panel1.setVisible(false);
                 new DonoEmpresaRegistado(frame);
-            }
-        });
-    }
-
-    public void LimpaDados(){
-        limparButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textFieldNIF.setText(null);
-                textFieldLocalidade.setText(null);
             }
         });
     }

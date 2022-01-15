@@ -42,7 +42,7 @@ public class DonoEmpresaAlteraDadosEmpresa2 {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                //new DonoEmpresaAlteraDadosEmpresa(frame, empresa);
+                new DonoEmpresaAlteraDadosEmpresa(frame);
             }
         });
     }
