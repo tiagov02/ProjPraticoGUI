@@ -29,9 +29,11 @@ public class SelectEmpresaAlteraFuncionario {
         model.addColumn("NPorta");
         model.addColumn("Telefone");
         for (Empresa empresa : Repositorio.getInstance().getEmpresas()){
-            model.addRow(new Object[] {empresa.getNomeEmpresa(), empresa.getUserDono(),
-                    empresa.getLocalidade(), empresa.getNif(), empresa.getnPorta(), empresa.getTelefone()});
-            cb_nifEmpresa.addItem(empresa.getNif());
+            if(empresa.getUserDono().equals(Repositorio.getInstance().getCurrentUser().getUsername())){
+                model.addRow(new Object[] {empresa.getNomeEmpresa(), empresa.getUserDono(),
+                        empresa.getLocalidade(), empresa.getNif(), empresa.getnPorta(), empresa.getTelefone()});
+                cb_nifEmpresa.addItem(empresa.getNif());
+            }
         }
         clickOK(frame);
     }
