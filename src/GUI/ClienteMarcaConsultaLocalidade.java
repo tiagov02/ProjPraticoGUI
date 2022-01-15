@@ -45,15 +45,16 @@ public class ClienteMarcaConsultaLocalidade {
         model.addColumn("Telefone da empresa");
         model.addColumn("Localidade");
         Date data=new Date();
-        spn_ano.setModel(new SpinnerNumberModel(data.getYear(),data.getYear(),data.getYear()+1,1));
+        spn_ano.setModel(new SpinnerNumberModel(data.getYear()+1900,data.getYear()+1900,data.getYear()+1901,1));
         spn_dia.setModel(new SpinnerNumberModel(1,1,12,1));
         spn_dia.setModel(new SpinnerNumberModel(1,1,31,1));
-        spn_hora.setModel(new SpinnerNumberModel(0,9,21,1));
+        spn_hora.setModel(new SpinnerNumberModel(9,9,21,1));
         spn_min.setModel(new SpinnerNumberModel(0,0,59,30));
 
         for(Empresa e:r.getEmpresasLocalidade().keySet()){
             if(r.getEmpresasLocalidade().get(e).equals(r.getCurrentUser().getLocalidade())){
                 model.addRow(new Object[] {e.getNomeEmpresa(),e.getNif(),e.getTelefone(),e.getLocalidade()});
+                cb_nifEmpresa.addItem(e.getNif());
             }
         }
         for(Animal a: Repositorio.getInstance().getAnimais()){

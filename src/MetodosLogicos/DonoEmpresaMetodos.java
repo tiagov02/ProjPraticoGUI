@@ -154,4 +154,12 @@ public  class DonoEmpresaMetodos {
     public static void removeUser(User u){
         Repositorio.getInstance().getUsers().remove(u);
     }
+
+    public static void alteraConsulta(EstadoConsulta e, String userCliente){
+        for(Consulta c: Repositorio.getInstance().getConsultas()){
+            if(c.getUserCliente().equals(userCliente)){
+                c.setEstado(e);
+            }
+        }
+    }
 }

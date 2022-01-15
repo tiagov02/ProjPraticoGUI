@@ -3,6 +3,7 @@ package GUI;
 import Entidades.Consulta;
 import Entidades.TipoConsulta;
 import Estados.EstadoConsulta;
+import MetodosLogicos.DonoEmpresaMetodos;
 import Repositorio.Repositorio;
 
 import javax.swing.*;
@@ -44,6 +45,7 @@ public class DonoEmpresaAlteraConsulta {
         cb_estadoConsulta.addItem("Concluido");
         voltaAtras(frame);
         LimpaDados();
+        AlteraConsulta(frame,nifEmpresa);
     }
 
     public void voltaAtras(JFrame frame){
@@ -66,7 +68,7 @@ public class DonoEmpresaAlteraConsulta {
         });
     }
 
-    public void AlteraConsulta(JFrame frame){
+    public void AlteraConsulta(JFrame frame, int nifEmpresa){
         String estadoConsulta=(String) cb_estadoConsulta.getSelectedItem();
         String userCliente=(String) cb_cliente.getSelectedItem();
         EstadoConsulta e=null;
@@ -82,7 +84,6 @@ public class DonoEmpresaAlteraConsulta {
                     if(estadoConsulta.equals("Concluido"))
                         e=EstadoConsulta.CONCLUIDA;
 
-
-
+        DonoEmpresaMetodos.alteraConsulta(e,userCliente);
     }
 }
