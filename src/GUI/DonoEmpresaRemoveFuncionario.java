@@ -19,10 +19,8 @@ public class DonoEmpresaRemoveFuncionario {
     private JButton buttonback;
     private JButton buttonlimpar;
     private JButton buttonremover;
-    private DonoEmpresaMetodos metodos;
 
     public DonoEmpresaRemoveFuncionario(JFrame frame){
-        metodos=new DonoEmpresaMetodos();
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
@@ -36,7 +34,8 @@ public class DonoEmpresaRemoveFuncionario {
         model.addColumn("Salário");
         for (User funcionario : Repositorio.getInstance().getUsers()){
             if(funcionario instanceof UserFuncionario){
-                model.addRow(new Object[] {funcionario.getNome(), funcionario.getUsername(), funcionario.getNumCC(), funcionario.getNIF(), funcionario.getTelefone(),((UserFuncionario) funcionario).getSalario()});
+                model.addRow(new Object[] {funcionario.getNome(), funcionario.getUsername(), funcionario.getNumCC(),
+                        funcionario.getNIF(), funcionario.getTelefone(),((UserFuncionario) funcionario).getSalario()});
             }
         }
         voltaAtras(frame);
@@ -80,7 +79,7 @@ public class DonoEmpresaRemoveFuncionario {
                     JOptionPane.showMessageDialog(null,"Não pode introduzir letras em nenhumm dos campos");
                 }
                 try {
-                    metodos.removeFuncionario(nif,numCC);
+                    DonoEmpresaMetodos.removeFuncionario(nif,numCC);
                     JOptionPane.showMessageDialog(null,"Removeu o user com nif: "+nif+" NumCC: "+numCC);
                 }
                 catch (NaoExisteUserException ex){
