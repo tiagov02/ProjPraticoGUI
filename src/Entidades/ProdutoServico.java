@@ -6,9 +6,11 @@ public class ProdutoServico implements Serializable {
     private int id;
     private String descricao;
     private float preco;
+    private int nifEmpresa;
 
-    public ProdutoServico(int id, String descricao, float preco) {
-        this.id = id;
+    public ProdutoServico(String descricao, float preco,int nifEmpresa, int id) {
+        this.id=id;
+        this.nifEmpresa=nifEmpresa;
         this.descricao = descricao;
         this.preco = preco;
     }
@@ -27,5 +29,13 @@ public class ProdutoServico implements Serializable {
 
     public void setPreco(float preco) {
         this.preco = preco;
+    }
+
+    public int getNifEmpresa() {
+        return nifEmpresa;
+    }
+
+    public void setNifEmpresa(int nifEmpresa) {
+        this.nifEmpresa = nifEmpresa;
     }
 }
