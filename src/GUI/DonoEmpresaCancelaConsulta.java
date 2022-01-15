@@ -2,6 +2,7 @@ package GUI;
 
 import Entidades.Consulta;
 import Entidades.Empresa;
+import MetodosLogicos.DonoEmpresaMetodos;
 import Repositorio.Repositorio;
 
 import javax.swing.*;
@@ -21,6 +22,7 @@ public class DonoEmpresaCancelaConsulta {
     private int nifEmp;
 
     public DonoEmpresaCancelaConsulta(JFrame frame,int nifEmp){
+        this.nifEmp=nifEmp;
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
@@ -67,7 +69,7 @@ public class DonoEmpresaCancelaConsulta {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String userCliente=(String) selectConsulta.getSelectedItem();
-
+                DonoEmpresaMetodos.CancelarConsulta(userCliente,nifEmp);
             }
         });
     }

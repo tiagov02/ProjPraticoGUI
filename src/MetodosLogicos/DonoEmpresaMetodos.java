@@ -130,9 +130,14 @@ public  class DonoEmpresaMetodos {
         throw new AlteracaoDadosException("Não é possivel alterar o NIF de uma empresa.");
     }
 
-    public static void CancelarConsulta(String userCliente){
+    public static void CancelarConsulta(String userCliente, int nifEmpresa){
+        int j=0;
         for(Consulta c:Repositorio.getInstance().getConsultas()){
-
+            j++;
+            if(c.getNifEmpresa()==nifEmpresa && c.getUserCliente().equals(userCliente)){
+                Repositorio.getInstance().getConsultas().remove(j);
+                return;
+            }
         }
     }
 }
