@@ -32,6 +32,7 @@ public class DonoEmpresaAlteraFuncionario2 {
     private JButton buttonok;
     private JTextField tb_nome;
 
+    /*
     public DonoEmpresaAlteraFuncionario2(JFrame frame, UserFuncionario f, Empresa empresa){
         frame.add(panel);
         frame.pack();
@@ -144,4 +145,7 @@ public class DonoEmpresaAlteraFuncionario2 {
             }
         });
     }
+
+     */
 }
+

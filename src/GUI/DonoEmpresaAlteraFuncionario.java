@@ -63,7 +63,7 @@ public class DonoEmpresaAlteraFuncionario {
                 int nifFuncionario= (int) cb_nifFuncionario.getSelectedItem();
                 UserFuncionario u=DonoEmpresaMetodos.selectFuncionarioNifEmpresa(nifFuncionario,emp);
                panel1.setVisible(false);
-               new DonoEmpresaAlteraFuncionario2(frame, u, empresa);
+               //new DonoEmpresaAlteraFuncionario2(frame, u);
             }
         });
     }

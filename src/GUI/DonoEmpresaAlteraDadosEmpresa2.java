@@ -92,7 +92,7 @@ public class DonoEmpresaAlteraDadosEmpresa2 {
                     DonoEmpresaMetodos.alterarDadosEmpresa(empresa);
                     JOptionPane.showMessageDialog(null,"SUCESSO!!");
                     panel.setVisible(false);
-                    new DonoEmpresaRegistado(frame, empresa);
+                    new DonoEmpresaRegistado(frame);
                 }
                 catch (AlteracaoDadosException ex){
                     JOptionPane.showMessageDialog(null, ex.getMessage());

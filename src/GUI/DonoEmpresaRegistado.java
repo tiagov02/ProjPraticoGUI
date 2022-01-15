@@ -21,7 +21,7 @@ public class DonoEmpresaRegistado {
     private JButton ButtonRemoveFuncionario;
     private JButton buttonAlteraPrecos;
 
-    public DonoEmpresaRegistado(JFrame frame, Empresa empresa){
+    public DonoEmpresaRegistado(JFrame frame){
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
@@ -34,7 +34,7 @@ public class DonoEmpresaRegistado {
         RemoveFuncionario(frame);
         RealizaConsulta(frame);
         registaEmpresa(frame);
-        AlterarDados(frame, empresa);
+        //AlterarDados(frame);
         ListaPagamentos(frame);
     }
 
