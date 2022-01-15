@@ -8,6 +8,8 @@ import Repositorio.Repositorio;
 import Repositorio.RepositorioSerializable;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Time;
 
 public class DonoEmpresaAlteraFuncionario2 {
@@ -50,60 +52,65 @@ public class DonoEmpresaAlteraFuncionario2 {
     }
 
     public void clickOk(JFrame frame,UserFuncionario f){
-        int nif=0,telefone=0,numCC=0;
-        float salario=0;
-        String username=tb_username.getText();
-        String passwd=tb_password.getText();
-        String nome=tb_nome.getText();
-        String morada=tb_morada.getText();
-        String localidade=tb_localidade.getText();
-        int horaIni=(int) spn_horInicio.getValue();
-        int minInicio=(int) spn_minInicio.getValue();
-        int horaFim=(int) spn_horFim.getValue();
-        int minFim=(int) spn_minFim.getValue();
+        buttonok.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int nif=0,telefone=0,numCC=0;
+                float salario=0;
+                String username=tb_username.getText();
+                String passwd=tb_password.getText();
+                String nome=tb_nome.getText();
+                String morada=tb_morada.getText();
+                String localidade=tb_localidade.getText();
+                int horaIni=(int) spn_horInicio.getValue();
+                int minInicio=(int) spn_minInicio.getValue();
+                int horaFim=(int) spn_horFim.getValue();
+                int minFim=(int) spn_minFim.getValue();
 
-        try{
-            nif=Integer.parseInt(tb_telefone.getText());
-        }
-        catch (NumberFormatException ex){
-            JOptionPane.showMessageDialog(null,"Não pode introduzir letras no NIF!");
-        }
-        try{
-            telefone=Integer.parseInt(tb_telefone.getText());
-        }
-        catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(null,"Não pode introduzir letras no telefone!!");
-        }
-        try{
-            numCC=Integer.parseInt(tb_numCC.getText());
-        }
-        catch (NumberFormatException ex){
-            JOptionPane.showMessageDialog(null,"Não pode introduzir letras no numero de CC!!");
-        }
-        try{
-            salario=Float.parseFloat(tb_salario.getText());
-        }
-        catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(null,"Não pode introduzir letras no salário!!");
-        }
+                try{
+                    nif=Integer.parseInt(tb_telefone.getText());
+                }
+                catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null,"Não pode introduzir letras no NIF!");
+                }
+                try{
+                    telefone=Integer.parseInt(tb_telefone.getText());
+                }
+                catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null,"Não pode introduzir letras no telefone!!");
+                }
+                try{
+                    numCC=Integer.parseInt(tb_numCC.getText());
+                }
+                catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null,"Não pode introduzir letras no numero de CC!!");
+                }
+                try{
+                    salario=Float.parseFloat(tb_salario.getText());
+                }
+                catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null,"Não pode introduzir letras no salário!!");
+                }
 
-        f.setNIF(nif);
-        f.setTelefone(telefone);
-        f.setNumCC(numCC);
-        f.setSalario(salario);
-        f.setUsername(username);
-        f.setPasswd(passwd);
-        f.setNome(nome);
-        f.setMorada(morada);
-        f.setLocalidade(localidade);
-        f.setHoraIni(new Time(horaIni,minInicio,0));
-        f.setHoraFim(new Time(horaFim,minFim,0));
-        try{
-            DonoEmpresaMetodos.alterarDadosFuncionario(f);
-            JOptionPane.showMessageDialog(null,"SUCESSO!!");
-        }
-        catch(AlteracaoDadosException ex){
-            JOptionPane.showMessageDialog(null,ex.getMessage());
-        }
+                f.setNIF(nif);
+                f.setTelefone(telefone);
+                f.setNumCC(numCC);
+                f.setSalario(salario);
+                f.setUsername(username);
+                f.setPasswd(passwd);
+                f.setNome(nome);
+                f.setMorada(morada);
+                f.setLocalidade(localidade);
+                f.setHoraIni(new Time(horaIni,minInicio,0));
+                f.setHoraFim(new Time(horaFim,minFim,0));
+                try{
+                    DonoEmpresaMetodos.alterarDadosFuncionario(f);
+                    JOptionPane.showMessageDialog(null,"SUCESSO!!");
+                }
+                catch(AlteracaoDadosException ex){
+                    JOptionPane.showMessageDialog(null,ex.getMessage());
+                }
+            }
+        });
     }
 }
