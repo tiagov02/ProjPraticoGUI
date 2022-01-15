@@ -45,7 +45,7 @@ public class SelectEmpresaRemoveConsulta {
             public void actionPerformed(ActionEvent e) {
                 int nifEmpresa=(int) cb_nifEmpresa.getSelectedItem();
                 panel.setVisible(false);
-                new DonoEmpresaCancelaConsulta(frame,nifEmpresa);
+                new DonoEmpresaAlteraConsulta(frame,nifEmpresa);
             }
         });
     }
