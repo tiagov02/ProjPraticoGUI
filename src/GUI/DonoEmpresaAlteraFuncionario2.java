@@ -32,8 +32,8 @@ public class DonoEmpresaAlteraFuncionario2 {
     private JButton buttonok;
     private JTextField tb_nome;
 
-    /*
-    public DonoEmpresaAlteraFuncionario2(JFrame frame, UserFuncionario f, Empresa empresa){
+
+    public DonoEmpresaAlteraFuncionario2(JFrame frame, UserFuncionario f){
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
@@ -51,7 +51,7 @@ public class DonoEmpresaAlteraFuncionario2 {
         spn_horFim.setModel(new SpinnerNumberModel(f.getHoraFim().getHours(),0,23,1));
         spn_minFim.setModel(new SpinnerNumberModel(f.getHoraFim().getMinutes(),0,59,1));
         clickOk(frame,f);
-        voltarAtras(frame, empresa);
+        voltarAtras(frame);
         LimparSENecessario();
     }
 
@@ -119,12 +119,12 @@ public class DonoEmpresaAlteraFuncionario2 {
             }
         });
     }
-    public void voltarAtras(JFrame frame, Empresa empresa){
+    public void voltarAtras(JFrame frame){
         buttonback.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                new DonoEmpresaAlteraFuncionario(frame, empresa);
+                new DonoEmpresaRegistado(frame);
             }
         });
     }
@@ -146,6 +146,6 @@ public class DonoEmpresaAlteraFuncionario2 {
         });
     }
 
-     */
+
 }
 

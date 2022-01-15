@@ -19,10 +19,11 @@ public class DonoEmpresaRemoveFuncionario {
     private JButton buttonback;
     private JButton buttonlimpar;
     private JButton buttonremover;
-    private int nifEmpresa;
+    private JComboBox cb_nifFuncionario;
+
+
 
     public DonoEmpresaRemoveFuncionario(JFrame frame,int nifEmpresa){
-        this.nifEmpresa=nifEmpresa;
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
@@ -35,9 +36,10 @@ public class DonoEmpresaRemoveFuncionario {
         model.addColumn("Telefone");
         model.addColumn("Salário");
         for (User funcionario : Repositorio.getInstance().getUsers()){
-            if(funcionario instanceof UserFuncionario && ((UserFuncionario) funcionario).getNifEmpresa()==this.nifEmpresa){
+            if(funcionario instanceof UserFuncionario && ((UserFuncionario) funcionario).getNifEmpresa()==nifEmpresa){
                 model.addRow(new Object[] {funcionario.getNome(), funcionario.getUsername(), funcionario.getNumCC(),
                         funcionario.getNIF(), funcionario.getTelefone(),((UserFuncionario) funcionario).getSalario()});
+                cb_nifFuncionario.addItem(funcionario.getNIF());
             }
         }
         voltaAtras(frame);
@@ -68,11 +70,10 @@ public class DonoEmpresaRemoveFuncionario {
 
     public void RemoveUser(){
         buttonremover.addActionListener(new ActionListener() {
-            int nif=0;
-            int numCC=0;
-            boolean sucesso=false;
             @Override
             public void actionPerformed(ActionEvent e) {
+                int nifFuncionario=(int) cb_nifFuncionario.getSelectedItem();
+                DonoEmpresaMetodos.removeFuncionario(nifFuncionario);
             }
         });
     }

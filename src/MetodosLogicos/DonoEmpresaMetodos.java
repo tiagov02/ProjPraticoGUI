@@ -33,7 +33,7 @@ public  class DonoEmpresaMetodos {
     throws JaExisteEmpresaException
     {
         for(Empresa e : empresas) {
-            if (emp.getNif() == e.getNif() && emp.getNomeEmpresa().equals(e.getNomeEmpresa()) && empresasLocalidade.containsKey(emp)) {
+            if (emp.getNif() == e.getNif() || emp.getNomeEmpresa().equals(e.getNomeEmpresa()) || empresasLocalidade.containsKey(emp)) {
                     throw new JaExisteEmpresaException("Não pode criar empresas com campos iguais");
             }
         }
@@ -74,9 +74,9 @@ public  class DonoEmpresaMetodos {
         return null;
     }
 
-    public static UserFuncionario selectFuncionarioNifEmpresa(int nif,Empresa e) {
+    public static UserFuncionario selectFuncionarioNifEmpresa(int nif, int nifEmpresa) {
         for(User u:Repositorio.getInstance().getUsers()){
-            if(u instanceof UserFuncionario && ((UserFuncionario) u).getNifEmpresa()==e.getNif() && u.getNIF()==nif){
+            if(u instanceof UserFuncionario && ((UserFuncionario) u).getNifEmpresa()==nifEmpresa && u.getNIF()==nif){
                 return (UserFuncionario) u;
             }
         }
@@ -115,7 +115,7 @@ public  class DonoEmpresaMetodos {
 
     public static void alterarDadosEmpresa(Empresa empresa) throws AlteracaoDadosException{
         for (Empresa emp: Repositorio.getInstance().getEmpresas()){
-            if (emp instanceof Empresa && emp.getNif()==empresa.getNif()){
+            if (emp.getNif()==empresa.getNif()){
                 emp.setTelefone(emp.getTelefone());
                 emp.setNomeEmpresa(emp.getNomeEmpresa());
                 emp.setNif(emp.getNif());
@@ -137,6 +137,15 @@ public  class DonoEmpresaMetodos {
             if(c.getNifEmpresa()==nifEmpresa && c.getUserCliente().equals(userCliente)){
                 Repositorio.getInstance().getConsultas().remove(j);
                 return;
+            }
+        }
+    }
+
+    public static void removeFuncionario(int nifFuncionario){
+        int j=0;
+        for(User u: Repositorio.getInstance().getUsers()){
+            if(u instanceof UserFuncionario && u.getNIF()==nifFuncionario){
+                Repositorio.getInstance().getUsers().remove(u);
             }
         }
     }

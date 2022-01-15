@@ -34,7 +34,7 @@ public class DonoEmpresaRegistado {
         RemoveFuncionario(frame);
         RealizaConsulta(frame);
         registaEmpresa(frame);
-        //AlterarDados(frame);
+        AlterarDados(frame);
         ListaPagamentos(frame);
     }
 

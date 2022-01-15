@@ -44,9 +44,8 @@ public class SelectEmpresaAlteraFuncionario {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int nifEmpresa=(int) cb_nifEmpresa.getSelectedItem();
-                Empresa emp= DonoEmpresaMetodos.selectEmpresaporNif(nifEmpresa);
                 panel.setVisible(false);
-                new DonoEmpresaAlteraFuncionario(frame,emp);
+                new DonoEmpresaAlteraFuncionario(frame,nifEmpresa);
             }
         });
     }

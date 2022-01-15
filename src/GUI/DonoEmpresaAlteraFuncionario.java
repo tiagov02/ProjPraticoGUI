@@ -19,11 +19,11 @@ public class DonoEmpresaAlteraFuncionario {
     private JButton alterarButton;
     private JComboBox cb_nifFuncionario;
     private UserFuncionario metodos;
-    private Empresa emp;
+    private int nifEmp;
 
 
-    public DonoEmpresaAlteraFuncionario(JFrame frame, Empresa emp){
-        this.emp=emp;
+    public DonoEmpresaAlteraFuncionario(JFrame frame, int nifEmp){
+        this.nifEmp=nifEmp;
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
@@ -36,13 +36,13 @@ public class DonoEmpresaAlteraFuncionario {
         model.addColumn("Telefone");
         model.addColumn("Salário");
         for (User funcionario : Repositorio.getInstance().getUsers()){
-            if(funcionario instanceof UserFuncionario){
+            if(funcionario instanceof UserFuncionario && ((UserFuncionario) funcionario).getNifEmpresa()==nifEmp){
                 model.addRow(new Object[] {funcionario.getNome(), funcionario.getUsername(), funcionario.getNumCC(), funcionario.getNIF(), funcionario.getTelefone(),((UserFuncionario) funcionario).getSalario()});
                 cb_nifFuncionario.addItem(funcionario.getNIF());
             }
         }
         voltaAtras(frame);
-        alterarFuncionario(frame, emp);
+        alterarFuncionario(frame);
     }
 
 
@@ -56,13 +56,14 @@ public class DonoEmpresaAlteraFuncionario {
         });
     }
 
-    public void alterarFuncionario(JFrame frame, Empresa empresa){
+    public void alterarFuncionario(JFrame frame){
         alterarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int nifFuncionario= (int) cb_nifFuncionario.getSelectedItem();
-                UserFuncionario u=DonoEmpresaMetodos.selectFuncionarioNifEmpresa(nifFuncionario,emp);
-               panel1.setVisible(false);
+                UserFuncionario u=DonoEmpresaMetodos.selectFuncionarioNifEmpresa(nifFuncionario,nifEmp);
+                panel1.setVisible(false);
+                new DonoEmpresaAlteraFuncionario2(frame,u);
                //new DonoEmpresaAlteraFuncionario2(frame, u);
             }
         });
