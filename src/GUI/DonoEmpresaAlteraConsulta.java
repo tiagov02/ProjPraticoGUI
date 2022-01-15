@@ -1,6 +1,8 @@
 package GUI;
 
 import Entidades.Consulta;
+import Entidades.TipoConsulta;
+import Estados.EstadoConsulta;
 import Repositorio.Repositorio;
 
 import javax.swing.*;
@@ -16,8 +18,10 @@ public class DonoEmpresaAlteraConsulta {
     private JButton buttonback;
     private JButton Alterar;
     private JButton buttonLimpar;
+    private JComboBox cb_cliente;
+    private JComboBox cb_estadoConsulta;
 
-    public DonoEmpresaAlteraConsulta(JFrame frame){
+    public DonoEmpresaAlteraConsulta(JFrame frame,int nifEmpresa){
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
@@ -31,8 +35,13 @@ public class DonoEmpresaAlteraConsulta {
         for (Consulta c : Repositorio.getInstance().getConsultas()){
             if (c.getNifEmpresa() == Repositorio.getInstance().getCurrentUser().getNIF()){
                 model.addRow(new Object[] {c.getDataHoraConsulta(), c.getEstado(), c.getTipoConsulta(), c.getUserCliente(),c.getDataHoraPagamento()});
+                cb_cliente.addItem(c.getUserCliente());
             }
         }
+        cb_estadoConsulta.addItem("Marcado");
+        cb_estadoConsulta.addItem("Confirmado");
+        cb_estadoConsulta.addItem("Anulado");
+        cb_estadoConsulta.addItem("Concluido");
         voltaAtras(frame);
         LimpaDados();
     }
@@ -58,8 +67,22 @@ public class DonoEmpresaAlteraConsulta {
     }
 
     public void AlteraConsulta(JFrame frame){
-        //AQUI SECALHAR METEMOS A RETORNAR PARA O INSERIR CONSULTA
-        //FAZEMOS UM DELETE DA CONSULTA SE AS INFORMÇÕES QUE ELES TIVEREM FOREM IGUAIS A ALGUMA INFORMACAO QUE ESTEJA NA LISTA DE CONSULTAS
-        //E DEPOIS SE FOR IGUAL METEMOS A FRAME.VISIVEL FALSE E PASSAMOS A FRAME DE INSERCAO DE CONSULTAS A TRUE
+        String estadoConsulta=(String) cb_estadoConsulta.getSelectedItem();
+        String userCliente=(String) cb_cliente.getSelectedItem();
+        EstadoConsulta e=null;
+        if(estadoConsulta.equals("Marcado"))
+            e=EstadoConsulta.MARCADA;
+        else
+            if(estadoConsulta.equals("Confirmado"))
+                e=EstadoConsulta.CONFIRMADA;
+            else
+                if(estadoConsulta.equals("Anulado"))
+                    e=EstadoConsulta.ANULADA;
+                else
+                    if(estadoConsulta.equals("Concluido"))
+                        e=EstadoConsulta.CONCLUIDA;
+
+
+
     }
 }

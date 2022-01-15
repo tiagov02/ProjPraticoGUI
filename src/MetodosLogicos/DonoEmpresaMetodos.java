@@ -2,6 +2,7 @@ package MetodosLogicos;
 import java.util.List;
 import java.util.Map;
 import Entidades.*;
+import Estados.EstadoConsulta;
 import Exceptions.*;
 import Repositorio.*;
 
@@ -153,6 +154,4 @@ public  class DonoEmpresaMetodos {
     public static void removeUser(User u){
         Repositorio.getInstance().getUsers().remove(u);
     }
-
-
 }
