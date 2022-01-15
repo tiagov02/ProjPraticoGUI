@@ -1,5 +1,6 @@
 package GUI;
 
+import Entidades.Empresa;
 import Entidades.User;
 import Entidades.UserFuncionario;
 import Exceptions.AlteracaoDadosException;
@@ -31,7 +32,7 @@ public class DonoEmpresaAlteraFuncionario2 {
     private JButton buttonok;
     private JTextField tb_nome;
 
-    public DonoEmpresaAlteraFuncionario2(JFrame frame, UserFuncionario f){
+    public DonoEmpresaAlteraFuncionario2(JFrame frame, UserFuncionario f, Empresa empresa){
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
@@ -49,6 +50,8 @@ public class DonoEmpresaAlteraFuncionario2 {
         spn_horFim.setModel(new SpinnerNumberModel(f.getHoraFim().getHours(),0,23,1));
         spn_minFim.setModel(new SpinnerNumberModel(f.getHoraFim().getMinutes(),0,59,1));
         clickOk(frame,f);
+        voltarAtras(frame, empresa);
+        LimparSENecessario();
     }
 
     public void clickOk(JFrame frame,UserFuncionario f){
@@ -106,10 +109,38 @@ public class DonoEmpresaAlteraFuncionario2 {
                 try{
                     DonoEmpresaMetodos.alterarDadosFuncionario(f);
                     JOptionPane.showMessageDialog(null,"SUCESSO!!");
+                    panel.setVisible(false);
+                    new DonoEmpresaRegistado(frame);
                 }
                 catch(AlteracaoDadosException ex){
                     JOptionPane.showMessageDialog(null,ex.getMessage());
                 }
+            }
+        });
+    }
+    public void voltarAtras(JFrame frame, Empresa empresa){
+        buttonback.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new DonoEmpresaAlteraFuncionario(frame, empresa);
+            }
+        });
+    }
+
+    public void LimparSENecessario(){
+        buttonLimpar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tb_salario.setText(null);
+                tb_localidade.setText(null);
+                tb_morada.setText(null);
+                tb_telefone.setText(null);
+                tb_nif.setText(null);
+                tb_password.setText(null);
+                tb_nome.setText(null);
+                tb_username.setText(null);
+                tb_numCC.setText(null);
             }
         });
     }

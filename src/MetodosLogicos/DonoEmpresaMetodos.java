@@ -112,4 +112,19 @@ public  class DonoEmpresaMetodos {
         }
         throw new AlteracaoDadosException("Não pode alterar o nif do funcionário!! para isso tem de introduzir um funcionario novo");
     }
+
+    public static void alterarDadosEmpresa(Empresa empresa) throws AlteracaoDadosException{
+        for (Empresa emp: Repositorio.getInstance().getEmpresas()){
+            if (emp instanceof Empresa && emp.getNif()==empresa.getNif()){
+                emp.setTelefone(emp.getTelefone());
+                emp.setNomeEmpresa(emp.getNomeEmpresa());
+                emp.setNif(emp.getNif());
+                emp.setnPorta(emp.getnPorta());
+                emp.setLocalidade(emp.getLocalidade());
+                RepositorioSerializable.writeEmpresas();
+                return;
+            }
+        }
+        throw new AlteracaoDadosException("Não é possivel alterar o NIF de uma empresa.");
+    }
 }

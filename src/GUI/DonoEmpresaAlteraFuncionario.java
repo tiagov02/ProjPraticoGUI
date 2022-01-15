@@ -42,7 +42,7 @@ public class DonoEmpresaAlteraFuncionario {
             }
         }
         voltaAtras(frame);
-        alterarFuncionario(frame);
+        alterarFuncionario(frame, emp);
     }
 
 
@@ -51,17 +51,19 @@ public class DonoEmpresaAlteraFuncionario {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel1.setVisible(false);
-                new DonoEmpresaRegistado(frame);
+                new SelectEmpresaAlteraFuncionario(frame);
             }
         });
     }
 
-    public void alterarFuncionario(JFrame frame){
+    public void alterarFuncionario(JFrame frame, Empresa empresa){
         alterarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int nifFuncionario= (int) cb_nifFuncionario.getSelectedItem();
                 UserFuncionario u=DonoEmpresaMetodos.selectFuncionarioNifEmpresa(nifFuncionario,emp);
+               panel1.setVisible(false);
+               new DonoEmpresaAlteraFuncionario2(frame, u, empresa);
             }
         });
     }

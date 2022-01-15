@@ -1,5 +1,7 @@
 package GUI;
 
+import Entidades.Empresa;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +21,7 @@ public class DonoEmpresaRegistado {
     private JButton ButtonRemoveFuncionario;
     private JButton buttonAlteraPrecos;
 
-    public DonoEmpresaRegistado(JFrame frame){
+    public DonoEmpresaRegistado(JFrame frame, Empresa empresa){
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
@@ -32,7 +34,7 @@ public class DonoEmpresaRegistado {
         RemoveFuncionario(frame);
         RealizaConsulta(frame);
         registaEmpresa(frame);
-        AlterarDados(frame);
+        AlterarDados(frame, empresa);
         ListaPagamentos(frame);
     }
 
@@ -123,12 +125,12 @@ public class DonoEmpresaRegistado {
             }
         });
     }
-    public void AlterarDados(JFrame frame){
+    public void AlterarDados(JFrame frame, Empresa empresa){
         buttonAlterarDadosEmpresa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                new DonoEmpresaAlteraDadosEmpresa(frame);
+                new DonoEmpresaAlteraDadosEmpresa(frame, empresa);
             }
         });
     }

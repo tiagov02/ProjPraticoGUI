@@ -1,6 +1,7 @@
 package GUI;
 
 import Entidades.Empresa;
+import MetodosLogicos.DonoEmpresaMetodos;
 import Repositorio.Repositorio;
 
 import javax.swing.*;
@@ -16,34 +17,38 @@ public class DonoEmpresaAlteraDadosEmpresa {
     private JTextField textFieldLocalidade;
     private JButton limparButton;
     private JButton alterarButton;
+    private JComboBox comboBoxNIF;
 
-    public DonoEmpresaAlteraDadosEmpresa(JFrame frame){
+    public DonoEmpresaAlteraDadosEmpresa(JFrame frame, Empresa emp){
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
         DefaultTableModel model= (DefaultTableModel)table1.getModel();
         table1.setModel(model);
-        model.addColumn("Telefone");
-        model.addColumn("Nome");
-        model.addColumn("NIF");
+        model.addColumn("Nome empresa");
+        model.addColumn("Dono Empresa");
         model.addColumn("Localidade");
-        model.addColumn("Tipo");
-        for (Empresa e : Repositorio.getInstance().getEmpresas()){
-            if (e instanceof Empresa){
-                model.addRow(new Object[] {e.getTelefone(), e.getNomeEmpresa(), e.getNif(), e.getLocalidade(), e.getTipo()});
+        model.addColumn("NIF");
+        model.addColumn("NPorta");
+        model.addColumn("Telefone");
+        for (Empresa empresa : Repositorio.getInstance().getEmpresas()) {
+            if (empresa.getUserDono().equals(Repositorio.getInstance().getCurrentUser().getUsername())) {
+                model.addRow(new Object[]{empresa.getNomeEmpresa(), empresa.getUserDono(),
+                        empresa.getLocalidade(), empresa.getNif(), empresa.getnPorta(), empresa.getTelefone()});
+                comboBoxNIF.addItem(empresa.getNif());
             }
         }
-        voltaAtras(frame);
+        voltaAtras(frame, emp);
         LimpaDados();
-        AlterarEmpresa(frame);
+        AlterarEmpresa(frame, emp);
     }
 
-    public void voltaAtras(JFrame frame){
+    public void voltaAtras(JFrame frame, Empresa empresa){
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel1.setVisible(false);
-                new DonoEmpresaRegistado(frame);
+                new DonoEmpresaRegistado(frame, empresa);
             }
         });
     }
@@ -58,11 +63,14 @@ public class DonoEmpresaAlteraDadosEmpresa {
         });
     }
 
-    public void AlterarEmpresa(JFrame frame){
+    public void AlterarEmpresa(JFrame frame, Empresa empresa){
         alterarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                int nifEmpresa=(int) comboBoxNIF.getSelectedItem();
+                Empresa emp= DonoEmpresaMetodos.selectEmpresaporNif(nifEmpresa);
+                panel1.setVisible(false);
+                new DonoEmpresaAlteraDadosEmpresa2(frame, empresa);
             }
         });
     }

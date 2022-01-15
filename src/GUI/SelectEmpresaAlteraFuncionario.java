@@ -36,6 +36,7 @@ public class SelectEmpresaAlteraFuncionario {
             }
         }
         clickOK(frame);
+        Buttonback(frame);
     }
 
     public void clickOK(JFrame frame){
@@ -46,6 +47,15 @@ public class SelectEmpresaAlteraFuncionario {
                 Empresa emp= DonoEmpresaMetodos.selectEmpresaporNif(nifEmpresa);
                 panel.setVisible(false);
                 new DonoEmpresaAlteraFuncionario(frame,emp);
+            }
+        });
+    }
+    public void Buttonback(JFrame frame){
+        btn_Back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new DonoEmpresaRegistado(frame);
             }
         });
     }
