@@ -19,8 +19,10 @@ public class DonoEmpresaRemoveFuncionario {
     private JButton buttonback;
     private JButton buttonlimpar;
     private JButton buttonremover;
+    private int nifEmpresa;
 
-    public DonoEmpresaRemoveFuncionario(JFrame frame){
+    public DonoEmpresaRemoveFuncionario(JFrame frame,int nifEmpresa){
+        this.nifEmpresa=nifEmpresa;
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
@@ -33,7 +35,7 @@ public class DonoEmpresaRemoveFuncionario {
         model.addColumn("Telefone");
         model.addColumn("Salário");
         for (User funcionario : Repositorio.getInstance().getUsers()){
-            if(funcionario instanceof UserFuncionario){
+            if(funcionario instanceof UserFuncionario && ((UserFuncionario) funcionario).getNifEmpresa()==this.nifEmpresa){
                 model.addRow(new Object[] {funcionario.getNome(), funcionario.getUsername(), funcionario.getNumCC(),
                         funcionario.getNIF(), funcionario.getTelefone(),((UserFuncionario) funcionario).getSalario()});
             }
@@ -71,20 +73,6 @@ public class DonoEmpresaRemoveFuncionario {
             boolean sucesso=false;
             @Override
             public void actionPerformed(ActionEvent e) {
-                try{
-                    nif=Integer.parseInt(textFieldNIF.getText());
-                    numCC=Integer.parseInt(textFieldNIF.getText());
-                }
-                catch (NumberFormatException ex){
-                    JOptionPane.showMessageDialog(null,"Não pode introduzir letras em nenhumm dos campos");
-                }
-                try {
-                    DonoEmpresaMetodos.removeFuncionario(nif,numCC);
-                    JOptionPane.showMessageDialog(null,"Removeu o user com nif: "+nif+" NumCC: "+numCC);
-                }
-                catch (NaoExisteUserException ex){
-                    JOptionPane.showMessageDialog(null,ex.getMessage());
-                }
             }
         });
     }
