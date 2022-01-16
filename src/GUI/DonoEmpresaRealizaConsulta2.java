@@ -24,7 +24,7 @@ public class DonoEmpresaRealizaConsulta2 {
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                String dadosDiag=tb_dadosDiag.getText();
             }
         });
     }
