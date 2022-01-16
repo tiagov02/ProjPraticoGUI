@@ -162,4 +162,12 @@ public  class DonoEmpresaMetodos {
             }
         }
     }
+
+    public static Consulta selectConsultaCliente(String userCliente){
+        for(Consulta c: Repositorio.getInstance().getConsultas()){
+            if(c.getUserCliente().equals(userCliente))
+                return c;
+        }
+        return null;
+    }
 }

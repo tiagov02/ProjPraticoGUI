@@ -1,6 +1,7 @@
 package GUI;
 
 import Entidades.Consulta;
+import MetodosLogicos.DonoEmpresaMetodos;
 import Repositorio.Repositorio;
 
 import javax.swing.*;
@@ -41,6 +42,8 @@ public class DonoEmpresaRealizaConsulta {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String userCliente=(String) cb_user.getSelectedItem();
+                Consulta c=DonoEmpresaMetodos.selectConsultaCliente(userCliente);
+
             }
         });
     }
