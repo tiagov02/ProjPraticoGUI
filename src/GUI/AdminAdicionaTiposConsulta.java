@@ -16,19 +16,18 @@ public class AdminAdicionaTiposConsulta {
     private JButton inserirButton;
     private JPanel panel1;
     private JTextField tb_preco;
-    private List<TipoConsulta> tipos;
 
     public AdminAdicionaTiposConsulta(JFrame frame){
-        this.tipos=tipos;
+
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
         limparDados();
         backButton(frame);
-        InserirTiposConsulta(frame, tipos);
+        InserirTiposConsulta(frame);
     }
 
-    public void InserirTiposConsulta(JFrame frame, List<TipoConsulta> tiposConsulta){
+    public void InserirTiposConsulta(JFrame frame){
         inserirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,7 +35,7 @@ public class AdminAdicionaTiposConsulta {
                 Float precoEspecialidade = Float.parseFloat(tb_preco.getText());
                 TipoConsulta tipo = new TipoConsulta(tipoConsulta, precoEspecialidade);
                 try{
-                    AdminMetodos.addTipoConsulta(tiposConsulta, tipo);
+                    AdminMetodos.addTipoConsulta(tipo);
                     JOptionPane.showMessageDialog(null, "Tipo de Consulta inserido com sucesso");
                     panel1.setVisible(false);
                     new AdminRegistado(frame);

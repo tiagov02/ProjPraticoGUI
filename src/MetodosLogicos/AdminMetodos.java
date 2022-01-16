@@ -48,16 +48,17 @@ public class AdminMetodos {
         Repositorio.getInstance().getEmpresas().remove(emp);
     }
 
-    public static void addTipoConsulta(List<TipoConsulta> tipos, TipoConsulta tipoconsulta)
-    throws JaExisteTipoConsultaExcpetion {
-        for (TipoConsulta t : tipos){
+    public static void addTipoConsulta(TipoConsulta tipoconsulta) throws JaExisteTipoConsultaExcpetion {
+        for (TipoConsulta t : Repositorio.getInstance().getTiposConsultas()){
             if (tipoconsulta.getDescricao().equals(t.getDescricao())){
                 throw new JaExisteTipoConsultaExcpetion("Não pode inserir tipos de consulta com a mesma descricao");
             }
         }
-        addTipoConsultaNaList(tipos, tipoconsulta);
+        addTipoConsultaNaList(tipoconsulta);
     }
-    public static void addTipoConsultaNaList(List<TipoConsulta> tipoconsulta, TipoConsulta tipo){tipoconsulta.add(tipo);}
+    public static void addTipoConsultaNaList(TipoConsulta tipo){
+        Repositorio.getInstance().getTiposConsultas().add(tipo);
+    }
 
 
 
