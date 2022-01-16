@@ -35,15 +35,16 @@ public class DonoEmpresaRealizaConsulta {
                 cb_user.addItem(c.getUserCliente());
             }
         }
+        clickOK(frame);
     }
 
-    public void clickOK(){
+    public void clickOK(JFrame frame){
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String userCliente=(String) cb_user.getSelectedItem();
                 Consulta c=DonoEmpresaMetodos.selectConsultaCliente(userCliente);
-
+                new DonoEmpresaRealizaConsulta2(frame,c);
             }
         });
     }
