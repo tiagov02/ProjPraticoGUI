@@ -9,7 +9,7 @@ public class DonoEmpresaRealizaConsulta2 {
     private JButton OKButton;
     private JButton backButton;
     private JTextField tb_dadosDiag;
-    private Consulta c
+    private Consulta c;
 
     public DonoEmpresaRealizaConsulta2(JFrame frame, Consulta c){
 
