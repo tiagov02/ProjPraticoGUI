@@ -12,6 +12,7 @@ public class AdminRegistado {
     private JButton adicionarTiposDeConsultaButton;
     private JButton alterarTiposDeConsultaButton;
     private JButton logoutButton;
+    private JButton btn_addAcionistas;
 
     public AdminRegistado(JFrame frame) {
         frame.add(panel);
