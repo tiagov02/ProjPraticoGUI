@@ -24,6 +24,7 @@ public class DonoEmpresaRealizaConsulta {
         frame.pack();
         frame.setVisible(true);
         DefaultTableModel model=(DefaultTableModel) table1.getModel();
+        table1.setModel(model);
         model.addColumn("Data Consulta");
         model.addColumn("Estado");
         model.addColumn("Tipo Consulta");

@@ -40,6 +40,7 @@ public class ClienteMarcaConsultaFora {
         frame.pack();
         frame.setVisible(true);
         DefaultTableModel model=(DefaultTableModel) table1.getModel();
+        table1.setModel(model);
         model.addColumn("Nome da empresa");
         model.addColumn("Nif da Empresa ");
         model.addColumn("Telefone da empresa");
