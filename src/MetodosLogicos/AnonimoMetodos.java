@@ -5,10 +5,10 @@ import Exceptions.JaExisteUserEcxeption;
 import Repositorio.*;
 
 public class AnonimoMetodos {
-    public void addUser(User newU) throws JaExisteUserEcxeption {
+    public static void addUser(User newU) throws JaExisteUserEcxeption {
         boolean found=false;
         for(User u: Repositorio.getInstance().getUsers()){
-            if(u.getUsername().equals(newU.getUsername())){
+            if(u.getUsername().equals(newU.getUsername()) && u.getNIF()==newU.getNIF()){
                 found=true;
                 break;
             }
