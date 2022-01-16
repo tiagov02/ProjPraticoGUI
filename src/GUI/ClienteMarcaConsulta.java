@@ -14,6 +14,7 @@ public class ClienteMarcaConsulta {
         frame.pack();
         frame.setVisible(true);
         clickSim(frame);
+        clickNao(frame);
     }
 
     public void clickSim(JFrame frame){
