@@ -20,6 +20,8 @@ public class RepositorioSerializable {
         writeEmpresasTipo();
         writeEmpresasLocalidade();
         writeConsultas();
+        writeTiposConsultas();
+        writeDadosDiag();
     }
     public static void writeUsers(){
         File file = new File("users.dat");
@@ -116,6 +118,36 @@ public class RepositorioSerializable {
 
             ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(file));
             objOutput.writeObject(Repositorio.getInstance().getConsultas());
+            objOutput.close();
+
+        } catch (IOException erro) {
+            JOptionPane.showMessageDialog(null,"Houve um erro: "+erro.getMessage());
+        }
+    }
+
+    public static void writeTiposConsultas(){
+        File file = new File("tipoconsultas.dat");
+        try {
+            file.delete();
+            file.createNewFile();
+
+            ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(file));
+            objOutput.writeObject(Repositorio.getInstance().getTiposConsultas());
+            objOutput.close();
+
+        } catch (IOException erro) {
+            JOptionPane.showMessageDialog(null,"Houve um erro: "+erro.getMessage());
+        }
+    }
+
+    public static void writeDadosDiag(){
+        File file = new File("dadosDiag.dat");
+        try {
+            file.delete();
+            file.createNewFile();
+
+            ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(file));
+            objOutput.writeObject(Repositorio.getInstance().getDadosDiag());
             objOutput.close();
 
         } catch (IOException erro) {
@@ -257,6 +289,38 @@ public class RepositorioSerializable {
         Repositorio.getInstance().setConsultas(consultas);
     }
 
+    public static void readTiposConsulta() {
+        List<TipoConsulta> tipo=new ArrayList<>();
+        try {
+            File file = new File("dadosDiag.dat");
+            if (file.exists()) {
+                ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(file));
+                tipo = (List<TipoConsulta>)objInput.readObject();
+                objInput.close();
+            }
+        } catch(IOException erro1) {
+            JOptionPane.showMessageDialog(null,"Erro: "+ erro1.getMessage());
+        } catch(ClassNotFoundException erro2) {
+            JOptionPane.showMessageDialog(null,"Erro: "+erro2.getMessage());
+        }
+        Repositorio.getInstance().setTiposConsultas(tipo);
+    }
 
+    public static void readDadosDiag() {
+        List<DadosDiag> dadosDiag=new ArrayList<>();
+        try {
+            File file = new File("dadosDiag.dat");
+            if (file.exists()) {
+                ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(file));
+                dadosDiag = (List<DadosDiag>)objInput.readObject();
+                objInput.close();
+            }
+        } catch(IOException erro1) {
+            JOptionPane.showMessageDialog(null,"Erro: "+ erro1.getMessage());
+        } catch(ClassNotFoundException erro2) {
+            JOptionPane.showMessageDialog(null,"Erro: "+erro2.getMessage());
+        }
+        Repositorio.getInstance().setDadosDiag(dadosDiag);
+    }
 }
 
