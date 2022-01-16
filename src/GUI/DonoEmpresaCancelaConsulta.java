@@ -41,6 +41,7 @@ public class DonoEmpresaCancelaConsulta {
         }
         voltaAtras(frame);
         LimpaDados();
+        clickOK(frame);
     }
 
 
