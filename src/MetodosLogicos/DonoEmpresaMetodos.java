@@ -174,4 +174,5 @@ public  class DonoEmpresaMetodos {
     public static void escreverDadosDiag(DadosDiag d){
         Repositorio.getInstance().getDadosDiag().add(d);
     }
+    //
 }
