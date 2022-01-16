@@ -36,4 +36,13 @@ public class DonoEmpresaRealizaConsulta {
         }
     }
 
+    public void clickOK(){
+        okButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String userCliente=(String) cb_user.getSelectedItem();
+            }
+        });
+    }
+
 }
