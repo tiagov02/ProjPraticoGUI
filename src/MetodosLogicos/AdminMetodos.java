@@ -37,7 +37,7 @@ public class AdminMetodos {
 
     public static Empresa selectEmpresaNIF(int nif){
         for (Empresa emp: Repositorio.getInstance().getEmpresas()){
-            if (emp instanceof Empresa && emp.getNif() == nif){
+            if (emp.getNif() == nif){
                 return emp;
             }
         }
