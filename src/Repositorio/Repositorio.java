@@ -10,7 +10,6 @@ public class Repositorio implements Serializable{
     private List<Empresa> empresas;
     private Map<Integer,ProdutoServico> produtos;
     private List<Animal> animais;
-    //private List<UserCliente> clientes;
     private Map<Empresa,String> empresasLocalidade;
     private Map<Empresa,TipoConsulta> empresasTipo;
     private List<TipoConsulta> tiposConsultas;
@@ -29,6 +28,7 @@ public class Repositorio implements Serializable{
         empresasTipo= new HashMap<>();
         consultas= new ArrayList<>();
         tiposConsultas = new ArrayList<>();
+        tiposConsultas=new ArrayList<>();
     }
 
     public static Repositorio getInstance(){
