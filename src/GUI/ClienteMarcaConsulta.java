@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 public class ClienteMarcaConsulta {
     private JPanel panel;
     private JButton SIMButton;
-    private JButton NÃOButton;
+    private JButton NAOButton;
 
     public ClienteMarcaConsulta(JFrame frame){
         frame.add(panel);

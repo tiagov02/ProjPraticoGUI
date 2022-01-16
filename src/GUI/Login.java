@@ -92,6 +92,11 @@ public class Login extends JFrame{
                        LoginUsers.setVisible(false);
                        new DonoEmpresaRegistado(frame);
                    }
+                   else
+                       if(login instanceof UserFuncionario){
+                           LoginUsers.setVisible(false);
+                           new FuncionarioRegistado(frame);
+                       }
         }
         catch(NaoExisteUserException ex){
             JOptionPane.showMessageDialog(null,ex.getMessage());
