@@ -5,8 +5,10 @@ import java.io.Serializable;
 public class TipoConsulta implements Serializable {
     private String descricao;
     private float precoEsp;
+    private int idTipo;
 
-    public TipoConsulta(String descricao, float precoEsp) {
+    public TipoConsulta(String descricao, float precoEsp,int idTipo) {
+        this.idTipo=idTipo;
         this.descricao = descricao;
         this.precoEsp = precoEsp;
     }
@@ -25,5 +27,9 @@ public class TipoConsulta implements Serializable {
 
     public void setPrecoEsp(float precoEsp) {
         this.precoEsp = precoEsp;
+    }
+
+    public int getIdTipo() {
+        return idTipo;
     }
 }

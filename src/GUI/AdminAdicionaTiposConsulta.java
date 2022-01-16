@@ -3,6 +3,7 @@ package GUI;
 import Entidades.TipoConsulta;
 import Exceptions.JaExisteTipoConsultaExcpetion;
 import MetodosLogicos.AdminMetodos;
+import Repositorio.Repositorio;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,12 +29,13 @@ public class AdminAdicionaTiposConsulta {
     }
 
     public void InserirTiposConsulta(JFrame frame){
+        Repositorio r= Repositorio.getInstance();
         inserirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String tipoConsulta = tb_tipoConsulta.getText();
                 Float precoEspecialidade = Float.parseFloat(tb_preco.getText());
-                TipoConsulta tipo = new TipoConsulta(tipoConsulta, precoEspecialidade);
+                TipoConsulta tipo = new TipoConsulta(tipoConsulta, precoEspecialidade, r.getTiposConsultas().get(r.getTiposConsultas().size()-1).getIdTipo()+1);
                 try{
                     AdminMetodos.addTipoConsulta(tipo);
                     JOptionPane.showMessageDialog(null, "Tipo de Consulta inserido com sucesso");

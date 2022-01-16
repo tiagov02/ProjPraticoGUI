@@ -30,7 +30,7 @@ public class AdminAlteraTipoConsulta {
         model.addColumn("Preço Especialidade");
         for (TipoConsulta tipo : Repositorio.getInstance().getTiposConsultas()){
             model.addRow(new Object[]{tipo.getDescricao(), tipo.getPrecoEsp()});
-            comboBoxDescricao.addItem(tipo.getDescricao());
+            comboBoxDescricao.addItem(tipo.getIdTipo());
         }
         voltaAtras(frame);
         alteraConsulta(frame);
@@ -51,8 +51,8 @@ public class AdminAlteraTipoConsulta {
         alterarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String descricao = (String) comboBoxDescricao.getSelectedItem();
-                TipoConsulta tipo = AdminMetodos.selecionarTiposConsulta(descricao);
+                int id = (int) comboBoxDescricao.getSelectedItem();
+                TipoConsulta tipo = AdminMetodos.selecionarTiposConsulta(id);
                 int valor=0;
                 String descreve = tb_descricao.getText();
                 try {

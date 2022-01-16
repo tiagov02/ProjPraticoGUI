@@ -62,9 +62,9 @@ public class AdminMetodos {
 
 
 
-    public static TipoConsulta selecionarTiposConsulta(String descricao){
+    public static TipoConsulta selecionarTiposConsulta(int id){
         for (TipoConsulta tipo : Repositorio.getInstance().getTiposConsultas()){
-            if (tipo.getDescricao().equals(descricao)){
+            if (tipo.getIdTipo() == id){
                 return tipo;
             }
         }
