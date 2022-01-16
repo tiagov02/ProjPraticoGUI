@@ -21,13 +21,13 @@ public class AdminAlteraEmpresa2 {
     private JButton eliminarButton;
     private Empresa empresa;
 
-    public AdminAlteraEmpresa2(JFrame frame){
+    public AdminAlteraEmpresa2(JFrame frame, Empresa empresa){
         this.empresa = empresa;
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
         voltar(frame);
-        alterarEmpresa(frame);
+        alterarEmpresa(frame, empresa);
     }
 
     public void voltar(JFrame frame){
@@ -40,7 +40,7 @@ public class AdminAlteraEmpresa2 {
         });
     }
 
-    public void alterarEmpresa(JFrame frame){
+    public void alterarEmpresa(JFrame frame, Empresa empresa){
         alterarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

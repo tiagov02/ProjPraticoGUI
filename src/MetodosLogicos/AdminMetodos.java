@@ -1,9 +1,14 @@
 package MetodosLogicos;
 
 import Entidades.Empresa;
+import Entidades.TipoConsulta;
 import Exceptions.AlteracaoDadosException;
+import Exceptions.JaExisteTipoConsultaExcpetion;
 import Repositorio.Repositorio;
 import Repositorio.*;
+
+import java.util.List;
+import java.util.Map;
 
 public class AdminMetodos {
     public static void alterarDadosEmpresa(Empresa empresa) throws AlteracaoDadosException {
@@ -28,5 +33,50 @@ public class AdminMetodos {
                 return e;
             }
         return null;
+    }
+
+    public static Empresa selectEmpresaNIF(int nif){
+        for (Empresa emp: Repositorio.getInstance().getEmpresas()){
+            if (emp instanceof Empresa && emp.getNif() == nif){
+                return emp;
+            }
+        }
+        return null;
+    }
+
+    public static void removeEmpresa(Empresa emp){
+        Repositorio.getInstance().getEmpresas().remove(emp);
+    }
+
+    public static void addTipoConsulta(List<TipoConsulta> tipos, TipoConsulta tipoconsulta)
+    throws JaExisteTipoConsultaExcpetion {
+        for (TipoConsulta t : tipos){
+            if (tipoconsulta.getDescricao().equals(t.getDescricao())){
+                throw new JaExisteTipoConsultaExcpetion("Não pode inserir tipos de consulta com a mesma descricao");
+            }
+        }
+        addTipoConsultaNaList(tipos, tipoconsulta);
+    }
+    public static void addTipoConsultaNaList(List<TipoConsulta> tipoconsulta, TipoConsulta tipo){tipoconsulta.add(tipo);}
+
+
+
+    public static TipoConsulta selecionarTiposConsulta(String descricao){
+        for (TipoConsulta tipo : Repositorio.getInstance().getTiposConsultas()){
+            if (tipo.getDescricao().equals(descricao)){
+                return tipo;
+            }
+        }
+        return null;
+    }
+
+    public static void alterarDadosTipoConsulta(TipoConsulta tipoConsulta) throws AlteracaoDadosException{
+        for(TipoConsulta tipo : Repositorio.getInstance().getTiposConsultas()){
+            if (tipo.getDescricao().equals(tipoConsulta.getDescricao())){
+                tipo.setDescricao(tipo.getDescricao());
+                tipo.setPrecoEsp(tipo.getPrecoEsp());
+                return;
+            }
+        }
     }
 }

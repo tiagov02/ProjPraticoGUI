@@ -20,6 +20,8 @@ public class AdminRegistado {
         listarempresas(frame);
         logoutadmin(frame);
         alterarDadosEmpresa(frame);
+        adicionarTiposConsulta(frame);
+        AlterarTipoConsulta(frame);
     }
 
     public void listarempresas(JFrame frame){
@@ -47,6 +49,26 @@ public class AdminRegistado {
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
                 new AdminAlteraEmpresa(frame);
+            }
+        });
+    }
+
+    public void adicionarTiposConsulta(JFrame frame){
+        adicionarTiposDeConsultaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new AdminAdicionaTiposConsulta(frame);
+            }
+        });
+    }
+
+    public void AlterarTipoConsulta(JFrame frame){
+        alterarTiposDeConsultaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new AdminAlteraTipoConsulta(frame);
             }
         });
     }

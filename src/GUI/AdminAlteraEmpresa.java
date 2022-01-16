@@ -37,6 +37,7 @@ public class AdminAlteraEmpresa {
       }
       voltaratras(frame);
       alterarEmpresaAdmin(frame);
+      adminRemoveEmpresa(frame);
   }
 
   public void voltaratras(JFrame frame){
@@ -56,9 +57,24 @@ public class AdminAlteraEmpresa {
               int nifempresa=(int) comboBox1.getSelectedItem();
               Empresa emp = AdminMetodos.AdminselectEmpresaporNif(nifempresa);
               panel1.setVisible(false);
-              new AdminAlteraEmpresa2(frame);
+              new AdminAlteraEmpresa2(frame, emp);
           }
       });
   }
+
+  public void adminRemoveEmpresa(JFrame frame){
+      eliminarButton.addActionListener(new ActionListener() {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+              int nif  = (int) comboBox1.getSelectedItem();
+              Empresa emp = AdminMetodos.selectEmpresaNIF(nif);
+              AdminMetodos.removeEmpresa(emp);
+              JOptionPane.showMessageDialog(null, "Empresa removida com sucesso!");
+              panel1.setVisible(false);
+              new AdminRegistado(frame);
+          }
+      });
+  }
+
 
 }

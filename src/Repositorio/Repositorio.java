@@ -13,6 +13,7 @@ public class Repositorio implements Serializable{
     //private List<UserCliente> clientes;
     private Map<Empresa,String> empresasLocalidade;
     private Map<Empresa,TipoConsulta> empresasTipo;
+    private List<TipoConsulta> tiposConsultas;
     private List <Consulta> consultas;
     private static Repositorio singleinstance;
     private User currentUser;
@@ -27,6 +28,7 @@ public class Repositorio implements Serializable{
         empresasLocalidade=new HashMap<>();
         empresasTipo= new HashMap<>();
         consultas= new ArrayList<>();
+        tiposConsultas = new ArrayList<>();
     }
 
     public static Repositorio getInstance(){
@@ -98,5 +100,13 @@ public class Repositorio implements Serializable{
 
     public void setConsultas(List<Consulta> consultas) {
         this.consultas = consultas;
+    }
+
+    public List<TipoConsulta> getTiposConsultas() {
+        return tiposConsultas;
+    }
+
+    public void setTiposConsultas(List<TipoConsulta> tiposConsultas) {
+        this.tiposConsultas = tiposConsultas;
     }
 }

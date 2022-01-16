@@ -43,7 +43,6 @@ public class DonoEmpresaRemoveFuncionario {
             }
         }
         voltaAtras(frame);
-        LimpaDados();
         RemoveUser(frame);
     }
 
@@ -58,15 +57,6 @@ public class DonoEmpresaRemoveFuncionario {
         });
     }
 
-    public void LimpaDados(){
-        buttonlimpar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textFieldNumCC.setText(null);
-                textFieldNIF.setText(null);
-            }
-        });
-    }
 
     public void RemoveUser(JFrame frame){
         buttonremover.addActionListener(new ActionListener() {
