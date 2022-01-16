@@ -1,5 +1,8 @@
 package GUI;
 
+import Entidades.Animal;
+import Entidades.Consulta;
+import Entidades.Empresa;
 import Estados.EstadoConsulta;
 import Exceptions.DataJaExisteException;
 import MetodosLogicos.ClienteMetodos;
@@ -12,11 +15,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
-import Entidades.*;
-
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-public class ClienteMarcaConsultaLocalidade {
+public class ClienteMarcaConsultaFora {
     private JPanel panel;
     private JScrollPane scroll;
     private JTable table1;
@@ -28,9 +29,8 @@ public class ClienteMarcaConsultaLocalidade {
     private JSpinner spn_ano;
     private JSpinner spn_hora;
     private JSpinner spn_min;
-    private JTextField tb_nif;
 
-    public ClienteMarcaConsultaLocalidade(JFrame frame){
+    public ClienteMarcaConsultaFora(JFrame frame){
         Repositorio r=Repositorio.getInstance();
         frame = new JFrame("Marcacao Consultas");
 
@@ -53,11 +53,9 @@ public class ClienteMarcaConsultaLocalidade {
         spn_hora.setModel(new SpinnerNumberModel(9,9,21,1));
         spn_min.setModel(new SpinnerNumberModel(0,0,59,30));
 
-        for(Empresa e:r.getEmpresasLocalidade().keySet()){
-            if(r.getEmpresasLocalidade().get(e).equals(r.getCurrentUser().getLocalidade())){
+        for(Empresa e:r.getEmpresas()){
                 model.addRow(new Object[] {e.getNomeEmpresa(),e.getNif(),e.getTelefone(),e.getLocalidade(),e.getTipo().getDescricao(),e.getTipo().getPrecoEsp()});
                 cb_nifEmpresa.addItem(e.getNif());
-            }
         }
         for(Animal a: Repositorio.getInstance().getAnimais()){
             if(a.getUserDono().equals(Repositorio.getInstance().getCurrentUser().getUsername())){

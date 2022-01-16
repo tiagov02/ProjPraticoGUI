@@ -20,8 +20,18 @@ public class ClienteMarcaConsulta {
         SIMButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
+                panel.setVisible(false);
                 new ClienteMarcaConsultaLocalidade(frame);
+            }
+        });
+    }
+
+    public void clickNao(JFrame frame){
+        NAOButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new ClienteMarcaConsultaFora(frame);
             }
         });
     }
