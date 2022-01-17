@@ -32,10 +32,9 @@ public class DonoEmpresaAlteraConsulta {
         model.addColumn("Estado");
         model.addColumn("Tipo Consulta");
         model.addColumn("Cliente");
-        model.addColumn("Hora Pagamento");
         for (Consulta c : Repositorio.getInstance().getConsultas()){
             if (c.getNifEmpresa() == nifEmpresa){
-                model.addRow(new Object[] {c.getDataHoraConsulta(), c.getEstado(), c.getTipoConsulta(), c.getUserCliente(),c.getDataHoraPagamento()});
+                model.addRow(new Object[] {c.getDataHoraConsulta(), c.getEstado(), c.getTipoConsulta(), c.getUserCliente()});
                 cb_cliente.addItem(c.getUserCliente());
             }
         }
@@ -44,7 +43,6 @@ public class DonoEmpresaAlteraConsulta {
         cb_estadoConsulta.addItem("Anulado");
         cb_estadoConsulta.addItem("Concluido");
         voltaAtras(frame);
-        LimpaDados();
         AlteraConsulta(frame,nifEmpresa);
     }
 
@@ -54,16 +52,6 @@ public class DonoEmpresaAlteraConsulta {
             public void actionPerformed(ActionEvent e) {
                 panel1.setVisible(false);
                 new DonoEmpresaRegistado(frame);
-            }
-        });
-    }
-
-    public void LimpaDados(){
-        buttonLimpar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textFieldDtConsulta.setText(null);   //AQUI TEMOS QUE ADICIONAR DEPOIS AQUILO DOS DIAS
-                textFieldNomeCliente.setText(null);
             }
         });
     }
