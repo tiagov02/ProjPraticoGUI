@@ -1,7 +1,7 @@
 package GUI;
 
 import Entidades.Consulta;
-import Entidades.TipoConsulta;
+import Entidades.UserFuncionario;
 import Estados.EstadoConsulta;
 import MetodosLogicos.DonoEmpresaMetodos;
 import Repositorio.Repositorio;
@@ -11,18 +11,17 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DonoEmpresaAlteraConsulta {
+public class FuncionarioAlteraConsulta {
     private JPanel panel1;
     private JTable table1;
-    private JTextField textFieldDtConsulta;
-    private JTextField textFieldNomeCliente;
     private JButton buttonback;
     private JButton Alterar;
     private JButton buttonLimpar;
     private JComboBox cb_cliente;
     private JComboBox cb_estadoConsulta;
 
-    public DonoEmpresaAlteraConsulta(JFrame frame,int nifEmpresa){
+    public FuncionarioAlteraConsulta(JFrame frame){
+        UserFuncionario current=(UserFuncionario) Repositorio.getInstance().getCurrentUser();
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
@@ -34,7 +33,7 @@ public class DonoEmpresaAlteraConsulta {
         model.addColumn("Cliente");
         model.addColumn("Hora Pagamento");
         for (Consulta c : Repositorio.getInstance().getConsultas()){
-            if (c.getNifEmpresa() == nifEmpresa){
+            if (Repositorio.getInstance().getCurrentUser() instanceof UserFuncionario && ((UserFuncionario) Repositorio.getInstance().getCurrentUser()).getNifEmpresa()==c.getNifEmpresa()){
                 model.addRow(new Object[] {c.getDataHoraConsulta(), c.getEstado(), c.getTipoConsulta(), c.getUserCliente(),c.getDataHoraPagamento()});
                 cb_cliente.addItem(c.getUserCliente());
             }
@@ -44,26 +43,15 @@ public class DonoEmpresaAlteraConsulta {
         cb_estadoConsulta.addItem("Anulado");
         cb_estadoConsulta.addItem("Concluido");
         voltaAtras(frame);
-        LimpaDados();
-        AlteraConsulta(frame,nifEmpresa);
+        AlteraConsulta(frame,current.getNifEmpresa());
     }
 
-    public void voltaAtras(JFrame frame){
+    public void voltaAtras(JFrame frame) {
         buttonback.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel1.setVisible(false);
-                new DonoEmpresaRegistado(frame);
-            }
-        });
-    }
-
-    public void LimpaDados(){
-        buttonLimpar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textFieldDtConsulta.setText(null);   //AQUI TEMOS QUE ADICIONAR DEPOIS AQUILO DOS DIAS
-                textFieldNomeCliente.setText(null);
+                new FuncionarioRegistado(frame);
             }
         });
     }
@@ -75,15 +63,18 @@ public class DonoEmpresaAlteraConsulta {
         if(estadoConsulta.equals("Marcado"))
             e=EstadoConsulta.MARCADA;
         else
-            if(estadoConsulta.equals("Confirmado"))
-                e=EstadoConsulta.CONFIRMADA;
-            else
-                if(estadoConsulta.equals("Anulado"))
-                    e=EstadoConsulta.ANULADA;
-                else
-                    if(estadoConsulta.equals("Concluido"))
-                        e=EstadoConsulta.CONCLUIDA;
+        if(estadoConsulta.equals("Confirmado"))
+            e=EstadoConsulta.CONFIRMADA;
+        else
+        if(estadoConsulta.equals("Anulado"))
+            e=EstadoConsulta.ANULADA;
+        else
+        if(estadoConsulta.equals("Concluido"))
+            e=EstadoConsulta.CONCLUIDA;
 
         DonoEmpresaMetodos.alteraConsulta(e,userCliente);
+    }
+
+    public void removerConsulta(JFrame frame, Consulta c){
     }
 }

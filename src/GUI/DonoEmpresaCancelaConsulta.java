@@ -34,7 +34,7 @@ public class DonoEmpresaCancelaConsulta {
         model.addColumn("Cliente");
         model.addColumn("Hora Pagamento");
         for (Consulta c : Repositorio.getInstance().getConsultas()){
-            if (c.getNifEmpresa() == Repositorio.getInstance().getCurrentUser().getNIF()){
+            if (c.getNifEmpresa() == nifEmp){
                 model.addRow(new Object[] {c.getDataHoraConsulta(), c.getEstado(), c.getTipoConsulta(), c.getUserCliente(),c.getDataHoraPagamento()});
                 selectConsulta.addItem(c.getUserCliente());
             }
