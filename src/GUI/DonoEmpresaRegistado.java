@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 public class DonoEmpresaRegistado {
     private JPanel panel;
-    private JButton buttonCancelaConsulta;
     private JButton buttonAlteraConsulta;
     private JButton buttonRegistaFuncionario;
     private JButton buttonAlteraFuncionario;
@@ -27,7 +26,6 @@ public class DonoEmpresaRegistado {
         clicklogout(frame);
         InsereFuncionario(frame);
         VerInformacoesConsulta(frame);
-        CancelarConsulta(frame);
         AlteraConsulta(frame);
         AlteraFuncionario(frame);
         RemoveFuncionario(frame);
@@ -62,16 +60,6 @@ public class DonoEmpresaRegistado {
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
                 new DonoEmpresaInformacoesConsulta(frame);
-            }
-        });
-    }
-
-    public void CancelarConsulta(JFrame frame){
-        buttonCancelaConsulta.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.setVisible(false);
-                new SelectEmpresaRemoveConsulta(frame);
             }
         });
     }

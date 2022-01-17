@@ -52,14 +52,6 @@
           <text value="Alterar"/>
         </properties>
       </component>
-      <component id="45e05" class="javax.swing.JButton" binding="buttonLimpar">
-        <constraints>
-          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Limpar"/>
-        </properties>
-      </component>
       <vspacer id="4c32c">
         <constraints>
           <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
@@ -107,6 +99,14 @@
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
+      </component>
+      <component id="f5d62" class="javax.swing.JButton" binding="cancelarConsultaButton" default-binding="true">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Cancelar Consulta"/>
+        </properties>
       </component>
     </children>
   </grid>
