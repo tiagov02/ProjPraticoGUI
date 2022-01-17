@@ -14,4 +14,8 @@ public class ClienteCancelaAlteraConsulta {
     private JSpinner spinner3;
     private JSpinner spinner4;
     private JSpinner spinner5;
+
+    public ClienteCancelaAlteraConsulta(){
+
+    }
 }
