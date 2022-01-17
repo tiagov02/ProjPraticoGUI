@@ -87,7 +87,12 @@ public class AdminRegistado {
     }
 
     public void listaPagamentos(JFrame frame){
-        panel.setVisible(false);
-        new AdminListaPagamentos(frame);
+        pagamentosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new AdminListaPagamentos(frame);
+            }
+        });
     }
 }
