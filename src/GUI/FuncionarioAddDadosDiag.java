@@ -7,6 +7,8 @@ import Repositorio.Repositorio;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FuncionarioAddDadosDiag {
     private JPanel panel1;
@@ -38,14 +40,24 @@ public class FuncionarioAddDadosDiag {
     }
 
     public void clickOK(JFrame frame){
-        String userCliente= (String) comboBox1.getSelectedItem();
-        Consulta c=DonoEmpresaMetodos.selectConsultaCliente(userCliente);
-        panel1.setVisible(false);
-        new FuncionarioAddDadosDiag2(frame,c);
+        OKButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String userCliente= (String) comboBox1.getSelectedItem();
+                Consulta c=DonoEmpresaMetodos.selectConsultaCliente(userCliente);
+                panel1.setVisible(false);
+                new FuncionarioAddDadosDiag2(frame,c);
+            }
+        });
     }
 
     public void clickBack(JFrame frame){
-        panel1.setVisible(false);
-        new FuncionarioRegistado(frame);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel1.setVisible(false);
+                new FuncionarioRegistado(frame);
+            }
+        });
     }
 }
