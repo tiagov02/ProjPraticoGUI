@@ -175,4 +175,12 @@ public  class DonoEmpresaMetodos {
         Repositorio.getInstance().getDadosDiag().add(d);
         RepositorioSerializable.writeDadosDiag();
     }
+
+    public static void efetuaConsulta(Consulta c){
+        for(Consulta con : Repositorio.getInstance().getConsultas()){
+            if(con.equals(c))
+                c.setEstado(EstadoConsulta.EFEUADA);
+        }
+        RepositorioSerializable.writeConsultas();
+    }
 }

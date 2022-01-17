@@ -2,6 +2,7 @@ package GUI;
 
 import Entidades.Consulta;
 import Entidades.DadosDiag;
+import MetodosLogicos.DonoEmpresaMetodos;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,14 +21,20 @@ public class DonoEmpresaRealizaConsulta2 {
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
+        clickOK(frame);
     }
 
-    public void clickOK(){
+    public void clickOK(JFrame frame){
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String dadosDiag=tb_dadosDiag.getText();
                 DadosDiag d=new DadosDiag(dadosDiag,new Date(),c.getnMicro());
+                DonoEmpresaMetodos.escreverDadosDiag(d);
+                DonoEmpresaMetodos.efetuaConsulta(c);
+                JOptionPane.showMessageDialog(null,"Escreveu dados de Diagnóstico com sucesso!");
+                panel.setVisible(false);
+                new DonoEmpresaRegistado(frame);
             }
         });
     }

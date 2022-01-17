@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Pagamento implements Serializable {
     private Date HoraPagamento;
-    private UserCliente cliente;
-    private Empresa empresa;
+    private String userCliente;
+    private int nifEmpresa;
 
-    public Pagamento(Date horaPagamento, UserCliente cliente, Empresa empresa) {
+    public Pagamento(Date horaPagamento, String cliente, int empresa) {
         HoraPagamento = horaPagamento;
-        this.cliente = cliente;
-        this.empresa = empresa;
+        this.userCliente = cliente;
+        this.nifEmpresa = empresa;
     }
 
     public Date getHoraPagamento() {
@@ -22,19 +22,20 @@ public class Pagamento implements Serializable {
         HoraPagamento = horaPagamento;
     }
 
-    public UserCliente getCliente() {
-        return cliente;
+    public String getUserCliente() {
+        return userCliente;
     }
 
-    public void setCliente(UserCliente cliente) {
-        this.cliente = cliente;
+    public void setUserCliente(String userCliente) {
+        this.userCliente = userCliente;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
+    public int getNifEmpresa() {
+        return nifEmpresa;
     }
 
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
+    public void setNifEmpresa(int nifEmpresa) {
+        this.nifEmpresa = nifEmpresa;
     }
 }
+

@@ -2,7 +2,7 @@ package MetodosLogicos;
 import Entidades.*;
 import Exceptions.*;
 import Estados.*;
-import Repositorio.Repositorio;
+import Repositorio.*;
 
 import java.util.*;
 
@@ -59,5 +59,25 @@ public class ClienteMetodos {
             throw new DataJaExisteException("Esta data já se encontra marcada pf selecione outra");
         else
             Repositorio.getInstance().getConsultas().add(novaConsulta);
+    }
+
+    public static Consulta selectConsultaAPagar(int nMicro){
+        for(Consulta c: Repositorio.getInstance().getConsultas()){
+            if(c.getnMicro() == nMicro && c.getEstado().equals(EstadoConsulta.EFEUADA)){
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public static void pagaConsulta(Consulta c){
+        for(Consulta con: Repositorio.getInstance().getConsultas()){
+           if(con.equals(c)) {
+               con.setEstado(EstadoConsulta.CONCLUIDA);
+               con.setDataHoraPagamento(new Date());
+           }
+        }
+        Pagamento p= new Pagamento(new Date(),Repositorio.getInstance().getCurrentUser().getUsername(),c.getNifEmpresa());
+        RepositorioSerializable.writeConsultas();
     }
 }
