@@ -183,4 +183,8 @@ public  class DonoEmpresaMetodos {
         }
         RepositorioSerializable.writeConsultas();
     }
+
+    public static void eliminaConsulta(Consulta c){
+        Repositorio.getInstance().getConsultas().remove(c);
+    }
 }

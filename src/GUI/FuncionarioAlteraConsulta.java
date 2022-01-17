@@ -75,6 +75,9 @@ public class FuncionarioAlteraConsulta {
         DonoEmpresaMetodos.alteraConsulta(e,userCliente);
     }
 
-    public void removerConsulta(JFrame frame, Consulta c){
+    public void removerConsulta(JFrame frame){
+        String userCliente= (String) cb_cliente.getSelectedItem();
+        Consulta c=DonoEmpresaMetodos.selectConsultaCliente(userCliente);
+        DonoEmpresaMetodos.eliminaConsulta(c);
     }
 }
