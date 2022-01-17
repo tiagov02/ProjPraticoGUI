@@ -23,6 +23,7 @@ public class ClienteMetodos {
 
         if (found) {
             animais.remove(j);
+            RepositorioSerializable.writeAnimais();
         }
         else{
             throw new RemocaoException("Este animal não existe");
@@ -41,8 +42,10 @@ public class ClienteMetodos {
         if (found)
             throw new JaExisteAnimalException("Não pode adicionar animais com o mesmo n microship");
 
-        else
+        else {
             animais.add(newAnimal);
+            RepositorioSerializable.writeAnimais();
+        }
     }
 
     public static void marcarConsulta(Consulta novaConsulta)throws DataJaExisteException{

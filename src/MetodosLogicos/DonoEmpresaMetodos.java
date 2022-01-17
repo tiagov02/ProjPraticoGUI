@@ -46,12 +46,13 @@ public  class DonoEmpresaMetodos {
         RepositorioSerializable.writeEmpresasTipo();
     }
 
-    public static void addEmpresaList(List<Empresa> empresas,Empresa emp){
+    public static void addEmpresaList(List<Empresa> empresas,Empresa emp) {
         empresas.add(emp);
     }
 
     public static void addEmpresaMapLocalidade(Map<Empresa,String> empresasLocalidade,Empresa emp){
         empresasLocalidade.put(emp, emp.getLocalidade());
+
     }
     public static void addEmpresasMapTipo(Map<Empresa, TipoConsulta> empresasTipo,Empresa emp){
         empresasTipo.put(emp,emp.getTipo());
@@ -60,6 +61,7 @@ public  class DonoEmpresaMetodos {
         for(User u: Repositorio.getInstance().getUsers()){
             if(u instanceof UserFuncionario && u.getNIF()==nif && u.getNumCC()==numCC){
                 Repositorio.getInstance().getUsers().remove(u);
+                RepositorioSerializable.writeUsers();
                 return;
             }
         }
@@ -137,6 +139,7 @@ public  class DonoEmpresaMetodos {
             j++;
             if(c.getNifEmpresa()==nifEmpresa && c.getUserCliente().equals(userCliente)){
                 Repositorio.getInstance().getConsultas().remove(j);
+                RepositorioSerializable.writeConsultas();
                 return;
             }
         }
@@ -159,6 +162,7 @@ public  class DonoEmpresaMetodos {
         for(Consulta c: Repositorio.getInstance().getConsultas()){
             if(c.getUserCliente().equals(userCliente)){
                 c.setEstado(e);
+                RepositorioSerializable.writeConsultas();
             }
         }
     }
@@ -186,6 +190,7 @@ public  class DonoEmpresaMetodos {
 
     public static void eliminaConsulta(Consulta c){
         Repositorio.getInstance().getConsultas().remove(c);
+        RepositorioSerializable.writeConsultas();
     }
 
     public static TipoConsulta selectConsultaPorId(int id){

@@ -47,7 +47,11 @@ public class AdminMetodos {
     public static void removeEmpresa(Empresa emp){
         Repositorio.getInstance().getEmpresas().remove(emp);
         Repositorio.getInstance().getEmpresasLocalidade().remove(emp);
+        Repositorio.getInstance().getEmpresasTipo().remove(emp);
         RepositorioSerializable.writeEmpresas();
+        RepositorioSerializable.writeEmpresasLocalidade();
+        RepositorioSerializable.writeEmpresasLocalidade();
+
     }
 
     public static void addTipoConsulta(TipoConsulta tipoconsulta) throws JaExisteTipoConsultaExcpetion {
