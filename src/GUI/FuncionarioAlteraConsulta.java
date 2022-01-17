@@ -44,6 +44,7 @@ public class FuncionarioAlteraConsulta {
         cb_estadoConsulta.addItem("Concluido");
         voltaAtras(frame);
         AlteraConsulta(frame,current.getNifEmpresa());
+        removerConsulta(frame);
     }
 
     public void voltaAtras(JFrame frame) {
