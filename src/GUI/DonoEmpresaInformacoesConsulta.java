@@ -14,7 +14,7 @@ public class DonoEmpresaInformacoesConsulta {
     private JButton buttonback;
 
 
-    public DonoEmpresaInformacoesConsulta(JFrame frame){
+    public DonoEmpresaInformacoesConsulta(JFrame frame,int nifEmpresa){
         frame.add(panelListaConsulta);
         frame.pack();
         frame.setVisible(true);
@@ -26,7 +26,7 @@ public class DonoEmpresaInformacoesConsulta {
         model.addColumn("Cliente");
         model.addColumn("Hora Pagamento");
         for (Consulta c : Repositorio.getInstance().getConsultas()){
-            if (c.getNifEmpresa() == Repositorio.getInstance().getCurrentUser().getNIF()){
+            if (c.getNifEmpresa() == nifEmpresa){
                 model.addRow(new Object[] {c.getDataHoraConsulta(), c.getEstado(), c.getTipoConsulta(), c.getUserCliente(),c.getDataHoraPagamento()});
             }
         }
