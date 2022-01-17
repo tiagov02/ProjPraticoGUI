@@ -83,7 +83,6 @@ public class ClienteMetodos {
                con.setDataHoraPagamento(new Date());
            }
         }
-        Pagamento p= new Pagamento(new Date(),Repositorio.getInstance().getCurrentUser().getUsername(),c.getNifEmpresa());
         RepositorioSerializable.writeConsultas();
     }
 

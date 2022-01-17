@@ -1,8 +1,6 @@
 package GUI;
 
 import Entidades.Consulta;
-import Entidades.Empresa;
-import Entidades.Pagamento;
 import Estados.EstadoConsulta;
 import Repositorio.Repositorio;
 
