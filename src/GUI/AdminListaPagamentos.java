@@ -38,7 +38,7 @@ public class AdminListaPagamentos {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel1.setVisible(false);
-                new DonoEmpresaRegistado(frame);
+                new AdminRegistado(frame);
             }
         });
     }
