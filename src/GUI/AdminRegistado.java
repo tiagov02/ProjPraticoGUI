@@ -23,6 +23,7 @@ public class AdminRegistado {
         alterarDadosEmpresa(frame);
         adicionarTiposConsulta(frame);
         AlterarTipoConsulta(frame);
+        addAdmins(frame);
     }
 
     public void listarempresas(JFrame frame){
@@ -70,6 +71,16 @@ public class AdminRegistado {
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
                 new AdminAlteraTipoConsulta(frame);
+            }
+        });
+    }
+
+    public void addAdmins(JFrame frame){
+        btn_addAcionistas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new RegistoAdmin(frame);
             }
         });
     }

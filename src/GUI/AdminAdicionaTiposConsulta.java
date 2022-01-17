@@ -34,7 +34,7 @@ public class AdminAdicionaTiposConsulta {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String tipoConsulta = tb_tipoConsulta.getText();
-                Float precoEspecialidade = Float.parseFloat(tb_preco.getText());
+                float precoEspecialidade = Float.parseFloat(tb_preco.getText());
                 TipoConsulta tipo = new TipoConsulta(tipoConsulta, precoEspecialidade, r.getTiposConsultas().get(r.getTiposConsultas().size()-1).getIdTipo()+1);
                 try{
                     AdminMetodos.addTipoConsulta(tipo);

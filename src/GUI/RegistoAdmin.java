@@ -27,6 +27,8 @@ public class RegistoAdmin {
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
+        voltar(frame);
+        clickOK(frame);
     }
 
     public void clickOK(JFrame frame){
@@ -65,6 +67,16 @@ public class RegistoAdmin {
                 catch (JaExisteUserEcxeption ex){
                     JOptionPane.showMessageDialog(null,ex.getMessage());
                 }
+            }
+        });
+    }
+
+    public void voltar(JFrame frame){
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new AdminRegistado(frame);
             }
         });
     }

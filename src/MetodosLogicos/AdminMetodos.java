@@ -46,6 +46,8 @@ public class AdminMetodos {
 
     public static void removeEmpresa(Empresa emp){
         Repositorio.getInstance().getEmpresas().remove(emp);
+        Repositorio.getInstance().getEmpresasLocalidade().remove(emp);
+        RepositorioSerializable.writeEmpresas();
     }
 
     public static void addTipoConsulta(TipoConsulta tipoconsulta) throws JaExisteTipoConsultaExcpetion {
@@ -58,9 +60,8 @@ public class AdminMetodos {
     }
     public static void addTipoConsultaNaList(TipoConsulta tipo){
         Repositorio.getInstance().getTiposConsultas().add(tipo);
+        RepositorioSerializable.writeTiposConsultas();
     }
-
-
 
     public static TipoConsulta selecionarTiposConsulta(int id){
         for (TipoConsulta tipo : Repositorio.getInstance().getTiposConsultas()){
