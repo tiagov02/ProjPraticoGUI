@@ -86,4 +86,24 @@ public class ClienteMetodos {
         Pagamento p= new Pagamento(new Date(),Repositorio.getInstance().getCurrentUser().getUsername(),c.getNifEmpresa());
         RepositorioSerializable.writeConsultas();
     }
+
+    public static void mudarHoraConsulta(Consulta c, Date data)throws DataJaExisteException{
+        boolean found= false;
+        for(Consulta con: Repositorio.getInstance().getConsultas()) {
+            if (con.getDataMarcacao().equals(data)) {
+                found = true;
+                break;
+            }
+        }
+        if(found)
+            throw new DataJaExisteException("Esta data já se encontra marcada pf selecione outra");
+        else{
+            for(Consulta cons: Repositorio.getInstance().getConsultas()){
+                if(cons.equals(c)){
+                    c.setDataMarcacao(data);
+                    RepositorioSerializable.writeConsultas();
+                }
+            }
+        }
+    }
 }

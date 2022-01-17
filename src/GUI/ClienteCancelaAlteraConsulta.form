@@ -96,31 +96,31 @@
               <text value="Novo dia:"/>
             </properties>
           </component>
-          <component id="eca66" class="javax.swing.JSpinner" binding="spinner1" default-binding="true">
+          <component id="eca66" class="javax.swing.JSpinner" binding="spn_dia">
             <constraints>
               <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
           </component>
-          <component id="5bda9" class="javax.swing.JSpinner" binding="spinner2" default-binding="true">
+          <component id="5bda9" class="javax.swing.JSpinner" binding="spn_mes">
             <constraints>
               <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
           </component>
-          <component id="3448d" class="javax.swing.JSpinner" binding="spinner3" default-binding="true">
+          <component id="3448d" class="javax.swing.JSpinner" binding="spn_ano">
             <constraints>
               <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
           </component>
-          <component id="db770" class="javax.swing.JSpinner" binding="spinner4" default-binding="true">
+          <component id="db770" class="javax.swing.JSpinner" binding="spn_hora">
             <constraints>
               <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
           </component>
-          <component id="9ae76" class="javax.swing.JSpinner" binding="spinner5" default-binding="true">
+          <component id="9ae76" class="javax.swing.JSpinner" binding="spn_min">
             <constraints>
               <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>

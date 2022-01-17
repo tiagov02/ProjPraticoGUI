@@ -34,6 +34,7 @@ public class ClienteRegistado extends JFrame{
         clickListaEmpresa(frame);
         clickClienteMarcaConsulta(frame);
         clickPagarConsulta(frame);
+
     }
 
     public void IntroduzirAnimal(JFrame frame){
