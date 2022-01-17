@@ -33,6 +33,8 @@ public class FuncionarioAddDadosDiag {
                 comboBox1.addItem(c.getUserCliente());
             }
         }
+        clickBack(frame);
+        clickOK(frame);
     }
 
     public void clickOK(JFrame frame){

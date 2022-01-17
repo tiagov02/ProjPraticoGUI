@@ -29,6 +29,7 @@ public class ClienteMarcaConsultaFora {
     private JSpinner spn_ano;
     private JSpinner spn_hora;
     private JSpinner spn_min;
+    private JButton backButton;
 
     public ClienteMarcaConsultaFora(JFrame frame){
         Repositorio r=Repositorio.getInstance();
@@ -64,10 +65,11 @@ public class ClienteMarcaConsultaFora {
                 cb_animal.addItem(comboanimal);
             }
         }
-        clickOK();
+        clickOK(frame);
+        clickBack(frame);
     }
 
-    public void clickOK(){
+    public void clickOK(JFrame frame){
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -88,6 +90,18 @@ public class ClienteMarcaConsultaFora {
                 catch(DataJaExisteException ex){
                     JOptionPane.showMessageDialog(null,ex.getMessage());
                 }
+                panel.setVisible(false);
+                new ClienteRegistado(frame);
+            }
+        });
+    }
+
+    public void clickBack(JFrame frame){
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                new ClienteRegistado(frame);
             }
         });
     }

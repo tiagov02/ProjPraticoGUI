@@ -19,7 +19,6 @@ public class DonoEmpresaRegistado {
     private JButton buttonListaPagamentos;
     private JButton buttonLogout;
     private JButton ButtonRemoveFuncionario;
-    private JButton buttonAlteraPrecos;
 
     public DonoEmpresaRegistado(JFrame frame){
         frame.add(panel);
@@ -139,7 +138,7 @@ public class DonoEmpresaRegistado {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                new DonoEmpresaListaPagamentos(frame);
+                new SelectEmpresaListaPagamentos(frame);
             }
         });
     }

@@ -54,11 +54,14 @@ public class ClienteMetodos {
                     break;
                 }
             }
+
         }
         if(found)
             throw new DataJaExisteException("Esta data já se encontra marcada pf selecione outra");
-        else
+        else {
             Repositorio.getInstance().getConsultas().add(novaConsulta);
+            RepositorioSerializable.writeConsultas();
+        }
     }
 
     public static Consulta selectConsultaAPagar(int nMicro){

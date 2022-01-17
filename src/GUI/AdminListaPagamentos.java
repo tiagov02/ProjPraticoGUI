@@ -1,8 +1,6 @@
 package GUI;
 
 import Entidades.Consulta;
-import Entidades.Empresa;
-import Entidades.Pagamento;
 import Estados.EstadoConsulta;
 import Repositorio.Repositorio;
 
@@ -11,15 +9,14 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DonoEmpresaListaPagamentos {
+public class AdminListaPagamentos {
     private JPanel panel1;
-    private JTable table1;
     private JScrollPane Scrollpane;
+    private JTable table1;
     private JButton backButton;
-    private int nifEmpresa;
 
-    public DonoEmpresaListaPagamentos(JFrame frame, int nifEmpresa) {
-        this.nifEmpresa = nifEmpresa;
+    public AdminListaPagamentos(JFrame frame) {
+
         frame.add(panel1);
         frame.pack();
         frame.setVisible(true);
@@ -29,7 +26,7 @@ public class DonoEmpresaListaPagamentos {
         model.addColumn("Cliente");
         model.addColumn("Empresa");
         for (Consulta c : Repositorio.getInstance().getConsultas()) {
-            if(c.getNifEmpresa()==nifEmpresa && c.getEstado().equals(EstadoConsulta.CONCLUIDA)){
+            if(c.getEstado().equals(EstadoConsulta.CONCLUIDA)){
                 model.addRow(new Object[]{c.getDataHoraPagamento(),c.getUserCliente(),c.getNifEmpresa()});
             }
         }

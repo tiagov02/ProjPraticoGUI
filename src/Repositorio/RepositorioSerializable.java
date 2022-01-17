@@ -164,6 +164,8 @@ public class RepositorioSerializable {
         readEmpresasLocalidade();
         readEmpresasTipo();
         readConsultas();
+        readTiposConsulta();
+        readDadosDiag();
     }
 
     public static void readUsers() {
@@ -292,7 +294,7 @@ public class RepositorioSerializable {
     public static void readTiposConsulta() {
         List<TipoConsulta> tipo=new ArrayList<>();
         try {
-            File file = new File("dadosDiag.dat");
+            File file = new File("tipoconsultas.dat");
             if (file.exists()) {
                 ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(file));
                 tipo = (List<TipoConsulta>)objInput.readObject();

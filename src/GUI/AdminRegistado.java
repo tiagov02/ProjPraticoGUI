@@ -24,6 +24,7 @@ public class AdminRegistado {
         adicionarTiposConsulta(frame);
         AlterarTipoConsulta(frame);
         addAdmins(frame);
+        listaPagamentos(frame);
     }
 
     public void listarempresas(JFrame frame){
@@ -83,5 +84,10 @@ public class AdminRegistado {
                 new RegistoAdmin(frame);
             }
         });
+    }
+
+    public void listaPagamentos(JFrame frame){
+        panel.setVisible(false);
+        new AdminListaPagamentos(frame);
     }
 }

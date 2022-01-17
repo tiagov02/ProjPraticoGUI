@@ -26,10 +26,11 @@ public class AdminAlteraTipoConsulta {
         frame.setVisible(true);
         DefaultTableModel model = (DefaultTableModel)table1.getModel();
         table1.setModel(model);
+        model.addColumn("ID");
         model.addColumn("Descrição");
         model.addColumn("Preço Especialidade");
         for (TipoConsulta tipo : Repositorio.getInstance().getTiposConsultas()){
-            model.addRow(new Object[]{tipo.getDescricao(), tipo.getPrecoEsp()});
+            model.addRow(new Object[]{tipo.getIdTipo(),tipo.getDescricao(), tipo.getPrecoEsp()});
             comboBoxDescricao.addItem(tipo.getIdTipo());
         }
         voltaAtras(frame);
@@ -53,10 +54,10 @@ public class AdminAlteraTipoConsulta {
             public void actionPerformed(ActionEvent e) {
                 int id = (int) comboBoxDescricao.getSelectedItem();
                 TipoConsulta tipo = AdminMetodos.selecionarTiposConsulta(id);
-                int valor=0;
+                float valor=0;
                 String descreve = tb_descricao.getText();
                 try {
-                    valor=Integer.parseInt(tb_valor.getText());
+                    valor=Float.parseFloat(tb_valor.getText());
                 }
                 catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(null, "Por favor introduza valores no preço.");

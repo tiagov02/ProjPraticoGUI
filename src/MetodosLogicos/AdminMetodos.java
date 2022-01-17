@@ -57,6 +57,7 @@ public class AdminMetodos {
             }
         }
         addTipoConsultaNaList(tipoconsulta);
+        RepositorioSerializable.writeTiposConsultas();
     }
     public static void addTipoConsultaNaList(TipoConsulta tipo){
         Repositorio.getInstance().getTiposConsultas().add(tipo);
@@ -77,6 +78,7 @@ public class AdminMetodos {
             if (tipo.getDescricao().equals(tipoConsulta.getDescricao())){
                 tipo.setDescricao(tipo.getDescricao());
                 tipo.setPrecoEsp(tipo.getPrecoEsp());
+                RepositorioSerializable.writeTiposConsultas();
                 return;
             }
         }

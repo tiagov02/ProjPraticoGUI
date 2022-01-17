@@ -1,6 +1,7 @@
 package GUI;
 
 import Entidades.Empresa;
+import Entidades.TipoConsulta;
 import Entidades.User;
 import Exceptions.JaExisteEmpresaException;
 import MetodosLogicos.DonoEmpresaMetodos;
@@ -22,14 +23,20 @@ public class DonoEmpresaRegistaEmpresa {
     private JButton inserirButton;
     private JButton buttonlimpar;
     private JPanel panel;
+    private JComboBox cb_addConsulta;
 
     public DonoEmpresaRegistaEmpresa(JFrame frame){
+        String str;
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
         LimparDados();
         voltarAtras(frame);
         inserirEmpresa(frame);
+        for(TipoConsulta t: Repositorio.getInstance().getTiposConsultas()){
+            str=t.getIdTipo()+"-"+t.getDescricao();
+            cb_addConsulta.addItem(str);
+        }
     }
     public void LimparDados(){
         buttonlimpar.addActionListener(new ActionListener() {
@@ -83,8 +90,13 @@ public class DonoEmpresaRegistaEmpresa {
                     JOptionPane.showMessageDialog(null,"Não pode introduzir letras no nº da porta");
                 }
                 String nomeEmpresa=textFieldNomeEmpresa.getText();
+                String str=(String) cb_addConsulta.getSelectedItem();
+                String [] out=str.split("-");
+                int tipo=Integer.parseInt(out[0]);
+                TipoConsulta tipoConsulta=DonoEmpresaMetodos.selectConsultaPorId(tipo);
 
                 Empresa empresa= new Empresa(telefone,nomeEmpresa,nif,nPorta,localidade,Repositorio.getInstance().getCurrentUser().getUsername());
+                empresa.setTipo(tipoConsulta);
                 try{
                     DonoEmpresaMetodos.addEmpresa(Repositorio.getInstance().getEmpresas(), Repositorio.getInstance().getEmpresasLocalidade(), empresa);
                 }

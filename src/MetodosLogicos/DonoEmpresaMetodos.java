@@ -187,4 +187,12 @@ public  class DonoEmpresaMetodos {
     public static void eliminaConsulta(Consulta c){
         Repositorio.getInstance().getConsultas().remove(c);
     }
+
+    public static TipoConsulta selectConsultaPorId(int id){
+        for(TipoConsulta t: Repositorio.getInstance().getTiposConsultas()){
+            if(t.getIdTipo() == id)
+                return t;
+        }
+        return null;
+    }
 }

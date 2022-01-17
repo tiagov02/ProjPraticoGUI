@@ -17,6 +17,7 @@ public class FuncionarioListaConsultasDia {
     private JButton backButton;
 
     public FuncionarioListaConsultasDia(JFrame frame) {
+        Date dataHoje=new Date();
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
@@ -28,7 +29,7 @@ public class FuncionarioListaConsultasDia {
         model.addColumn("Cliente");
         model.addColumn("Numero microship animal");
         for (Consulta c : Repositorio.getInstance().getConsultas()) {
-            if (c.getDataMarcacao().equals(new Date()) && Repositorio.getInstance().getCurrentUser() instanceof UserFuncionario && c.getNifEmpresa()== ((UserFuncionario) Repositorio.getInstance().getCurrentUser()).getNifEmpresa()) {
+            if ( Repositorio.getInstance().getCurrentUser() instanceof UserFuncionario && c.getNifEmpresa()== ((UserFuncionario) Repositorio.getInstance().getCurrentUser()).getNifEmpresa()) {
                 model.addRow(new Object[]{c.getDataHoraConsulta(), c.getEstado(), c.getTipoConsulta(), c.getUserCliente(), c.getnMicro()});
             }
         }

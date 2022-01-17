@@ -21,6 +21,7 @@ public class FuncionarioAddDadosDiag2 {
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
+        panel.setVisible(true);
         clickOK(frame);
     }
 

@@ -28,7 +28,7 @@ public class ClientePagaConsulta {
         model.addColumn("Tipo Consulta");
         model.addColumn("nº do microship doAnimal");
         for (Consulta c : Repositorio.getInstance().getConsultas()){
-            if (c.getUserCliente().equals(Repositorio.getInstance().getCurrentUser()) && c.getEstado().equals(EstadoConsulta.EFEUADA)){
+            if (c.getUserCliente().equals(Repositorio.getInstance().getCurrentUser().getUsername()) && c.getEstado().equals(EstadoConsulta.EFEUADA)){
                 model.addRow(new Object[] {c.getDataHoraConsulta(), c.getEstado(), c.getTipoConsulta(), c.getUserCliente()});
                 comboBox1.addItem(c.getnMicro());
             }
