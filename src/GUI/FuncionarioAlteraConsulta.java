@@ -58,27 +58,38 @@ public class FuncionarioAlteraConsulta {
     }
 
     public void AlteraConsulta(JFrame frame, int nifEmpresa){
-        String estadoConsulta=(String) cb_estadoConsulta.getSelectedItem();
-        String userCliente=(String) cb_cliente.getSelectedItem();
-        EstadoConsulta e=null;
-        if(estadoConsulta.equals("Marcado"))
-            e=EstadoConsulta.MARCADA;
-        else
-        if(estadoConsulta.equals("Confirmado"))
-            e=EstadoConsulta.CONFIRMADA;
-        else
-        if(estadoConsulta.equals("Anulado"))
-            e=EstadoConsulta.ANULADA;
-        else
-        if(estadoConsulta.equals("Concluido"))
-            e=EstadoConsulta.CONCLUIDA;
+        buttonLimpar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String estadoConsulta=(String) cb_estadoConsulta.getSelectedItem();
+                String userCliente=(String) cb_cliente.getSelectedItem();
+                EstadoConsulta es =null;
+                if(estadoConsulta.equals("Marcado"))
+                    es =EstadoConsulta.MARCADA;
+                else
+                if(estadoConsulta.equals("Confirmado"))
+                    es=EstadoConsulta.CONFIRMADA;
+                else
+                if(estadoConsulta.equals("Anulado"))
+                    es=EstadoConsulta.ANULADA;
+                else
+                if(estadoConsulta.equals("Concluido"))
+                    es=EstadoConsulta.CONCLUIDA;
 
-        DonoEmpresaMetodos.alteraConsulta(e,userCliente);
+                DonoEmpresaMetodos.alteraConsulta(es,userCliente);
+            }
+        });
     }
 
     public void removerConsulta(JFrame frame){
-        String userCliente= (String) cb_cliente.getSelectedItem();
-        Consulta c=DonoEmpresaMetodos.selectConsultaCliente(userCliente);
-        DonoEmpresaMetodos.eliminaConsulta(c);
+        Alterar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String userCliente= (String) cb_cliente.getSelectedItem();
+                Consulta c=DonoEmpresaMetodos.selectConsultaCliente(userCliente);
+                DonoEmpresaMetodos.eliminaConsulta(c);
+            }
+        });
+
     }
 }
