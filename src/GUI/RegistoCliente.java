@@ -40,7 +40,7 @@ public class RegistoCliente extends JFrame{
     public RegistoCliente(JFrame frame){
         frame = new JFrame("Registo de Clientes");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(500, 500));
+        //frame.setPreferredSize(new Dimension(500, 500));
         metodos=new AnonimoMetodos();
 
         frame.add(regClientePanel);

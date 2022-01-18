@@ -44,7 +44,7 @@ public class RegistoFuncionario extends JFrame {
         metodos= new AnonimoMetodos();
         frame = new JFrame("Registo de Funcionario");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(500, 500));
+        //frame.setPreferredSize(new Dimension(500, 500));
 
 
         frame.add(panel);
