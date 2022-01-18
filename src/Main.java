@@ -21,7 +21,7 @@ public class Main {
         //new RegistoAnonimo();
         //new RegistoCliente();
         //new RegistoDonoEmpresa();
-        System.out.println("teste");
+        //System.out.println("teste");
 
         Repositorio r = Repositorio.getInstance();
         RepositorioSerializable.readBin();
